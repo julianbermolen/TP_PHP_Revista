@@ -32,7 +32,7 @@
 						validar=false;
 					}
 
-					if(campos.eq(3).val()!==campos.eq(2).val()){
+					if(campos.eq(3).val()!=campos.eq(2).val()){
 						alertas.eq(3).css("visibility","visible");
 						alertas.eq(3).fadeOut(2500);
 						validar=false;
