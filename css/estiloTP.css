@@ -37,3 +37,9 @@
 	margin-bottom: 5px;
 	width: 100%;
 }
+/*Validacion registro de usuario(error). Con jquery validate*/
+.error{
+	margin-left: 5%;
+	color:red;
+	border-color: red;
+	}
