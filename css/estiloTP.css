@@ -1,0 +1,32 @@
+.alerta{
+			display:block;
+			visibility:hidden;
+			color:#b94a48;
+			background-color: #f2dede;
+			border-color:#ebccd1;
+			width: 80%;
+			margin-left:5%;
+		}
+#footer{
+			width:auto;
+			background-color: #e7e7e7;
+			position: relative;
+			margin-top: 150px; /* negative value of footer height */
+			
+			clear:both;
+			margin:6%; 
+}
+.text-center{
+			text-align: center;
+}
+.a-footer{
+		color:#777;
+		size:10px;
+}
+.input-largo{
+		margin-left:5%;
+		width: 80%;
+}
+.label-largo{
+	margin-left:5%;
+}
