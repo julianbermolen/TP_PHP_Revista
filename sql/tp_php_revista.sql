@@ -26,8 +26,7 @@ email varchar(30) not null,
 clave varchar(30) not null,
 nombre varchar(50) not null,
 cod_rol char(2),
-primary key(id_usuario),
-foreign key(cod_rol) references rol(id_rol)
+primary key(id_usuario)
 );
 
 create table cliente(
@@ -37,8 +36,7 @@ apellido varchar(50) not null,
 calle varchar(60) not null,
 numero_calle varchar(6) not null,
 descripcion_localidad varchar(50) not null,
-cod_prov char(3),
-foreign key(cod_prov) references provincia(id_prov)
+cod_prov char(3)
 );
 
 create table publicacion(
@@ -52,8 +50,7 @@ create table seccion(
 id_seccion char(3),
 id_publicacion int,
 nombre varchar(15),
-primary key(id_seccion,id_publicacion),
-foreign key(id_publicacion) references publicacion(id_publicacion)
+primary key(id_seccion,id_publicacion)
 );
 
 create table articulo(
@@ -64,8 +61,7 @@ texto text,
 id_seccion char(3),
 coordenadas varchar(1024),
 /*queda una variable que no ubico*/
-primary key(id_articulo),
-foreign key(id_seccion) references seccion(id_seccion)
+primary key(id_articulo)
 );
 
 create table edicion(
@@ -75,25 +71,21 @@ id_publicacion int,
 precio decimal(4,2),
 precios decimal(4,2),
 tapa varchar(100),
-primary key(id_edicion),
-foreign key(id_publicacion) references publicacion(id_publicacion)
+primary key(id_edicion)
 );
 
 create table imagen(
 id_imagen int auto_increment,
 id_articulo int,
 path varchar(100),
-primary key(id_imagen),
-foreign key(id_articulo) references articulo(id_articulo)
+primary key(id_imagen)
 );
 
 create table compra(
 id_compra int auto_increment,
 id_edicion int,
 id_cliente int,
-primary key(id_compra),
-foreign key(id_edicion) references edicion(id_edicion),
-foreign key(id_cliente) references cliente(id_cliente)
+primary key(id_compra)
 );
 
 create table suscripcion(
@@ -101,6 +93,5 @@ id_suscripcion int auto_increment,
 id_cliente int,
 inicio date not null,
 fin date,
-primary key(id_suscripcion),
-foreign key(id_cliente) references cliente(id_cliente)
+primary key(id_suscripcion)
 );
