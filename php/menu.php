@@ -37,8 +37,35 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="registroDeUsuario.php">Registrarse</a></li>
-        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inicie sesión<span class="caret"></span></a></li>
+        <li><a href="#modalid1" data-target='#modalid1' data-toggle='modal'>Inicie sesión<span class="caret"></span></a></li>
+        <!--/class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"-->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div id="modalid1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Inicie sesión</h4></div> 
+            <div class="modal-body">
+                    <form action="index.php" id="myForm">
+                          <div class="form-group">
+                            <label for="exampleInputText1">Usuario</label>
+                            <input type="text" class="form-control" name="user" id="exampleInputText1" placeholder="Usuario"required data-validation-required-message="Por favor, ingrese su usuario.">
+                          <p class="help-block text-danger"></p>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Contraseña</label>
+                            <input type="password" class="form-control" name="pass" id="exampleInputPassword1" placeholder="Contraseña"required data-validation-required-message="Por favor, ingrese su Contraseña.">
+                            <p class="help-block text-danger"></p>                          
+                          </div>                          
+                         <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
+                    </form>
+                    <div id="ack"></div>
+            </div>
+            <div class="modal-footer"><a href='OlviContra.php' style='float:left;color:#286090;'>¿Olvidaste tu contraseña?</a><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+ 
+      </div>
+      </div>
+  </d iv>
