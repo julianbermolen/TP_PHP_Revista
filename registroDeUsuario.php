@@ -29,8 +29,7 @@
 	<?php 
 	  include("php/incluiBootstrap.php");
 	 ?>
-	 <script src="jquery/jquery.validate.js"></script>
-	 <script src="jquery/validarFormulario.js"></script>
+
 
 </head>
 <body>
@@ -38,6 +37,8 @@
 	<div class="container">
 		<?php include("php/menu.php"); ?>
 
+			<script src="jquery/jquery.validate.js"></script>
+	 		
 		<div class="row">
 
 			<h1> Formulario de registro </h1>
@@ -52,15 +53,15 @@
 							</div>
 							<div class="form-group">
 								<label for="email" class="label-largo">Ingrese e-mail:</label>
-								<input type="email" id="email" class="form-control input-largo"/>
+								<input type="email" name="email" id="email" class="form-control input-largo"/>
 							</div>
 							<div class="form-group">
 								<label for="password" class="label-largo">Ingrese contrase&ntilde;a</label>
-								<input type="password" name="password" class="form-control input-largo"/>
+								<input type="password" name="password" id="password" class="form-control input-largo"/>
 							</div>
 							<div class="form-group">
 								<label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
-								<input type="password" name="confirm_password" class="form-control input-largo"/>
+								<input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo"/>
 							</div>
 							<input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
 						</form>
@@ -82,5 +83,8 @@
 	<?php 
 		include("php/footer.php");
 	?>
+	<script src="jquery/jquery.validate.js"></script>
+	<script src="jquery/validarFormulario.js"></script>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-$().ready(function(){	
+
 
 	//validacion de formulario
 		$("#validarForm").validate({
@@ -20,14 +20,14 @@ $().ready(function(){
 				},
 				
 
-				password:{
+				password: {
 					
 					required:true,
 					minlength:2
 
 				},
 
-				confirm_password:{
+				confirm_password: {
 
 					required:true,
 					minlength: 2,
@@ -59,7 +59,7 @@ $().ready(function(){
 
 					required:"Por favor ingrese una contrase&ntildea",
 					minlength:"Tu contrasenia debe tener 2 caracteres como minimo",
-					equalTo:"Por favor ingrese la misma contrase&ntildeia"
+					equalTo:"Por favor ingrese la misma contrase&ntildea"
 
 				},
 
@@ -73,6 +73,6 @@ $().ready(function(){
 
 
 		});
-		});
+
 
 
