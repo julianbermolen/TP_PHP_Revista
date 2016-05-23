@@ -1,15 +1,15 @@
 	<?php
 		if(isset($_POST['boton'])){
 		include("bd/conexion.php");
-			if(isset($_POST['usuario'])){
-				$user = $_POST['usuario'];
+			if(isset($_POST['username'])){
+				$user = $_POST['username'];
 			}
 			if(isset($_POST['email'])){
 				$email = $_POST['email'];
 			}
 
-			 if(isset($_POST['clave1']) == isset($_POST['clave2'])){
-			 	$pass = $_POST['clave1'];
+			 if(isset($_POST['password']) == isset($_POST['confirm_password'])){
+			 	$pass = $_POST['password'];
 			 }
 			$rol = 2;
 
@@ -29,7 +29,8 @@
 	<?php 
 	  include("php/incluiBootstrap.php");
 	 ?>
-	 <script type="text/javascript" src="jquery/validarFormulario.js"></script>
+	 <script src="jquery/jquery.validate.js"></script>
+	 <script src="jquery/validarFormulario.js"></script>
 
 </head>
 <body>
@@ -44,26 +45,22 @@
 				<!--aca comienza el panel que contiene el form-->
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form action="registroDeUsuario.php" method="POST" class="form-horizontal">
+						<form class="cmxform" id="validarForm" action="registroDeUsuario.php" method="POST" class="form-horizontal">
 							<div class="form-group">
-								<label for="usuario" class="label-largo">Ingrese nombre de usuario:</label>
-								<input type="text" name="usuario" class="form-control input-largo" max-lenght="60"/>
-								<label class="alerta" for="usuario">Campo inv&aacute;lido</label>
+								<label for="username" class="label-largo">Ingrese nombre de usuario:</label>
+								<input type="text" id="username" name="username" class="form-control input-largo" />
 							</div>
 							<div class="form-group">
 								<label for="email" class="label-largo">Ingrese e-mail:</label>
-								<input type="email" name="email" class="form-control input-largo"/>
-								<label class="alerta" for="email">Campo inv&aacute;lido</label>
+								<input type="email" id="email" class="form-control input-largo"/>
 							</div>
 							<div class="form-group">
-								<label for="clave1" class="label-largo">Ingrese contrase&ntilde;a</label>
-								<input type="password" name="clave1" class="form-control input-largo" max-lenght="10"/>
-								<label class="alerta" for="clave1">Campo inv&aacute;lido</label>
+								<label for="password" class="label-largo">Ingrese contrase&ntilde;a</label>
+								<input type="password" name="password" class="form-control input-largo"/>
 							</div>
 							<div class="form-group">
-								<label for="clave2" class="label-largo">Reingrese contrase&ntilde;a</label>
-								<input type="password" name="clave2" class="form-control input-largo" max-lenght="10"/>
-								<label class="alerta" for="clave2">Campo inv&aacute;lido</label>
+								<label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
+								<input type="password" name="confirm_password" class="form-control input-largo"/>
 							</div>
 							<input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
 						</form>

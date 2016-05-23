@@ -37,8 +37,19 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="registroDeUsuario.php">Registrarse</a></li>
-        <li><a href="#modalid1" data-target='#modalid1' data-toggle='modal'>Inicie sesión<span class="caret"></span></a></li>
-        <!--/class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"-->
+        <li>
+          <a href="#modalid1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inicie sesión<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <form class="form-Horizontal" action="#" id="form-login">
+                
+                  <input type="text" class="form-control" placeholder="usuario"/>
+                  <input type="password" class="form-control" placeholder="contraseña"/>
+                  <input type="submit" name="ingresar" value="Ingresar" class="btn btn-primary"/>
+              </form>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -68,4 +79,5 @@
  
       </div>
       </div>
-  </d iv>
+  </div>
+
