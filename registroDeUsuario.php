@@ -37,7 +37,7 @@
 	<div class="container">
 		<?php include("php/menu.php"); ?>
 
-			<script src="jquery/jquery.validate.js"></script>
+		
 	 		
 		<div class="row">
 
@@ -83,8 +83,8 @@
 	<?php 
 		include("php/footer.php");
 	?>
-	<script src="jquery/jquery.validate.js"></script>
-	<script src="jquery/validarFormulario.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/validarFormulario.js"></script>
 
 </body>
 </html>
