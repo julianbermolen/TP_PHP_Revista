@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,19 +39,16 @@
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="registroDeUsuario.php">Registrarse</a></li>
+        <?php if(!isset($_SESSION['nombre'])){
+        echo "<li><a href='registroDeUsuario.php'>Registrarse</a></li>
         <li>
-          <a href="#modalid1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inicie sesión<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li>
-              <form class="form-Horizontal" action="#" id="form-login">
-                
-                  <input type="text" class="form-control" placeholder="usuario"/>
-                  <input type="password" class="form-control" placeholder="contraseña"/>
-                  <input type="submit" name="ingresar" value="Ingresar" class="btn btn-primary"/>
-              </form>
-            </li>
-          </ul>
+          <li><a href='#modalid1' class='dropdown-toggle' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a>
+          <li>";
+          }else{
+            echo $_SESSION['nombre'];
+            echo "<li><a href='php/logout.php'>Cerrar sesión</a></li>";
+          }?>
+          
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -60,7 +60,7 @@
         <div class="modal-content">
             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Inicie sesión</h4></div> 
             <div class="modal-body">
-                    <form action="index.php" id="myForm">
+                    <form action="php/login.php" method="POST"id="myForm">
                           <div class="form-group">
                             <label for="exampleInputText1">Usuario</label>
                             <input type="text" class="form-control" name="user" id="exampleInputText1" placeholder="Usuario"required data-validation-required-message="Por favor, ingrese su usuario.">
