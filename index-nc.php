@@ -5,31 +5,51 @@
 	<?php
 		include("php/incluiBootstrap.php");
 	?>
+  <script src="js/script-index.js"></script>
 </head>
 <body>
-  <div class="container">
+  <?php
+  //funcion prara traer productos por su tipo
+        function traerProductos($tipo){
+          include("bd/conexion.php");//inicia conexion
+          $contarLineas=0;
+          $respuesta=mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo';");
+          $tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo';"));
+          $cantidadDeLineas=($tuplasHalladas[0])/2;
+
+          if(($tuplasHalladas[0]%2)!=0)
+            $cantidadDeLineas++;
+          while ($contarLineas<$cantidadDeLineas) {
+            $arrayRespuesta=mysqli_fetch_assoc($respuesta);
+            echo "<div class='row'>";
+            echo "<div class='col-xs-11 col-xs-push-1 col-md-5 col-md-push-1'>
+                  <a href='#'><img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/></a>
+                  </div>";
+            $contarLineas++;
+            if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
+            echo "<div class='row'>";
+            echo " <div class='col-xs-11 col-xs-push-1 col-md-5 col-md-push-1'>
+                    <a href='#'><img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/></a>
+                  </div>";
+            $contarLineas++;
+            }
+
+            echo"</div>";//cierre de row
+          }
+
+          mysqli_close($conexion);
+        }
+      ?>
+  <div class="container"><!--contenedor de menu-->
 	<?php include("php/menu.php"); ?>
-    <div class="row">
-      <section id="contenedorDeProductos" class="col-xs-12 col-md-9">
-        <!--traemos con un script de php en varias rows la portada de los productos-->
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-1" style="height: 300px; background-color: red">
-            <a href="#">
-              <img src="#" alt="portada" title="revista"/>
-            </a>
-          </div>
-          <div class="col-xs-4 col-xs-offset-1" style="height: 300px; background-color: blue">
-            <a href="#">
-              <img src="#" alt="portada" title="revista"/>
-            </a>
-          </div>
-        </div>
+    </div>
+      <section class="container" id="contenedorDeRevistas">
+        <?php traerProductos('R'); ?>
       </section>
-      <aside id="barraDePublicidad" class="visible-md col-md-3">
-        PUBLICIDAD
-      </aside>
-   </div>
-  </div>
+
+      <section class="container" id="contenedorDeDiarios">
+        <?php traerProductos('D'); ?>
+      </section>
 <?php include("php/footer.php"); ?>
 </body>
 </html>
