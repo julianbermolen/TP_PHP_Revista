@@ -92,10 +92,10 @@
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         
-        <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-        <li><a href="#"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
-        <li><a href="#"><i class="fa fa-user-secret"></i> <span>Contenedista</span></a></li>
-        <li><a href="#"><i class="fa fa-user"></i> <span>Usuario</span></a></li>
+        <li><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+        <li class="active"><a href="panel-administrador-revista.php"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
+        <li><a href="panel-administrador-contenedista.php"><i class="fa fa-user-secret"></i> <span>Contenedista</span></a></li>
+        <li><a href="panel-administrador-usuario.php"><i class="fa fa-user"></i> <span>Usuario</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
