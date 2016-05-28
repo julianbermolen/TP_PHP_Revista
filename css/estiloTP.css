@@ -43,3 +43,13 @@
 	color:red;
 	border-color: red;
 	}
+
+img.portada{
+	width:100%;
+}
+
+h4.nombreDePublicacion{
+	text-align: center;
+
+	color: rgb(0,0,255);
+}
