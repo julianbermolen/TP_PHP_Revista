@@ -19,21 +19,29 @@
 
           if(($tuplasHalladas[0]%2)!=0)
             $cantidadDeLineas++;
-          while ($contarLineas<$cantidadDeLineas) {
+
+          settype($cantidadDeLineas,"int");
+
+          while ($contarLineas<($cantidadDeLineas)) {
             $arrayRespuesta=mysqli_fetch_assoc($respuesta);
             echo "<div class='row'>";
-            echo "<div class='col-xs-11 col-xs-push-1 col-md-5 col-md-push-1'>
-                  <a href='#'><img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/></a>
+            echo "<div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2'>
+                    <a href='#'>
+                      <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                    </a>
+                    <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                   </div>";
-            $contarLineas++;
-            if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
-            echo "<div class='row'>";
-            echo " <div class='col-xs-11 col-xs-push-1 col-md-5 col-md-push-1'>
-                    <a href='#'><img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/></a>
-                  </div>";
-            $contarLineas++;
-            }
 
+            if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
+            echo " <div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2'>
+                      <a href='#'>
+                        <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                    </a>
+                    <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
+                  </div>";
+            
+            }
+            $contarLineas++;
             echo"</div>";//cierre de row
           }
 
@@ -43,13 +51,17 @@
   <div class="container"><!--contenedor de menu-->
 	<?php include("php/menu.php"); ?>
     </div>
-      <section class="container" id="contenedorDeRevistas">
-        <?php traerProductos('R'); ?>
+      <section id="contenedorDeRevistas">
+        <div class="container">
+          <?php traerProductos('R'); ?>
+        </div>
       </section>
 
-      <section class="container" id="contenedorDeDiarios">
-        <?php traerProductos('D'); ?>
+      <section id="contenedorDeDiarios">
+        <div class="container">
+          <?php traerProductos('D'); ?>
+        </div>
       </section>
-<?php include("php/footer.php"); ?>
+  <?php include("php/footer.php"); ?>
 </body>
 </html>
