@@ -126,10 +126,13 @@
                  <thead>
                     <tr>  
                          <th width="10%">Id</th>  
-                         <th width="30%">email</th>  
+                         <th width="20%">email</th>  
                          <th width="20%">clave</th>  
-                         <th width="30%">nombre</th>
-                         <th width="10%">rol</th> 
+                         <th width="20%">nombre</th>
+                         <th width="10%">rol</th>
+                         <th width="2%">borrar</th>
+                         <th width="2%">modificar</th>
+
                     </tr>
                   </thead>
 
@@ -142,11 +145,13 @@
 
                     while($fila = mysqli_fetch_array($resultado)) {
                       echo "<tr>";
-                      echo "<td> $fila[id_usuario]</td>
-                            <td> $fila[email]</td>
-                            <td> $fila[clave]</td>
-                            <td> $fila[nombre]</td>
-                            <td> $fila[cod_rol]</td>";
+                      echo '<td>'.$fila["id_usuario"].'</td>
+                            <td>'.$fila["email"].'</td>
+                            <td>'.$fila["clave"].'</td>
+                            <td>'.$fila["nombre"].'</td>
+                            <td>'.$fila["cod_rol"].'</td>
+                            <td><button type="button" name="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                            <td><button "type="button" name="mod_btn" data-id2="'.$fila["id_usuario"].'" class="btn btn-xs btn-warning glyphicon glyphicon-edit"></button></td>';
 
                     } 
 
