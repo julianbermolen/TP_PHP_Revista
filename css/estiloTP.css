@@ -53,3 +53,8 @@ h4.nombreDePublicacion{
 
 	color: rgb(0,0,255);
 }
+.borderText{
+	border-radius: 6px;
+    border-style: double;
+    border-color: rgba(128, 128, 128, 0.23);
+}

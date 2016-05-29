@@ -39,19 +39,23 @@
           while ($contarLineas<($cantidadDeLineas)) {
             $arrayRespuesta=mysqli_fetch_assoc($respuesta);
             echo "<div class='row'>";
-            echo "<div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2'>
+            echo "<div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2 borderText'>
+                  <div class='col-lg-12'>
                     <a href='#'>
                       <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                     </a>
+                    </div>
                     <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                   </div>";
 
             if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
-            echo " <div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2'>
+            echo " <div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2 borderText'>
+                     <div class='col-lg-12'>
                       <a href='#'>
                         <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                     </a>
                     <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
+                    </div>
                   </div>";
             
             }
