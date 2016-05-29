@@ -151,7 +151,7 @@
                             <td>'.$fila["nombre"].'</td>
                             <td>'.$fila["cod_rol"].'</td>
                             <td><button type="button" name="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
-                            <td><button "type="button" name="mod_btn" data-id2="'.$fila["id_usuario"].'" class="btn btn-xs btn-warning glyphicon glyphicon-edit"></button></td>';
+                            <td><button type="button" name="mod_btn" data-id2="'.$fila["id_usuario"].'" class="btn btn-xs btn-warning glyphicon glyphicon-edit"></button></td>';
 
                     } 
 
@@ -198,15 +198,27 @@
 <script>
   $(function () {
     $("#tabla1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
+  
   });
+
+$(document).ready(function(){
+        $(document).on('click', '.btn_delete', function(){  
+           var id_usuario=$(this).data("id1");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"php/borrar_usuario.php",  
+                     method:"POST",  
+                     data:{id_usuario:id_usuario},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }  
+      });
+        });
 </script>
 
 
