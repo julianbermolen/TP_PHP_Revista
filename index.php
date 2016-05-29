@@ -1,35 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <?php
-  include("bd/conexion.php");
-    if(isset($_POST['login'])){
-        if(isset($_POST['user'])){
-          $user = $_POST['user'];
-        }
-        if(isset($_POST['pass'])){
-          $pass = $_POST['pass'];
-        }
-        $query = "SELECT * FROM usuario WHERE nombre = $user and clave = $pass";
-        $resultado = mysqli_query($conexion,$query);
-
-        if($resultado){
-          session_start();
-          $datos = mysqli_fetch_array($resultado);
-          
-        }
-    }
-  ?>
-	<title>InfoNete -</title>
+	<title>Editorial InfoNete</title>
 	<?php
 		include("php/incluiBootstrap.php");
-    include("bd/conexion.php");
 	?>
+  <script src="js/script-index.js"></script>
 </head>
 <body>
-  <?php
-    include("php/menu.php");
-    
-  ?>
+ 
+  <div class="container"><!--contenedor de menu-->
+	<?php include("php/menu.php"); ?>
+    </div>
+      <section id="contenedorDeRevistas">
+        <div class="container">
+          <?php traerProductos('R'); ?>
+        </div>
+      </section>
+
+      <section id="contenedorDeDiarios">
+        <div class="container">
+          <?php traerProductos('D'); ?>
+        </div>
+      </section>
+  <?php include("php/footer.php"); ?>
 </body>
 </html>
-
