@@ -45,6 +45,7 @@
                       <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                     </a>
                     </div>
+                    <div class='col-lg-12 separador'></div>
                     <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                   </div>";
 
@@ -54,6 +55,7 @@
                       <a href='#'>
                         <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                     </a>
+                    <div class='col-lg-12 separador'></div>
                     <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                     </div>
                   </div>";
