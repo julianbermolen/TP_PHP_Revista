@@ -28,6 +28,7 @@
 	<title>Registro de usuario - El Argentino</title>
 	<?php 
 	  include("php/incluiBootstrap.php");
+	  
 	 ?>
 
 
