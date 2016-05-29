@@ -17,9 +17,8 @@
   <link rel="stylesheet" href="css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="css/admin/skin-blue.min.css">
-     <!-- DataTables -->
+   <!-- DataTables -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,8 +26,9 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" >
 <div class="wrapper">
 
   <!-- Header Principal -->
@@ -97,8 +97,8 @@
         
         <li><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         <li><a href="panel-administrador-revista.php"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
-        <li class="active"><a href="panel-administrador-contenedista.php"><i class="fa fa-user-secret"></i> <span>Contenedista</span></a></li>
-        <li><a href="panel-administrador-usuario.php"><i class="fa fa-user"></i> <span>Usuario</span></a></li>
+        <li><a href="panel-administrador-contenedista.php"><i class="fa fa-user-secret"></i> <span>Contenedista</span></a></li>
+        <li class="active"><a href="panel-administrador-usuario.php"><i class="fa fa-user"></i> <span>Usuario</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -110,55 +110,33 @@
     <!-- Encabezado de la pagina -->
     <section class="content-header">
       <h1>
-        Pagina de Inicio
-        <small>Cantidad de productos vendidos y supricripciones</small>
+        Clientes
+        <small>Alta, Baja y Modificacion</small>
       </h1>
     </section>
 
     <!-- Contenido Principal -->
     <section class="content">
 
-    <div class="row">
-        <div class="col-xs-12">
+
+      <div class="container">
+      <br />
+      <br />
+      <br />
           <div class="box">
-            <div class="box-body">
-             <table id="tabla1" class="table table-bordered table-hover">
-                 <thead>
-                    <tr>  
-                         <th width="10%">Id</th>  
-                         <th width="30%">email</th>  
-                         <th width="20%">clave</th>  
-                         <th width="30%">nombre</th>
-                         <th width="10%">rol</th> 
-                    </tr>
-                  </thead>
+          <div class="box-body">
+          <div class="table-responsive">
+          <div class="col-xs-12">
 
-                  <tbody>
-                  <?php
-                    $connect = mysqli_connect("localhost", "root", "", "sistema");  
-                    $output = '';  
-                    $sql = "SELECT * FROM usuario ORDER BY id_usuario DESC" ;  
-                    $resultado = mysqli_query($connect, $sql);
+      
+          <div id="live_data"></div>
+  
 
-                    while($fila = mysqli_fetch_array($resultado)) {
-                      echo "<tr>";
-                      echo "<td> $fila[id_usuario]</td>
-                            <td> $fila[email]</td>
-                            <td> $fila[clave]</td>
-                            <td> $fila[nombre]</td>
-                            <td> $fila[cod_rol]</td>";
-
-                    } 
-
-                   ?>
-                   </tbody>
-
-
-              </table>
-            </div>
-          </div>          
-        </div>
-    </div>
+          </div>
+          </div>
+          </div>
+          </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -186,24 +164,106 @@
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="js/datatables/dataTables.bootstrap.min.js"></script>
 
+
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+</body>
+</html>
+
+
 <script>
-  $(function () {
-    $("#tabla1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
+  $(document).ready(function(){
+
+     
+      function fetch_data(){
+
+        $.ajax({
+          url:"select.php",
+          method:"POST",
+          success:function(data){
+            $('#live_data').html(data);
+          }
+       
+        });
+
+      }
+      fetch_data();
+      $(document).on('click', '#btn_add', function(){
+        var nombre = $('#nombre').text();
+        var apellido = $('#apellido').text();
+        if(nombre == ''){
+
+          alert("Ingrese nombre");
+          return false;
+
+        }
+        if(apellido == '')
+        {
+
+          alert("Ingrese apellido");
+          return false;
+
+        }
+        $.ajax({
+            url:"insert.php",
+            method:"POST",
+            data:{nombre:nombre, apellido:apellido},
+            dataType:"text",
+            success:function(data){
+                alert(data);
+                fetch_data();
+
+            }
+          })
+        });
+      
+      function edit_data(id, text, nombre_columna)  
+      {  
+           $.ajax({  
+                url:"edit.php",  
+                method:"POST",  
+                data:{id:id, text:text, nombre_columna:nombre_columna},  
+                dataType:"text",  
+                success:function(data){  
+                     alert(data);  
+                }  
+           });  
+      }  
+      $(document).on('blur', '.nombre', function(){  
+           var id = $(this).data("id1");  
+           var nombre = $(this).text();  
+           edit_data(id, nombre, "nombre");  
+      });  
+      $(document).on('blur', '.apellido', function(){  
+           var id = $(this).data("id2");  
+           var apellido = $(this).text();  
+           edit_data(id,apellido, "apellido");  
+      });  
+      $(document).on('click', '.btn_delete', function(){  
+           var id=$(this).data("id3");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"delete.php",  
+                     method:"POST",  
+                     data:{id:id},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          fetch_data();  
+                     }  
+                });  
+           }  
+      });
+
+     
+
   });
+ 
+
 </script>
 
 
-</body>
-</html>
