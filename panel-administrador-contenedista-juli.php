@@ -175,25 +175,26 @@
                                                 <div class="form-group">
                                                   <label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
                                                   <input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo" value="'.$fila["clave"].'" />
-                                                </div>
+                                                </div>';
 
-                                                <div class="form-group">
+                                                echo '<div class="form-group">
                                                   <label for="confirm_password" class="label-largo">Rol</label>
-                                                  <select type="rol" name="rol" id="rol" class="form-control input-largo">
-                                                  '.if($fila["id_rol"]=="1"){.'
-                                                    <option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                  <select type="rol" name="rol" id="rol" class="form-control input-largo">';
+                                                  
+                                                  if($fila["id_rol"]=="1"){
+                                                   echo' <option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
                                                     <option  value="2">"Contenidista"</option>"
-                                                    <option  value="3">"Administrador"</option>"
-                                                    '.}else if($fila["id_rol"]=="2"){.'
-                                                    <option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                    <option  value="3">"Administrador"</option>"';
+                                                    }else if($fila["id_rol"]=="2"){
+                                                    echo '<option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
                                                     <option  value="1">"Lector"</option>"
-                                                    <option  value="3">"Administrador"</option>"
-                                                    '.}else if($fila["id_rol"]=="3"){.'
-                                                    <option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                    <option  value="3">"Administrador"</option>"';
+                                                    }else if($fila["id_rol"]=="3"){
+                                                    echo '<option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
                                                     <option  value="1">"Contenidista"</option>"
-                                                    <option  value="2">"Administrador"</option>"
-                                                    '.}.'
-                                                    </select>
+                                                    <option  value="2">"Administrador"</option>"';
+                                                    }
+                                                   echo '</select>
                                                 </div>
                                                 <input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
                                             </form>
