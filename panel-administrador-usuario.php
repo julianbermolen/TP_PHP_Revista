@@ -126,22 +126,24 @@
                  <thead>
                     <tr>  
                          <th width="10%">Id</th>  
-                         <th width="20%">email</th>  
-                         <th width="20%">clave</th>  
-                         <th width="20%">nombre</th>
-                         <th width="10%">rol</th>
-                         <th width="2%">borrar</th>
-                         <th width="2%">modificar</th>
+                         <th width="20%">Email</th>  
+                         <th width="20%">Clave</th>  
+                         <th width="20%">Nombre</th>
+                         <th width="10%">Rol</th>
+                         <th width="4%">Borrar</th>
+                         <th width="2%">Modificar</th>
 
                     </tr>
                   </thead>
 
                   <tbody>
                   <?php
-                    $connect = mysqli_connect("localhost", "root", "", "sistema");  
+                    
+                    include("bd/conexion.php");
+                      
                     $output = '';  
                     $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.cod_rol = rol.id_rol ORDER BY id_usuario DESC" ;  
-                    $resultado = mysqli_query($connect, $sql);
+                    $resultado = mysqli_query($conexion, $sql);
 
                     while($fila = mysqli_fetch_array($resultado)) {
                       echo "<tr>";
@@ -150,17 +152,21 @@
                             <td>'.$fila["clave"].'</td>
                             <td>'.$fila["nombre"].'</td>
                             <td>'.$fila["descripcion"].'</td>
-                            <td><button type="button" name="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
-                            <td><a href="#'.$fila["id_usuario"].'" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_usuario"].'" data-toggle="modal" role="button"></a></td>';
+                            <td style="text-align:center"><button type="button"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                            <td style="text-align:center"><a href="#'.$fila["id_usuario"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_usuario"].'" data-toggle="modal" role="button"></a></td>';
 
                       echo '<div id="'.$fila["id_usuario"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Modificar usuario</h4></div> 
                                   <div class="modal-body">
-                                          <form class="cmxform" id="validarForm" action="registroDeUsuario.php" method="POST" class="form-horizontal">
+                                          <form class="cmxform" id="validarForm" action="php/editar_usuario.php" method="POST" class="form-horizontal">
                                                 <div class="form-group">
-                                                  <label for="username" class="label-largo">Ingrese nombre de usuario:</label>
+                                                  <label for="id_usuario"  class="label-largo">Numero de id:</label>
+                                                  <input type="text" id="id_usuario" name="id_usuario" class="form-control input-largo" value="'.$fila["id_usuario"].'" readonly="readonly" />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="username"  class="label-largo">Ingrese nombre de usuario:</label>
                                                   <input type="text" id="username" name="username" class="form-control input-largo" value="'.$fila["nombre"].'" />
                                                 </div>
                                                 <div class="form-group">
@@ -177,29 +183,29 @@
                                                 </div>';
 
                                                 echo '<div class="form-group">
-                                                  <label for="confirm_password" class="label-largo">Rol</label>
+                                                  <label for="rol" class="label-largo">Rol</label>
                                                   <select type="rol" name="rol" id="rol" class="form-control input-largo">';
                                                   
                                                   if($fila["id_rol"]=="1"){
-                                                   echo' <option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
-                                                    <option  value="2">"Contenidista"</option>"
-                                                    <option  value="3">"Administrador"</option>"';
+                                                   echo' <option  value="1">'.$fila["descripcion"].'</option>"
+                                                    <option  value="2">Contenidista</option>"
+                                                    <option  value="3">Administrador</option>"';
                                                     }else if($fila["id_rol"]=="2"){
-                                                    echo '<option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                    echo '<option  value="2">'.$fila["descripcion"].'</option>"
                                                     <option  value="1">Lector</option>"
                                                     <option  value="3">Administrador</option>"';
                                                     }else if($fila["id_rol"]=="3"){
-                                                    echo '<option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
-                                                    <option  value="1">Contenidista</option>"
-                                                    <option  value="2">Administrador</option>"';
+                                                    echo '<option  value="3">'.$fila["descripcion"].'</option>"
+                                                    <option  value="1">Lector</option>"
+                                                    <option  value="2">Contenidista</option>"';
                                                     }
                                                    echo '</select>
                                                 </div>
-                                                <input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block btn_mod data-id2="'.$fila["id_usuario"].'""/>
+                                                <input type="submit" name="boton" id="boton" value="Enviar" data-id2="'.$fila["id_usuario"].'" class="btn btn-primary btn-lg btn-block btn_mod"/>
                                             </form>
                                           <div id="ack"></div>
                                   </div>
-                                  <div class="modal-footer"><a href="OlviContra.php" style="float:left;color:#286090;">¿Olvidaste tu contraseña?</a><button type="button" class="btn btn-primary" data-dismiss="modal" >Cerrar</button></div>
+                                  <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal" >Cerrar</button></div>
                        
                             </div>
                             </div>
@@ -271,6 +277,8 @@ $(document).ready(function(){
                 });  
            }  
       });
+
+    
 
 
         });
