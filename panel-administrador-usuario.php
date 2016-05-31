@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="css/admin/skin-blue.min.css">
+     <!-- DataTables -->
+  <link rel="stylesheet" href="js/datatables/dataTables.bootstrap.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,8 +97,8 @@
         
         <li><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         <li><a href="panel-administrador-revista.php"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
-        <li><a href="panel-administrador-contenedista.php"><i class="fa fa-user-secret"></i> <span>Contenedista</span></a></li>
-        <li class="active"><a href="panel-administrador-usuario.php"><i class="fa fa-user"></i> <span>Usuario</span></a></li>
+        <li class="active"><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
+        <li><a href="panel-administrador-cliente.php"><i class="fa fa-user"></i> <span>Cliente</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -115,8 +118,105 @@
     <!-- Contenido Principal -->
     <section class="content">
 
-      <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-body">
+             <table id="tabla1" class="table table-bordered table-hover">
+                 <thead>
+                    <tr>  
+                         <th width="10%">Id</th>  
+                         <th width="20%">email</th>  
+                         <th width="20%">clave</th>  
+                         <th width="20%">nombre</th>
+                         <th width="10%">rol</th>
+                         <th width="2%">borrar</th>
+                         <th width="2%">modificar</th>
 
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  <?php
+                    $connect = mysqli_connect("localhost", "root", "", "sistema");  
+                    $output = '';  
+                    $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.cod_rol = rol.id_rol ORDER BY id_usuario DESC" ;  
+                    $resultado = mysqli_query($connect, $sql);
+
+                    while($fila = mysqli_fetch_array($resultado)) {
+                      echo "<tr>";
+                      echo '<td>'.$fila["id_usuario"].'</td>
+                            <td>'.$fila["email"].'</td>
+                            <td>'.$fila["clave"].'</td>
+                            <td>'.$fila["nombre"].'</td>
+                            <td>'.$fila["descripcion"].'</td>
+                            <td><button type="button" name="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                            <td><a href="#'.$fila["id_usuario"].'" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_usuario"].'" data-toggle="modal" role="button"></a></td>';
+
+                      echo '<div id="'.$fila["id_usuario"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Modificar usuario</h4></div> 
+                                  <div class="modal-body">
+                                          <form class="cmxform" id="validarForm" action="registroDeUsuario.php" method="POST" class="form-horizontal">
+                                                <div class="form-group">
+                                                  <label for="username" class="label-largo">Ingrese nombre de usuario:</label>
+                                                  <input type="text" id="username" name="username" class="form-control input-largo" value="'.$fila["nombre"].'" />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="email" class="label-largo">Ingrese e-mail:</label>
+                                                  <input type="email" name="email" id="email" class="form-control input-largo" value="'.$fila["email"].'" />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="password" class="label-largo">Ingrese contrase&ntilde;a</label>
+                                                  <input type="password" name="password" id="password" class="form-control input-largo" value="'.$fila["clave"].'" />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
+                                                  <input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo" value="'.$fila["clave"].'" />
+                                                </div>';
+
+                                                echo '<div class="form-group">
+                                                  <label for="confirm_password" class="label-largo">Rol</label>
+                                                  <select type="rol" name="rol" id="rol" class="form-control input-largo">';
+                                                  
+                                                  if($fila["id_rol"]=="1"){
+                                                   echo' <option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                    <option  value="2">"Contenidista"</option>"
+                                                    <option  value="3">"Administrador"</option>"';
+                                                    }else if($fila["id_rol"]=="2"){
+                                                    echo '<option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                    <option  value="1">Lector</option>"
+                                                    <option  value="3">Administrador</option>"';
+                                                    }else if($fila["id_rol"]=="3"){
+                                                    echo '<option  value="'.$fila["descripcion"].'">'.$fila["descripcion"].'</option>"
+                                                    <option  value="1">Contenidista</option>"
+                                                    <option  value="2">Administrador</option>"';
+                                                    }
+                                                   echo '</select>
+                                                </div>
+                                                <input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block btn_mod data-id2="'.$fila["id_usuario"].'""/>
+                                            </form>
+                                          <div id="ack"></div>
+                                  </div>
+                                  <div class="modal-footer"><a href="OlviContra.php" style="float:left;color:#286090;">¿Olvidaste tu contraseña?</a><button type="button" class="btn btn-primary" data-dismiss="modal" >Cerrar</button></div>
+                       
+                            </div>
+                            </div>
+                        </div>';
+
+                    } 
+
+
+                   ?>
+                   </tbody>
+
+
+              </table>
+            </div>
+          </div>          
+        </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>
@@ -140,10 +240,42 @@
 <script src="js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/app.min.js"></script>
+<!-- DataTables -->
+<script src="js/datatables/jquery.dataTables.min.js"></script>
+<script src="js/datatables/dataTables.bootstrap.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script>
+  $(function () {
+    $("#tabla1").DataTable();
+  
+  });
+
+$(document).ready(function(){
+        $(document).on('click', '.btn_delete', function(){  
+           var id_usuario=$(this).data("id1");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"php/borrar_usuario.php",  
+                     method:"POST",  
+                     data:{id_usuario:id_usuario},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }  
+      });
+
+
+        });
+</script>
+
+
 </body>
 </html>

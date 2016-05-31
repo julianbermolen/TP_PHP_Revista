@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="css/admin/skin-blue.min.css">
-     <!-- DataTables -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -97,8 +94,8 @@
         
         <li><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         <li><a href="panel-administrador-revista.php"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
-        <li class="active"><a href="panel-administrador-contenedista.php"><i class="fa fa-user-secret"></i> <span>Contenedista</span></a></li>
-        <li><a href="panel-administrador-usuario.php"><i class="fa fa-user"></i> <span>Usuario</span></a></li>
+        <li><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
+        <li class="active"><a href="panel-administrador-cliente.php"><i class="fa fa-user"></i> <span>Cliente</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -118,52 +115,8 @@
     <!-- Contenido Principal -->
     <section class="content">
 
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-body">
-             <table id="tabla1" class="table table-bordered table-hover">
-                 <thead>
-                    <tr>  
-                         <th width="10%">Id</th>  
-                         <th width="20%">email</th>  
-                         <th width="20%">clave</th>  
-                         <th width="20%">nombre</th>
-                         <th width="10%">rol</th>
-                         <th width="2%">borrar</th>
-                         <th width="2%">modificar</th>
+      <!-- Your Page Content Here -->
 
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                  <?php
-                    $connect = mysqli_connect("localhost", "root", "", "sistema");  
-                    $output = '';  
-                    $sql = "SELECT * FROM usuario ORDER BY id_usuario DESC" ;  
-                    $resultado = mysqli_query($connect, $sql);
-
-                    while($fila = mysqli_fetch_array($resultado)) {
-                      echo "<tr>";
-                      echo '<td>'.$fila["id_usuario"].'</td>
-                            <td>'.$fila["email"].'</td>
-                            <td>'.$fila["clave"].'</td>
-                            <td>'.$fila["nombre"].'</td>
-                            <td>'.$fila["cod_rol"].'</td>
-                            <td><button type="button" name="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
-                            <td><button type="button" name="mod_btn" data-id2="'.$fila["id_usuario"].'" class="btn btn-xs btn-warning glyphicon glyphicon-edit"></button></td>';
-
-                    } 
-
-                   ?>
-                   </tbody>
-
-
-              </table>
-            </div>
-          </div>          
-        </div>
-    </div>
     </section>
     <!-- /.content -->
   </div>
@@ -187,40 +140,10 @@
 <script src="js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/app.min.js"></script>
-<!-- DataTables -->
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="js/datatables/dataTables.bootstrap.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-<script>
-  $(function () {
-    $("#tabla1").DataTable();
-  
-  });
-
-$(document).ready(function(){
-        $(document).on('click', '.btn_delete', function(){  
-           var id_usuario=$(this).data("id1");  
-           if(confirm("Estas seguro de borrar esto?"))  
-           {  
-                $.ajax({  
-                     url:"php/borrar_usuario.php",  
-                     method:"POST",  
-                     data:{id_usuario:id_usuario},  
-                     dataType:"text",  
-                     success:function(data){  
-                          alert(data);  
-                          window.location.reload();  
-                     }  
-                });  
-           }  
-      });
-        });
-</script>
-
-
 </body>
 </html>
