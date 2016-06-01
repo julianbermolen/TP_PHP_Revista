@@ -110,28 +110,36 @@
     <!-- Encabezado de la pagina -->
     <section class="content-header">
       <h1>
-        Pagina de Inicio
-        <small>Cantidad de productos vendidos y supricripciones</small>
+        Usuarios
+        <small>ABM - Alta , Baja y Modificacion de Usuarios</small>
       </h1>
     </section>
 
     <!-- Contenido Principal -->
     <section class="content">
 
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
+<button type="button" class="btn btn-success" href="#indio" data-target="#indio" data-toggle="modal" role="button">Agregar Nuevo Usuario </button>
+<br/>
+<br/>
+
+
+    <div class="row" >
+        <div class="col-xs-12" >
+          <div class="box" >
             <div class="box-body">
+            <div class="table-responsive">
              <table id="tabla1" class="table table-bordered table-hover">
+             
+
                  <thead>
                     <tr>  
-                         <th width="10%">Id</th>  
-                         <th width="20%">Email</th>  
-                         <th width="20%">Clave</th>  
-                         <th width="20%">Nombre</th>
+                         <th width="2%">Id</th>  
+                         <th width="15%">Email</th>  
+                         <th width="10%">Clave</th>  
+                         <th width="10%">Nombre</th>
                          <th width="10%">Rol</th>
                          <th width="4%">Borrar</th>
-                         <th width="2%">Modificar</th>
+                         <th width="1%">Modificar</th>
 
                     </tr>
                   </thead>
@@ -223,6 +231,50 @@
           </div>          
         </div>
     </div>
+  </div>  
+
+<div id="indio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nuevo usuario</h4></div> 
+            <div class="modal-body">
+                    <form action="php/agregar_usuario.php" method="POST">
+                          <div class="form-group">
+                            <label for="exampleInputText1">Ingrese Usuario</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Ingrese Usuario">
+                          </div>
+                          <p class="help-block text-danger"></p>
+                          <div class="form-group">
+                             <label for="email" class="label-largo">Ingrese E-mail:</label>
+                             <input type="email" name="email" id="email" class="form-control input-largo" placeholder="Ingrese E-mail"/>
+                          </div>                           
+                         <div class="form-group">
+                           <label for="password" class="label-largo">Ingrese Contrase&ntilde;a</label>
+                           <input type="password" name="password" id="password" class="form-control input-largo" placeholder=" Ingrese Contrase&ntilde;a" />
+                          </div>
+                          <div class="form-group">
+                           <label for="confirm_password" class="label-largo">Reingrese Contrase&ntilde;a</label>
+                           <input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo" placeholder=" Reingrese Contrase&ntilde;a" />
+                           </div>
+                          <div class="form-group">
+                           <label for="rol" class="label-largo">Rol</label>
+                           <select type="rol" name="rol" id="rol" class="form-control input-largo">
+                           <option  value="1">Lector</option>
+                           <option  value="2">Contenidista</option>
+                           <option  value="3">Administrador</option>
+                           </select>
+                          </div>
+
+                            <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
+                    </form>
+                    <div id="ack"></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+ 
+      </div>
+      </div>
+  </div>
+
     </section>
     <!-- /.content -->
   </div>
