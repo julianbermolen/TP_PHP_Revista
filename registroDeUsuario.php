@@ -17,9 +17,9 @@
 			$resultado = mysqli_query($conexion,$query);
 
 			if($resultado){
-				echo "Usuario creado con exito";
+				$exito = 1;
 			}else{
-				echo "Hubo un error, intente más tarde";
+				$exito = 0;
 			  }
 			}
 	?>
@@ -66,6 +66,16 @@
 							</div>
 							<input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
 						</form>
+						<?php 
+							if(isset($exito)){
+								if($exito == 1){
+									echo "<div class='alert alert-success'><strong>¡Bien hecho!</strong> Usuario registrado con exito!</div>";
+								}else{
+									echo "<div class='alert alert-danger'><strong>¡Ups!</strong> Usuario no registrado, intente en otro momento</div>";
+								}
+
+							}
+						?>
 						
 					</div>
 				</div>

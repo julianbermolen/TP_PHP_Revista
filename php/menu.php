@@ -40,23 +40,22 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <?php if(!isset($_SESSION['nombre'])){
-        echo "<li><a href='registroDeUsuario.php'>Registrarse</a></li>
-        <li>
-          <li><a href='#modalid1' class='dropdown-toggle' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a>
-          <li>";
+                   echo "<li><a href='registroDeUsuario.php'>Registrarse</a></li>
+                         <li><a href='#modalid1' class='dropdown-toggle' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a></li>";
           }else{
             echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>".$_SESSION['nombre']." <span class='caret'></span></a>";
             echo "<ul class='dropdown-menu'>
-                  <li><a href='#'>Mis suscripciones</a></li>
-                  <li><a href='#'>Mis facturas</a></li>
-                  <li role='separator' class='divider'></li>
-                  <li><a href='#'>Mi cuenta</a></li>
-                  </ul>
+                      <li><a href='#'>Mis suscripciones</a></li>
+                      <li><a href='#'>Mis facturas</a></li>
+                      <li role='separator' class='divider'></li>
+                      <li><a href='#'>Mi cuenta</a></li>
+                    </ul>
                   </li>";
-            echo "<li><a href='php/logout.php'>Cerrar sesión</a></li>";
+            echo '<a href="php/logout.php">Cerrar sesión</a>';
+           
           }?>
           
-        </li>
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
