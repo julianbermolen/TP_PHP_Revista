@@ -9,7 +9,7 @@
 			}
 
 			 if(isset($_POST['password']) == isset($_POST['confirm_password'])){
-			 	$pass = $_POST['password'];
+			 	$pass = md5($_POST['password']);
 			 }
 			$rol = 2;
 

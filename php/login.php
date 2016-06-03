@@ -1,6 +1,6 @@
 <?php
 $nombre = $_POST['user'];
-$clave = $_POST['pass'];
+$clave = md5($_POST['pass']);
 
 include('../bd/conexion.php');
 
