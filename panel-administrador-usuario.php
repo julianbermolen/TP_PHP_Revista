@@ -118,7 +118,7 @@
     <!-- Contenido Principal -->
     <section class="content">
 
-<button type="button" class="btn btn-success" href="#indio" data-target="#indio" data-toggle="modal" role="button">Agregar Nuevo Usuario </button>
+<button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Usuario </button>
 <br/>
 <br/>
 
@@ -134,8 +134,7 @@
                  <thead>
                     <tr>  
                          <th width="2%">Id</th>  
-                         <th width="15%">Email</th>  
-                         <th width="10%">Clave</th>  
+                         <th width="15%">Email</th>    
                          <th width="10%">Nombre</th>
                          <th width="10%">Rol</th>
                          <th width="4%">Borrar</th>
@@ -157,10 +156,9 @@
                       echo "<tr>";
                       echo '<td>'.$fila["id_usuario"].'</td>
                             <td>'.$fila["email"].'</td>
-                            <td>'.$fila["clave"].'</td>
                             <td>'.$fila["nombre"].'</td>
                             <td>'.$fila["descripcion"].'</td>
-                            <td style="text-align:center"><button type="button"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                            <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
                             <td style="text-align:center"><a href="#'.$fila["id_usuario"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_usuario"].'" data-toggle="modal" role="button"></a></td>';
 
                       echo '<div id="'.$fila["id_usuario"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -168,7 +166,7 @@
                               <div class="modal-content">
                                   <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Modificar usuario</h4></div> 
                                   <div class="modal-body">
-                                          <form class="cmxform" id="validarForm" action="php/editar_usuario.php" method="POST" class="form-horizontal">
+                                          <form class="cmxform" action="php/editar_usuario.php" method="POST" class="form-horizontal">
                                                 <div class="form-group">
                                                   <label for="id_usuario"  class="label-largo">Numero de id:</label>
                                                   <input type="text" id="id_usuario" name="id_usuario" class="form-control input-largo" value="'.$fila["id_usuario"].'" readonly="readonly" />
@@ -233,14 +231,14 @@
     </div>
   </div>  
 
-<div id="indio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modalNuevo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nuevo usuario</h4></div> 
             <div class="modal-body">
-                    <form action="php/agregar_usuario.php" method="POST">
+                    <form id="validarForm2" action="php/agregar_usuario.php" method="POST" >
                           <div class="form-group">
-                            <label for="exampleInputText1">Ingrese Usuario</label>
+                            <label for="username">Ingrese Usuario</label>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Ingrese Usuario">
                           </div>
                           <p class="help-block text-danger"></p>
@@ -249,12 +247,12 @@
                              <input type="email" name="email" id="email" class="form-control input-largo" placeholder="Ingrese E-mail"/>
                           </div>                           
                          <div class="form-group">
-                           <label for="password" class="label-largo">Ingrese Contrase&ntilde;a</label>
-                           <input type="password" name="password" id="password" class="form-control input-largo" placeholder=" Ingrese Contrase&ntilde;a" />
+                           <label for="password_nuevo" class="label-largo">Ingrese Contrase&ntilde;a</label>
+                           <input type="password" name="password_nuevo" id="password_nuevo" class="form-control input-largo" placeholder=" Ingrese Contrase&ntilde;a" />
                           </div>
                           <div class="form-group">
-                           <label for="confirm_password" class="label-largo">Reingrese Contrase&ntilde;a</label>
-                           <input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo" placeholder=" Reingrese Contrase&ntilde;a" />
+                           <label for="confirm_password_nuevo" class="label-largo">Reingrese Contrase&ntilde;a</label>
+                           <input type="password" name="confirm_password_nuevo" id="confirm_password_nuevo" class="form-control input-largo" placeholder=" Reingrese Contrase&ntilde;a" />
                            </div>
                           <div class="form-group">
                            <label for="rol" class="label-largo">Rol</label>
@@ -302,6 +300,7 @@
 <script src="js/datatables/jquery.dataTables.min.js"></script>
 <script src="js/datatables/dataTables.bootstrap.min.js"></script>
 
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
@@ -328,13 +327,26 @@ $(document).ready(function(){
                      }  
                 });  
            }  
-      });
 
-    
+      
+       });
+
+      $('#modalNuevo').on('hidden.bs.modal', function(){ 
+          $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+          $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+          $(".error").removeClass("error");  //lo utilice para remover los bordes rojos
+         });
 
 
-        });
+ });
+
+
+
 </script>
+
+<!-- Jquery validate -->
+<script src="js/jquery.validate.js"></script>
+<script src="js/validarFormulario.js"></script>
 
 
 </body>
