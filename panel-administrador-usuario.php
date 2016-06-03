@@ -119,10 +119,12 @@
     <section class="content">
 
 <button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Usuario </button>
+
+ <a target="_blank" href="php/PDFDatosUsuario.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
 <br/>
 <br/>
 
-
+<!-- Creacion de la tabla -->
     <div class="row" >
         <div class="col-xs-12" >
           <div class="box" >
@@ -144,83 +146,8 @@
                   </thead>
 
                   <tbody>
-                  <?php
-                    
-                    include("bd/conexion.php");
-                      
-                    $output = '';  
-                    $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.cod_rol = rol.id_rol ORDER BY id_usuario DESC" ;  
-                    $resultado = mysqli_query($conexion, $sql);
-
-                    while($fila = mysqli_fetch_array($resultado)) {
-                      echo "<tr>";
-                      echo '<td>'.$fila["id_usuario"].'</td>
-                            <td>'.$fila["email"].'</td>
-                            <td>'.$fila["nombre"].'</td>
-                            <td>'.$fila["descripcion"].'</td>
-                            <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_usuario"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
-                            <td style="text-align:center"><a href="#'.$fila["id_usuario"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_usuario"].'" data-toggle="modal" role="button"></a></td>';
-
-                      echo '<div id="'.$fila["id_usuario"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                              <div class="modal-content">
-                                  <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Modificar usuario</h4></div> 
-                                  <div class="modal-body">
-                                          <form class="cmxform" action="php/editar_usuario.php" method="POST" class="form-horizontal">
-                                                <div class="form-group">
-                                                  <label for="id_usuario"  class="label-largo">Numero de id:</label>
-                                                  <input type="text" id="id_usuario" name="id_usuario" class="form-control input-largo" value="'.$fila["id_usuario"].'" readonly="readonly" />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="username"  class="label-largo">Ingrese nombre de usuario:</label>
-                                                  <input type="text" id="username" name="username" class="form-control input-largo" value="'.$fila["nombre"].'" />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="email" class="label-largo">Ingrese e-mail:</label>
-                                                  <input type="email" name="email" id="email" class="form-control input-largo" value="'.$fila["email"].'" />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="password" class="label-largo">Ingrese contrase&ntilde;a</label>
-                                                  <input type="password" name="password" id="password" class="form-control input-largo" value="'.$fila["clave"].'" />
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
-                                                  <input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo" value="'.$fila["clave"].'" />
-                                                </div>';
-
-                                                echo '<div class="form-group">
-                                                  <label for="rol" class="label-largo">Rol</label>
-                                                  <select type="rol" name="rol" id="rol" class="form-control input-largo">';
-                                                  
-                                                  if($fila["id_rol"]=="1"){
-                                                   echo' <option  value="1">'.$fila["descripcion"].'</option>"
-                                                    <option  value="2">Contenidista</option>"
-                                                    <option  value="3">Administrador</option>"';
-                                                    }else if($fila["id_rol"]=="2"){
-                                                    echo '<option  value="2">'.$fila["descripcion"].'</option>"
-                                                    <option  value="1">Lector</option>"
-                                                    <option  value="3">Administrador</option>"';
-                                                    }else if($fila["id_rol"]=="3"){
-                                                    echo '<option  value="3">'.$fila["descripcion"].'</option>"
-                                                    <option  value="1">Lector</option>"
-                                                    <option  value="2">Contenidista</option>"';
-                                                    }
-                                                   echo '</select>
-                                                </div>
-                                                <input type="submit" name="boton" id="boton" value="Enviar" data-id2="'.$fila["id_usuario"].'" class="btn btn-primary btn-lg btn-block btn_mod"/>
-                                            </form>
-                                          <div id="ack"></div>
-                                  </div>
-                                  <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal" >Cerrar</button></div>
-                       
-                            </div>
-                            </div>
-                        </div>';
-
-                    } 
-
-
-                   ?>
+                  <!-- Trae los datos de la tabla -->
+                  <?php include("php/tabla_usuario.php"); ?>
                    </tbody>
 
 
@@ -231,6 +158,8 @@
     </div>
   </div>  
 
+
+<!-- Modal de crear nuevo usuario -->
 <div id="modalNuevo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -299,54 +228,11 @@
 <!-- DataTables -->
 <script src="js/datatables/jquery.dataTables.min.js"></script>
 <script src="js/datatables/dataTables.bootstrap.min.js"></script>
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-<script>
-  $(function () {
-    $("#tabla1").DataTable();
-  
-  });
-
-$(document).ready(function(){
-        $(document).on('click', '.btn_delete', function(){  
-           var id_usuario=$(this).data("id1");  
-           if(confirm("Estas seguro de borrar esto?"))  
-           {  
-                $.ajax({  
-                     url:"php/borrar_usuario.php",  
-                     method:"POST",  
-                     data:{id_usuario:id_usuario},  
-                     dataType:"text",  
-                     success:function(data){  
-                          alert(data);  
-                          window.location.reload();  
-                     }  
-                });  
-           }  
-
-      
-       });
-
-      $('#modalNuevo').on('hidden.bs.modal', function(){ 
-          $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
-          $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
-          $(".error").removeClass("error");  //lo utilice para remover los bordes rojos
-         });
-
-
- });
-
-
-
-</script>
-
 <!-- Jquery validate -->
 <script src="js/jquery.validate.js"></script>
 <script src="js/validarFormulario.js"></script>
+<!-- Funciones -->
+<script src="js/funciones_administrador_usuario.js"></script>
 
 
 </body>
