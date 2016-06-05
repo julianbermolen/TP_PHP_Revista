@@ -44,6 +44,7 @@ id_publicacion int,
 nombre_publicacion varchar(25),
 tipo_publicacion char(1),/* 'R' para revista y 'D' para diario*/
 path varchar(300),/*es el path de la imagen de portada*/
+descripcion varchar(200), /*esta descripcion se muestra al pasar el mouse sobre la imagen de la publicacion*/
 primary key(id_publicacion)
 );
 

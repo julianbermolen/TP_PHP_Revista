@@ -1,7 +1,7 @@
 $(document).ready(function(){
-	var contenedorDeDiarios=$("#contenedorDeDiarios");//escondo por defecto el contenedor de los diarios
-	var contenedorDeRevistas=$("#contenedorDeRevistas");
-	var tiposDeProductos= $("ul.navbar-nav > li");
+	var contenedorDeDiarios = $("#contenedorDeDiarios");//escondo por defecto el contenedor de los diarios
+	var contenedorDeRevistas = $("#contenedorDeRevistas");
+	var tiposDeProductos = $("ul.navbar-nav > li");
 
 	$("li>a").click(function(event){
 		event.preventDefault();
@@ -23,6 +23,13 @@ $(document).ready(function(){
 		contenedorDeRevistas.hide(0);
 	});
 
+		//varibles para mostrar los popup de los productos
 
+	var contenedoresDeArticulos = $(".contenedorDeArticulo");
+
+	contenedoresDeArticulos.hover(
+		function(){$(this).find(".descripcion").css("visibility","visible");},
+		function(){$(this).find(".descripcion").css("visibility","hidden");}
+		);
 
 });

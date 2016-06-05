@@ -26,9 +26,30 @@
   //funcion prara traer productos por su tipo
         function traerProductos($tipo){
           include("bd/conexion.php");//inicia conexion
+
           $contarLineas=0;
-          $respuesta=mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo';");
           $tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo';"));
+          
+          
+          //inicio paginado
+          $cantidadDePaginas = $tuplasHalladas[0]/4;
+          //$contarPaginas = 0
+
+          if(($tuplasHalladas[0]%4)!=0){
+            $cantidadDePaginas+=1;
+          }
+
+          echo"<ul class='pagination'>";
+          echo"<li><a href='#'><span aria-hidden='true'>&laquo;</span></a></li>";
+
+          for($i=1;$i<=$cantidadDePaginas;$i++){
+            echo"<li><a href='#'>".$i."</a></li>";
+          }
+          echo"</ul>";
+          mysqli_close($conexion);
+          //finaliza el paginado
+          include("bd/conexion.php");//inicia conexion
+          
           $cantidadDeLineas=($tuplasHalladas[0])/2;
 
           if(($tuplasHalladas[0]%2)!=0)
@@ -36,30 +57,35 @@
 
           settype($cantidadDeLineas,"int");
 
+          $respuesta=mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo';");
+
           while ($contarLineas<($cantidadDeLineas)) {
             $arrayRespuesta=mysqli_fetch_assoc($respuesta);
             echo "<div class='row'>";
-            echo "<div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2 borderText'>
-                  <div class='col-lg-12'>
-                    <a href='#'>
-                      <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
-                    </a>
+            echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
+                    <div class='col-lg-12 borderText contenedorDeArticulo'>
+                      <a href='#' >
+                        <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                        <div class='descripcion'>
+                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
+                             <p>".$arrayRespuesta['descripcion']."</p>
+                        </div>
+                      </a>
                     </div>
-                    <div class='col-lg-12 separador'></div>
-                    <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                   </div>";
 
             if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
-            echo " <div class='col-xs-10 col-xs-push-1 col-md-4 col-md-push-2 borderText'>
-                     <div class='col-lg-12'>
-                      <a href='#'>
+            echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
+                    <div class='col-lg-12 borderText contenedorDeArticulo'>
+                      <a href='#' >
                         <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
-                    </a>
-                    <div class='col-lg-12 separador'></div>
-                    <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
+                        <div class='descripcion'>
+                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
+                             <p>".$arrayRespuesta['descripcion']."</p>
+                        </div>
+                      </a>
                     </div>
                   </div>";
-            
             }
             $contarLineas++;
             echo"</div>";//cierre de row
