@@ -64,7 +64,7 @@
             echo "<div class='row'>";
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
-                      <a href='#' >
+                       <a href='#$arrayRespuesta[id_publicacion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_publicacion]' data-toggle='modal' role='button'' >
                         <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                         <div class='descripcion'>
                             <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
@@ -74,10 +74,35 @@
                     </div>
                   </div>";
 
+                  // EL MODAL LO PONGO 2 VECES PORQUE ESTÁS IMPRIMIENDO 2 VECES EN UN WHILE. MODIFICAR MODAL
+
+                   echo '<div id="'.$arrayRespuesta["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modalPublicacion">
+                        <div class="modal-content">
+                            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
+                            <div class="modal-body2">
+                                <div class="mitadModal">
+                                    <img src='.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
+                                </div>
+                                <div class="mitadModal">
+
+                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_publicacion"].'<span><br><br>
+                                    <span class="descripcionModalPubli">'.$arrayRespuesta["descripcion"].'<span><br><br><br>
+                                  <div class="derecha">
+                                        <button type="button" href="" class="btn btn-danger">Suscribirse</button>
+                                        <button type="button" class="btn btn-success">Comprar</button>
+                                  </div>
+                                </div>
+                            </div>
+                                         
+                         </div>
+                      </div>
+                  </div>';
+
             if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
-                      <a href='#' >
+                      <a href='#$arrayRespuesta[id_publicacion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_publicacion]' data-toggle='modal' role='button'' >
                         <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                         <div class='descripcion'>
                             <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
@@ -86,9 +111,35 @@
                       </a>
                     </div>
                   </div>";
-            }
+
+             }
+
+                    echo '<div id="'.$arrayRespuesta["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modalPublicacion">
+                        <div class="modal-content">
+                            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
+                            <div class="modal-body2">
+                                <div class="mitadModal">
+                                    <img src='.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
+                                </div>
+                                <div class="mitadModal">
+
+                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_publicacion"].'<span><br><br>
+                                    <span class="descripcionModalPubli">'.$arrayRespuesta["descripcion"].'<span><br><br><br>
+                                  <div class="derecha">
+                                        <button type="button" href="" class="btn btn-danger">Suscribirse</button>
+                                        <button type="button" class="btn btn-success">Comprar</button>
+                                  </div>
+                                </div>
+                            </div>
+                                         
+                         </div>
+                      </div>
+                  </div>';
             $contarLineas++;
             echo"</div>";//cierre de row
+
+
           }
 
           mysqli_close($conexion);

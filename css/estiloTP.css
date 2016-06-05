@@ -88,3 +88,37 @@ h4.nombreDePublicacion{
 #contenedorDeRevistas .row,#contenedorDeDiarios .row{
 	margin-bottom: 15px;
 }
+ /* MODAL PUBLICACION */
+
+ .modalPublicacion{
+ 	width: 70%;
+ }
+ img.imgModal{
+ 	margin:2%;
+ 	width: 95%;
+ 	z-index: 0;
+ }
+ .mitadModal{
+ 	width: 40%;
+ 	clear: none;
+ 	float: left;
+ }
+ .modal-body2{
+ 	width: 100%;
+ 	position:absolute;
+ 	background-color: white;
+ }
+ .tituloModalPubli{
+ 	font-weight: bold;
+ 	text-align: center;
+ 	font-size: 24px;
+ }
+ .descripcionModalPubli{
+ 	color: rgba(193, 192, 192, 0.94);
+    font-size: 14px;
+    font-weight: 400;
+
+ }
+ .derecha{
+ 	text-align: right;
+ }
