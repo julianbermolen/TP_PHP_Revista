@@ -125,3 +125,7 @@ h4.nombreDePublicacion{
  .derecha{
  	text-align: right;
  }
+ /* CSS ARTICULO */
+ .tituloArt{
+ 	font-family: 'Alegreya Sans SC', sans-serif;
+ }

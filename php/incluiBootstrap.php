@@ -6,4 +6,5 @@
 <link rel="stylesheet" href="css/estiloTP.css">
 <link rel="shortcut icon" href="imagenes/icono-suscripciones.png" type="image/png"/>
 <script src="css/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,900' rel='stylesheet' type='text/css'>
  <?php include("funciones.php"); ?>
