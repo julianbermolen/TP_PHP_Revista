@@ -20,44 +20,67 @@
 
 
         }
-
-
-
-  //funcion prara traer productos por su tipo
-        function traerProductos($tipo){
+  //funcion para paginar las categorias de publicaciones
+        function paginar($tipo,$qForPage,$indice){
           include("bd/conexion.php");//inicia conexion
+
 
           $contarLineas=0;
           $tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo';"));
           mysqli_set_charset($conexion,'utf8');
-          
+          $contarPaginas=0;
+          $tuplasHalladas=mysqli_num_rows(mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo';"));
           //inicio paginado
-          $cantidadDePaginas = $tuplasHalladas[0]/4;
-          //$contarPaginas = 0
-
-          if(($tuplasHalladas[0]%4)!=0){
+          $cantidadDePaginas = $tuplasHalladas/$qForPage;
+          /*
+          if(($tuplasHalladas[0]%$qForPage)!=0){
             $cantidadDePaginas+=1;
           }
-
+          */
           echo"<ul class='pagination'>";
           echo"<li><a href='#'><span aria-hidden='true'>&laquo;</span></a></li>";
 
-          for($i=1;$i<=$cantidadDePaginas;$i++){
-            echo"<li><a href='#'>".$i."</a></li>";
+          while($contarPaginas<($cantidadDePaginas)){
+            if($contarPaginas==$indice){
+            echo"<li><a href='index.php?indice=$contarPaginas&tipo=$tipo' class='active'>".($contarPaginas+1)."</a></li>";
+            
+            $contarPaginas++;
+            }
+            else{
+            echo"<li><a href='index.php?indice=$contarPaginas&tipo=$tipo'>".($contarPaginas+1)."</a></li>";
+            $contarPaginas++; 
+            }
           }
+          echo"<li><a href='#'><span aria-hidden='true'>&raquo;</span></a></li>";
           echo"</ul>";
           mysqli_close($conexion);
           //finaliza el paginado
-          include("bd/conexion.php");//inicia conexion
-          
-          $cantidadDeLineas=($tuplasHalladas[0])/2;
+        }
 
+
+
+  //funcion prara traer productos por su tipo
+        function traerProductos($tipo,$qForPage,$indice){
+          $limiteDeConsulta=$qForPage;
+          $inicioDeConsulta=($indice*$qForPage);
+          $contarLineas=0;
+          //inicia insercion de portadas
+          include("bd/conexion.php");//inicia conexion
+          /*$tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo' limit $inicioDeConsulta,$limiteDeConsulta;"));
+          $cantidadDeLineas=($tuplasHalladas[0])/2;
+         
           if(($tuplasHalladas[0]%2)!=0)
             $cantidadDeLineas++;
+    
+          
+          */
+          $respuesta=mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo' limit $inicioDeConsulta,$qForPage;");
+          $tuplasHalladas=mysqli_num_rows($respuesta);
+          $cantidadDeLineas=$tuplasHalladas/2;
+          if($tuplasHalladas%2!=0)
+            $cantidadDeLineas+=1;
 
           settype($cantidadDeLineas,"int");
-
-          $respuesta=mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo';");
 
           while ($contarLineas<($cantidadDeLineas)) {
             $arrayRespuesta=mysqli_fetch_assoc($respuesta);
@@ -138,13 +161,7 @@
                   </div>';
             $contarLineas++;
             echo"</div>";//cierre de row
-
-
           }
-
           mysqli_close($conexion);
         }
-    
-
-
-      ?>
+?>

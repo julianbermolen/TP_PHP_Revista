@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var contenedorDeRevistas = $("#contenedorDeRevistas");
 	var tiposDeProductos = $("ul.navbar-nav > li");
 
-	$("li>a").click(function(event){
+	$(".navbar-nav li a").click(function(event){
 		event.preventDefault();
 	});
 
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		contenedorDeRevistas.hide(0);
 	});
 
-		//varibles para mostrar los popup de los productos
+		//variables para mostrar los popup de los productos
 
 	var contenedoresDeArticulos = $(".contenedorDeArticulo");
 
@@ -31,5 +31,13 @@ $(document).ready(function(){
 		function(){$(this).find(".descripcion").css("visibility","visible");},
 		function(){$(this).find(".descripcion").css("visibility","hidden");}
 		);
+/*
+	var paginas = $(".pagination li a");
 
+	paginas.click(function{
+
+
+
+	});
+*/
 });
