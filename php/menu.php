@@ -17,8 +17,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Revistas <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Diarios</a></li>
+        <?php
+          if($tipo=='R')
+            echo"<li class='active'>";
+          else
+            echo"<li>";
+
+            echo"<a href='index.php?indice=".$indice."&tipo=R'>Revistas <span class='sr-only'>(current)</span>";
+        ?>
+        </a></li>
+          <?php
+            if($tipo=='D')
+              echo"<li class='active'>";
+            else
+              echo"<li>";
+
+              echo"<a href='index.php?indice=".$indice."&tipo=D'>Diarios";
+          ?>
+        </a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoría <span class="caret"></span></a>
           <ul class="dropdown-menu">

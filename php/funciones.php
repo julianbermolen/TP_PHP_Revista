@@ -23,8 +23,6 @@
   //funcion para paginar las categorias de publicaciones
         function paginar($tipo,$qForPage,$indice){
           include("bd/conexion.php");//inicia conexion
-
-
           $contarLineas=0;
           $tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo';"));
           mysqli_set_charset($conexion,'utf8');
@@ -43,13 +41,11 @@
           while($contarPaginas<($cantidadDePaginas)){
             if($contarPaginas==$indice){
             echo"<li><a href='index.php?indice=$contarPaginas&tipo=$tipo' class='active'>".($contarPaginas+1)."</a></li>";
-            
-            $contarPaginas++;
             }
             else{
             echo"<li><a href='index.php?indice=$contarPaginas&tipo=$tipo'>".($contarPaginas+1)."</a></li>";
-            $contarPaginas++; 
             }
+            $contarPaginas++; 
           }
           echo"<li><a href='#'><span aria-hidden='true'>&raquo;</span></a></li>";
           echo"</ul>";
