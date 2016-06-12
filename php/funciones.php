@@ -110,6 +110,8 @@
                                   <div class="derecha">
                                         <button type="button" href="" class="btn btn-danger">Suscribirse</button>
                                         <button type="button" class="btn btn-success">Comprar</button>
+                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_publicacion"].'">Leer</a>
+                                        
                                   </div>
                                 </div>
                             </div>
@@ -133,7 +135,7 @@
 
              }
 
-                    echo '<div id="'.$arrayRespuesta["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                   echo '<div id="'.$arrayRespuesta["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog modalPublicacion">
                         <div class="modal-content">
                             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
@@ -148,6 +150,8 @@
                                   <div class="derecha">
                                         <button type="button" href="" class="btn btn-danger">Suscribirse</button>
                                         <button type="button" class="btn btn-success">Comprar</button>
+                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_publicacion"].'">Leer</a>
+                                        
                                   </div>
                                 </div>
                             </div>
