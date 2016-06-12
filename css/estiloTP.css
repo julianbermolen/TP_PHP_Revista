@@ -18,6 +18,9 @@
 #footer>.container{
 	background-color: #e7e7e7;
 }
+.asd>a{
+	pointer-events:all;
+}
 .text-center{
 			text-align: center;
 }

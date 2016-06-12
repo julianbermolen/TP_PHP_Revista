@@ -29,7 +29,7 @@
 
           $contarLineas=0;
           $tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo';"));
-          
+          mysqli_set_charset($conexion,'utf8');
           
           //inicio paginado
           $cantidadDePaginas = $tuplasHalladas[0]/4;

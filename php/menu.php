@@ -38,9 +38,9 @@
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
         <?php if(!isset($_SESSION['nombre'])){
-                   echo "<li><a href='registroDeUsuario.php'>Registrarse</a></li>
+                   echo "<li><a href='registroDeUsuario.php' role='button'>Registrarse</a></li>
                          <li><a href='#modalid1' class='dropdown-toggle' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a></li>";
           }else{
             echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>".$_SESSION['nombre']." <span class='caret'></span></a>";

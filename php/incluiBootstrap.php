@@ -4,5 +4,6 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <link rel="stylesheet" href="css/bootstrap-3.3.6-dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/estiloTP.css">
+<link rel="shortcut icon" href="imagenes/icono-suscripciones.png" type="image/png"/>
 <script src="css/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
  <?php include("funciones.php"); ?>
