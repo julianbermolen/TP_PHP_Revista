@@ -67,7 +67,7 @@
                       <li><a href='#'>Mi cuenta</a></li>
                     </ul>
                   </li>";
-            echo '<a href="php/logout.php">Cerrar sesión</a>';
+            echo '<li><a href="php/logout.php">Cerrar sesión</a></li>';
            
           }?>
           
