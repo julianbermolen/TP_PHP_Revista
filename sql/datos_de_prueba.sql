@@ -13,7 +13,7 @@ values(1,'activo'),
 (0,'inactivo');
 
 insert into publicacion
-values(1,'revista porno'),
+values(1,'revista genius'),
 (2,'revista Fierros');
 
 insert into seccion
