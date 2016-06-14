@@ -1,4 +1,6 @@
 <?php
+
+header("Content-Type: text/html;charset=utf-8");
   //funcion para restringir el acceso
     //valores: contenidista = 1; Lector = 2 ; Administrador = 3; contenidista y lector = 4; todos = 5;
         function acceso($tipo){
@@ -84,7 +86,7 @@
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
                        <a href='#$arrayRespuesta[id_publicacion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_publicacion]' data-toggle='modal' role='button'' >
-                        <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                        <img src=imagenes/".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                         <div class='descripcion'>
                             <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                              <p>".$arrayRespuesta['descripcion']."</p>
@@ -101,7 +103,7 @@
                             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
                             <div class="modal-body2">
                                 <div class="mitadModal">
-                                    <img src='.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
+                                    <img src=imagenes/'.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
                                 </div>
                                 <div class="mitadModal">
 
@@ -124,7 +126,7 @@
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
                       <a href='#$arrayRespuesta[id_publicacion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_publicacion]' data-toggle='modal' role='button'' >
-                        <img src=".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                        <img src=imagenes/".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
                         <div class='descripcion'>
                             <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
                              <p>".$arrayRespuesta['descripcion']."</p>
@@ -141,7 +143,7 @@
                             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
                             <div class="modal-body2">
                                 <div class="mitadModal">
-                                    <img src='.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
+                                    <img src=imagenes/'.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
                                 </div>
                                 <div class="mitadModal">
 
@@ -168,6 +170,7 @@
         //Funcion para traer las secciones y articulos de una publicacion
 
   function traerArticulo(){
+    
     include("bd/conexion.php");
     $idPubli = $_GET['id_publicacion'];
 
@@ -179,7 +182,7 @@
         $idSeccion = $tipo['id_seccion'];
           echo "<div class='col-lg-6'>";
           echo '<div class="panel panel-info">
-          <div class="panel-heading"><h3 class="nombreSeccion">'.$tipo["nombre"].'</h1></div>
+          <div class="panel-heading"><h3 class="nombreSeccion">'.$tipo["nombre_sec"].'</h1></div>
             <div class="panel-body">            
             ';
           echo "<br>";
@@ -190,6 +193,9 @@
         while($art = mysqli_fetch_assoc($resultArt)){
 
           echo "<h2 class='tituloArt'>".$art['titulo']."</h2>";
+
+
+
           echo "<h4 class='subTituloArt'>".$art['subtitulo']."</h4><br><br><br>";
           echo "<div class='texto'>".$art['texto']."</div><br><br><br>";;
 
