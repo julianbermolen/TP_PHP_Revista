@@ -170,7 +170,7 @@ header("Content-Type: text/html;charset=utf-8");
         //Funcion para traer las secciones y articulos de una publicacion
 
   function traerArticulo(){
-    
+
     include("bd/conexion.php");
     $idPubli = $_GET['id_publicacion'];
 
@@ -191,13 +191,55 @@ header("Content-Type: text/html;charset=utf-8");
         $resultArt = mysqli_query($conexion,$query_articulos);
 
         while($art = mysqli_fetch_assoc($resultArt)){
-
+          $idArticulo = $art['id_articulo'];
           echo "<h2 class='tituloArt'>".$art['titulo']."</h2>";
+          echo "<h4 class='subTituloArt'>".$art['subtitulo']."</h4><br>";
 
+        echo'<div class="col-lg-12"> 
+           <div id="myCarousel" class="carousel slide" data-ride="carousel">
+           <ol class="carousel-indicators">';
+            $query_imagenes = "SELECT * FROM imagen WHERE id_articulo = '$idArticulo'";
+             
+            $resultIma = mysqli_query($conexion,$query_imagenes);
+                for($i=0;$i<mysqli_num_rows($resultIma);$i++){
+                  if($i ==0)
+                  echo '<li data-target="#myCarousel" data-slide-to="'.$i.'" class="active"></li>';
+                  else
+                  echo '<li data-target="#myCarousel" data-slide-to="'.$i.'"></li>';
+              }
+                echo '</ol>';
 
+            echo '<div class="carousel-inner" role="listbox">';
+              $i = 0;// para decir q es la primer pasada
+            while($filaIm = mysqli_fetch_assoc($resultIma)){
+                $path=$filaIm['path'];
+                if($i == 0){
+                  echo '<div class="item active">
+                    <img src="imagenes/'.$path.'" alt="Chania">
+                       </div>';
+                       $i++;
+                     }else{
+                  echo '<div class="item">
+                    <img src="imagenes/'.$path.'" alt="Chania">
+                       </div>';
+                     }
+                }
+              echo '</div>';
 
-          echo "<h4 class='subTituloArt'>".$art['subtitulo']."</h4><br><br><br>";
-          echo "<div class='texto'>".$art['texto']."</div><br><br><br>";;
+              if(mysqli_num_rows($resultIma) > 1){
+                echo '<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+             </div></div>';
+           }
+
+         
+          echo "<br><br><div class='textoArt'>".$art['texto']."</div><br><br><br>";;
 
 
         }

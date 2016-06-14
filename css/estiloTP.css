@@ -129,3 +129,8 @@ h4.nombreDePublicacion{
  .tituloArt{
  	font-family: 'Alegreya Sans SC', sans-serif;
  }
+ .textoArt{
+ 	clear:both;
+ 	font-family: 'Alegreya Sans SC', sans-serif;
+ 	font-size: 16px;
+ }
