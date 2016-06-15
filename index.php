@@ -18,9 +18,9 @@
       <section id="contenedorDeRevistas">
         <div class="container">
           <?php
-            paginar($tipo,4,$indice);
-            traerProductos($tipo,4,$indice);
-            paginar($tipo,4,$indice);
+            paginar("edicion",$tipo,4,$indice);
+            traerProductos("edicion",$tipo,4,$indice);
+            paginar("edicion",$tipo,4,$indice);
            ?>
         </div>
       </section>

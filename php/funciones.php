@@ -23,13 +23,12 @@ header("Content-Type: text/html;charset=utf-8");
 
         }
   //funcion para paginar las categorias de publicaciones
-        function paginar($tipo,$qForPage,$indice){
+        function paginar($tabla,$tipo,$qForPage,$indice){
           include("bd/conexion.php");//inicia conexion
           $contarLineas=0;
-          $tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo';"));
           mysqli_set_charset($conexion,'utf8');
           $contarPaginas=0;
-          $tuplasHalladas=mysqli_num_rows(mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo';"));
+          $tuplasHalladas=mysqli_num_rows(mysqli_query($conexion,"select * from $tabla;"));
           //inicio paginado
           $cantidadDePaginas = $tuplasHalladas/$qForPage;
           /*
@@ -58,7 +57,7 @@ header("Content-Type: text/html;charset=utf-8");
 
 
   //funcion prara traer productos por su tipo
-        function traerProductos($tipo,$qForPage,$indice){
+        function traerProductos($tabla,$tipo,$qForPage,$indice){
           $limiteDeConsulta=$qForPage;
           $inicioDeConsulta=($indice*$qForPage);
           $contarLineas=0;
@@ -72,7 +71,7 @@ header("Content-Type: text/html;charset=utf-8");
     
           
           */
-          $respuesta=mysqli_query($conexion,"select * from publicacion where tipo_publicacion='$tipo' limit $inicioDeConsulta,$qForPage;");
+          $respuesta=mysqli_query($conexion,"select * from $tabla limit $inicioDeConsulta,$qForPage;");
           $tuplasHalladas=mysqli_num_rows($respuesta);
           $cantidadDeLineas=$tuplasHalladas/2;
           if($tuplasHalladas%2!=0)
@@ -85,11 +84,12 @@ header("Content-Type: text/html;charset=utf-8");
             echo "<div class='row'>";
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
-                       <a href='#$arrayRespuesta[id_publicacion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_publicacion]' data-toggle='modal' role='button'' >
-                        <img src=imagenes/".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                       <a href='#$arrayRespuesta[id_edicion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_edicion]' data-toggle='modal' role='button'' >
+                        <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']."/>
                         <div class='descripcion'>
-                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
-                             <p>".$arrayRespuesta['descripcion']."</p>
+                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
+                             <p>Precio de compra: ".$arrayRespuesta['precio_compra']."</p>
+                             <p>Precio de suscripcion: ".$arrayRespuesta['precio_suscripcion']."</p>
                         </div>
                       </a>
                     </div>
@@ -97,22 +97,23 @@ header("Content-Type: text/html;charset=utf-8");
 
                   // EL MODAL LO PONGO 2 VECES PORQUE ESTÁS IMPRIMIENDO 2 VECES EN UN WHILE. MODIFICAR MODAL
 
-                   echo '<div id="'.$arrayRespuesta["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                   echo '<div id="'.$arrayRespuesta["id_edicion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog modalPublicacion">
                         <div class="modal-content">
                             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
                             <div class="modal-body2">
                                 <div class="mitadModal">
-                                    <img src=imagenes/'.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
+                                    <img src=imagenes/'.$arrayRespuesta["tapa"].' class="imgModal" .alt='.$arrayRespuesta["nombre_edicion"].'/>
                                 </div>
                                 <div class="mitadModal">
 
-                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_publicacion"].'<span><br><br>
-                                    <span class="descripcionModalPubli">'.$arrayRespuesta["descripcion"].'<span><br><br><br>
+                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+                                   <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
+                                   <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
                                   <div class="derecha">
                                         <button type="button" href="" class="btn btn-danger">Suscribirse</button>
                                         <button type="button" class="btn btn-success">Comprar</button>
-                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_publicacion"].'">Leer</a>
+                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>
                                         
                                   </div>
                                 </div>
@@ -123,13 +124,14 @@ header("Content-Type: text/html;charset=utf-8");
                   </div>';
 
             if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
-            echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
+                        echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
-                      <a href='#$arrayRespuesta[id_publicacion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_publicacion]' data-toggle='modal' role='button'' >
-                        <img src=imagenes/".$arrayRespuesta['path']." class='portada' .alt=".$arrayRespuesta['nombre_publicacion']."/>
+                       <a href='#$arrayRespuesta[id_edicion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_edicion]' data-toggle='modal' role='button'' >
+                        <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']."/>
                         <div class='descripcion'>
-                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']."</h4>
-                             <p>".$arrayRespuesta['descripcion']."</p>
+                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
+                             <p>Precio de compra: ".$arrayRespuesta['precio_compra']."</p>
+                             <p>Precio de suscripcion: ".$arrayRespuesta['precio_suscripcion']."</p>
                         </div>
                       </a>
                     </div>
@@ -137,22 +139,23 @@ header("Content-Type: text/html;charset=utf-8");
 
              }
 
-                   echo '<div id="'.$arrayRespuesta["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                   echo '<div id="'.$arrayRespuesta["id_edicion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog modalPublicacion">
                         <div class="modal-content">
                             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4><strong>InfoNETE!</strong></h4></div> 
                             <div class="modal-body2">
                                 <div class="mitadModal">
-                                    <img src=imagenes/'.$arrayRespuesta["path"].' class="imgModal" .alt='.$arrayRespuesta["nombre_publicacion"].'/>
+                                    <img src=imagenes/'.$arrayRespuesta["tapa"].' class="imgModal" .alt='.$arrayRespuesta["nombre_edicion"].'/>
                                 </div>
                                 <div class="mitadModal">
 
-                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_publicacion"].'<span><br><br>
-                                    <span class="descripcionModalPubli">'.$arrayRespuesta["descripcion"].'<span><br><br><br>
+                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+                                   <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
+                                   <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
                                   <div class="derecha">
                                         <button type="button" href="" class="btn btn-danger">Suscribirse</button>
                                         <button type="button" class="btn btn-success">Comprar</button>
-                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_publicacion"].'">Leer</a>
+                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>
                                         
                                   </div>
                                 </div>
