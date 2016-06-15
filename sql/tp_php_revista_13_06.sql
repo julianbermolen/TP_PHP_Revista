@@ -10,6 +10,11 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+drop database if exists sistema;
+create database if not exists sistema;
+
+use sistema;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -203,7 +208,7 @@ CREATE TABLE `suscripcion` (
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `email` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `clave` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `clave` varchar(50) CHARACTER SET latin1 NOT NULL,
   `nombre` varchar(50) CHARACTER SET latin1 NOT NULL,
   `cod_rol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
