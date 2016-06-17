@@ -55,7 +55,10 @@ INSERT INTO `articulo` (`id_articulo`, `titulo`, `subtitulo`, `texto`, `id_secci
 
 CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL,
-  `cod_usuario` int(11) NOT NULL,
+  `email_cliente` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `clave_cliente` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `username_cliente` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `cod_rol` int(11) DEFAULT NULL,
   `nombre_cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellido_cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `calle` varchar(60) CHARACTER SET latin1 NOT NULL,
