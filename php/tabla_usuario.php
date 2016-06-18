@@ -1,5 +1,5 @@
    <?php             
-                include("bd/conexion.php");
+                include("../../bd/conexion.php");
                       
                     $output = '';  
                     $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.cod_rol = rol.id_rol ORDER BY id_usuario DESC" ;  
@@ -19,7 +19,7 @@
                               <div class="modal-content">
                                   <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Modificar usuario</h4></div> 
                                   <div class="modal-body">
-                                          <form class="cmxform" action="php/editar_usuario.php" method="POST" class="form-horizontal">
+                                          <form class="cmxform" action="../../php/editar_usuario.php" method="POST" class="form-horizontal">
                                                 <div class="form-group">
                                                   <label for="id_usuario"  class="label-largo">Numero de id:</label>
                                                   <input type="text" id="id_usuario" name="id_usuario" class="form-control input-largo" value="'.$fila["id_usuario"].'" readonly="readonly" />

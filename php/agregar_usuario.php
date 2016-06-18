@@ -12,5 +12,5 @@
       echo 'Data Updated';  
  } 
 
-	header('location:/TP_PHP_Revista/panel-administrador-usuario.php'); 
+	header('location:/TP_PHP_Revista/vistas/panel_admin/panel-administrador-usuario.php'); 
  ?>  

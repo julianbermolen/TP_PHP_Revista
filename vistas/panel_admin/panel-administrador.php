@@ -8,15 +8,15 @@
   <!-- Le dice al navegador para ser responsive en el ancho de la pantalla -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Css principal -->
-  <link rel="stylesheet" href="css/admin/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
 
-  <link rel="stylesheet" href="css/admin/skin-blue.min.css">
+  <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -135,11 +135,11 @@
 <!-- Sripts JS Requeridos -->
 
 <!-- jQuery 2.2.0 -->
-<script src="js/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="../../js/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="js/app.min.js"></script>
+<script src="../../js/app.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
