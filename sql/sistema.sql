@@ -209,7 +209,7 @@ CREATE TABLE `suscripcion` (
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `clave` varchar(30) NOT NULL,
+  `clave` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `cod_rol` char(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

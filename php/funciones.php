@@ -105,16 +105,27 @@ header("Content-Type: text/html;charset=utf-8");
                                 <div class="mitadModal">
                                     <img src=imagenes/'.$arrayRespuesta["tapa"].' class="imgModal" .alt='.$arrayRespuesta["nombre_edicion"].'/>
                                 </div>
-                                <div class="mitadModal">
+                                <div class="mitadModal">';
 
-                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+                                echo ' <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
                                    <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
                                    <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
-                                  <div class="derecha">
-                                        <button type="button" href="" class="btn btn-danger">Suscribirse</button>
-                                        <button type="button" class="btn btn-success">Comprar</button>
-                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>
-                                        
+                                  <div class="derecha">';
+                                 $codCliente = $_COOKIE['cod_cliente'];
+                                   if(isset($codCliente)){
+                                    // SI No ESTA LOGUEADO, LE MUESTRA UN BOTON PARA EL LOGIN. SI ESTÁ LOGUEADO PERO NO COMPRÓ MUESTRA LOS BOTONES DE COMPRA
+                                      $queryCompra = "SELECT * FROM compra WHERE cod_cliente ='$codCliente' and cod_edicion = '$arrayRespuesta[id_edicion]'";
+                                     $resultCompra = mysqli_query($conexion,$queryCompra);
+                                        if(mysqli_num_rows($resultCompra)== 1){
+                                              echo '<a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>';
+                                       }else{
+                                     
+                                        echo '<button type="button" href="" class="btn btn-danger">Suscribirse</button>
+                                              <button type="button" class="btn btn-success">Comprar</button>';
+                                   
+                                     }
+                                   }
+                                       echo ' 
                                   </div>
                                 </div>
                             </div>
@@ -147,16 +158,27 @@ header("Content-Type: text/html;charset=utf-8");
                                 <div class="mitadModal">
                                     <img src=imagenes/'.$arrayRespuesta["tapa"].' class="imgModal" .alt='.$arrayRespuesta["nombre_edicion"].'/>
                                 </div>
-                                <div class="mitadModal">
+                                <div class="mitadModal">';
 
-                                    <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+                                 echo ' <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
                                    <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
                                    <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
-                                  <div class="derecha">
-                                        <button type="button" href="" class="btn btn-danger">Suscribirse</button>
-                                        <button type="button" class="btn btn-success">Comprar</button>
-                                        <a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>
-                                        
+                                  <div class="derecha">';
+                                 $codCliente = $_COOKIE['cod_cliente'];
+                                   if(isset($codCliente)){
+                                    // SI No ESTA LOGUEADO, LE MUESTRA UN BOTON PARA EL LOGIN. SI ESTÁ LOGUEADO PERO NO COMPRÓ MUESTRA LOS BOTONES DE COMPRA
+                                      $queryCompra = "SELECT * FROM compra WHERE cod_cliente ='$codCliente' and cod_edicion = '$arrayRespuesta[id_edicion]'";
+                                     $resultCompra = mysqli_query($conexion,$queryCompra);
+                                        if(mysqli_num_rows($resultCompra)== 1){
+                                              echo '<a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>';
+                                       }else{
+                                     
+                                        echo '<button type="button" href="" class="btn btn-danger">Suscribirse</button>
+                                              <button type="button" class="btn btn-success">Comprar</button>';
+                                   
+                                     }
+                                   }
+                                       echo ' 
                                   </div>
                                 </div>
                             </div>

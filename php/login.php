@@ -12,9 +12,11 @@ $result = mysqli_query($conexion,$query);
 
 if($tipo['nombre'] == $nombre && $tipo['clave'] == $clave){
 	$rol = $tipo['cod_rol'];
+	$id_usuario = $tipo['id_usuario'];
 	session_start();
 	$_SESSION['nombre'] = $nombre;
 	setcookie('tipoUsuario',$rol,time()+(86400*20), "/");
+	setcookie('cod_cliente',$id_usuario,time()+(86400*20), "/");
 	header("location:../index.php");
 
 }else{
