@@ -107,11 +107,11 @@ header("Content-Type: text/html;charset=utf-8");
                                 </div>
                                 <div class="mitadModal">';
 
-                                echo ' <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+                                 echo ' <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
                                    <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
                                    <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
                                   <div class="derecha">';
-                                   
+                               
                                    if(isset($_COOKIE['cod_cliente'])){
                                     $codCliente = $_COOKIE['cod_cliente'];
                                     // SI No ESTA LOGUEADO, LE MUESTRA UN BOTON PARA EL LOGIN. SI ESTÁ LOGUEADO PERO NO COMPRÓ MUESTRA LOS BOTONES DE COMPRA
@@ -122,7 +122,7 @@ header("Content-Type: text/html;charset=utf-8");
                                        }else{
                                      
                                         echo '<button type="button" href="" class="btn btn-danger">Suscribirse</button>
-                                              <button type="button" class="btn btn-success">Comprar</button>';
+                                              <a href="compra.php?precio='.$arrayRespuesta["precio_compra"].'&id_edicion='.$arrayRespuesta["id_edicion"].'" type="button" class="btn btn-success">Comprar</a>';
                                    
                                      }
                                    }else{
@@ -178,7 +178,7 @@ header("Content-Type: text/html;charset=utf-8");
                                        }else{
                                      
                                         echo '<button type="button" href="" class="btn btn-danger">Suscribirse</button>
-                                              <button type="button" class="btn btn-success">Comprar</button>';
+                                              <a href="compra.php?precio='.$arrayRespuesta["precio_compra"].'&id_edicion='.$arrayRespuesta["id_edicion"].'" type="button" class="btn btn-success">Comprar</a>';
                                    
                                      }
                                    }else{
