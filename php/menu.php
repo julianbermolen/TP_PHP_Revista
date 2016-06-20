@@ -18,20 +18,22 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php
-          if(isset($tipo)=='R')
-            echo"<li class='active'>";
-          else
-            echo"<li>";
-
+          if(isset($tipo)){
+            if($tipo=='R')
+              echo"<li class='active'>";
+            else
+              echo"<li>";
+          }
             echo"<a href='index.php?indice=".isset($indice)."&tipo=R'>Revistas <span class='sr-only'>(current)</span>";
         ?>
         </a></li>
           <?php
-            if(isset($tipo)=='D')
-              echo"<li class='active'>";
-            else
-              echo"<li>";
-
+            if(isset($tipo)){
+              if($tipo=='D')
+                echo"<li class='active'>";
+              else
+                echo"<li>";
+            }
               echo"<a href='index.php?indice=".isset($indice)."&tipo=D'>Diarios";
           ?>
         </a></li>
@@ -65,10 +67,9 @@
                       <li><a href='#'>Mis facturas</a></li>
                       <li role='separator' class='divider'></li>
                       <li><a href='#'>Mi cuenta</a></li>
+                      <li><a href='php/logout.php'>Cerrar sesión</a></li>
                     </ul>
                   </li>";
-            echo '<li><a href="php/logout.php">Cerrar sesión</a></li>';
-           
           }?>
           
         

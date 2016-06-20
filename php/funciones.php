@@ -23,32 +23,36 @@ header("Content-Type: text/html;charset=utf-8");
 
         }
   //funcion para paginar las categorias de publicaciones
-        function paginar($tabla,$tipo,$qForPage,$indice){
+        function paginar($tipo,$qForPage,$indice){
           include("bd/conexion.php");//inicia conexion
-          $contarLineas=0;
+          
           mysqli_set_charset($conexion,'utf8');
           $contarPaginas=0;
-          $tuplasHalladas=mysqli_num_rows(mysqli_query($conexion,"select * from $tabla;"));
+          $respuesta=mysqli_query($conexion,"select * from edicion;");
+          $tuplasHalladas=mysqli_num_rows($respuesta);
           //inicio paginado
           $cantidadDePaginas = $tuplasHalladas/$qForPage;
           /*
-          if(($tuplasHalladas[0]%$qForPage)!=0){
+          if(($tuplasHalladas%$qForPage)!=0){
             $cantidadDePaginas+=1;
           }
           */
-          echo"<ul class='pagination'>";
-          echo"<li><a href='#'><span aria-hidden='true'>&laquo;</span></a></li>";
+          echo"<ul class='pagination pagination-sm'>";
+          if($contarPaginas==0)
+            echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'><span aria-hidden='true'>&laquo;</span></a></li>";
 
-          while($contarPaginas<($cantidadDePaginas)){
+          while($contarPaginas<=($cantidadDePaginas)){
             if($contarPaginas==$indice){
-            echo"<li><a href='index.php?indice=$contarPaginas&tipo=$tipo' class='active'>".($contarPaginas+1)."</a></li>";
+            echo"<li class='active'><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'>".($contarPaginas+1)."</a></li>";
             }
             else{
-            echo"<li><a href='index.php?indice=$contarPaginas&tipo=$tipo'>".($contarPaginas+1)."</a></li>";
+            echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'>".($contarPaginas+1)."</a></li>";
             }
-            $contarPaginas++; 
+            $contarPaginas+=1; 
           }
-          echo"<li><a href='#'><span aria-hidden='true'>&raquo;</span></a></li>";
+          if($contarPaginas>$cantidadDePaginas)
+            echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'><span aria-hidden='true'>&raquo;</span></a></li>";
+
           echo"</ul>";
           mysqli_close($conexion);
           //finaliza el paginado
@@ -57,10 +61,12 @@ header("Content-Type: text/html;charset=utf-8");
 
 
   //funcion prara traer productos por su tipo
-        function traerProductos($tabla,$tipo,$qForPage,$indice){
+        function traerProductos($tipo,$qForPage,$indice){
           $limiteDeConsulta=$qForPage;
-          $inicioDeConsulta=($indice*$qForPage);
+          $inicioDeConsulta=($indice-1)*$qForPage;
           $contarLineas=0;
+          //primer paginado
+          paginar($tipo,$qForPage,$indice);
           //inicia insercion de portadas
           include("bd/conexion.php");//inicia conexion
           /*$tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo' limit $inicioDeConsulta,$limiteDeConsulta;"));
@@ -71,7 +77,7 @@ header("Content-Type: text/html;charset=utf-8");
     
           
           */
-          $respuesta=mysqli_query($conexion,"select * from $tabla limit $inicioDeConsulta,$qForPage;");
+          $respuesta=mysqli_query($conexion,"select * from edicion E limit $inicioDeConsulta,$qForPage;");
           $tuplasHalladas=mysqli_num_rows($respuesta);
           $cantidadDeLineas=$tuplasHalladas/2;
           if($tuplasHalladas%2!=0)
@@ -196,6 +202,8 @@ header("Content-Type: text/html;charset=utf-8");
             echo"</div>";//cierre de row
           }
           mysqli_close($conexion);
+          //segundo paginado
+          paginar($tipo,$qForPage,$indice);
         }
 
         //Funcion para traer las secciones y articulos de una publicacion

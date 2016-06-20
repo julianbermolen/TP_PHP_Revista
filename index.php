@@ -9,7 +9,7 @@
 </head>
 <body>
   <?php
-      $indice=!isset($_GET["indice"])?0:$_GET["indice"];
+      $indice=!isset($_GET["indice"])?1:$_GET["indice"];
       $tipo=!isset($_GET["tipo"])?'R':$_GET["tipo"];
   ?>
   <div class="container"><!--contenedor de menu-->
@@ -18,9 +18,7 @@
       <section id="contenedorDeRevistas">
         <div class="container">
           <?php
-            paginar("edicion",$tipo,4,$indice);
-            traerProductos("edicion",$tipo,4,$indice);
-            paginar("edicion",$tipo,4,$indice);
+            traerProductos($tipo,6,$indice);
            ?>
         </div>
       </section>
