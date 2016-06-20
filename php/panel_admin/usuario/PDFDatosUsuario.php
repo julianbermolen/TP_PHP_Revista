@@ -1,6 +1,6 @@
 <?php
 
-require('../lib/fpdf/fpdf.php');
+require('../../../lib/fpdf/fpdf.php');
 
 
 

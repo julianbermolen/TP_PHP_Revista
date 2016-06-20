@@ -120,7 +120,7 @@
 
 <button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Usuario </button>
 
- <a target="_blank" href="../../php/PDFDatosUsuario.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
+ <a target="_blank" href="../../php/panel_admin/usuario/PDFDatosUsuario.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
 <br/>
 <br/>
 
@@ -147,7 +147,7 @@
 
                   <tbody>
                   <!-- Trae los datos de la tabla -->
-                  <?php include("../../php/tabla_usuario.php"); ?>
+                  <?php include("../../php/panel_admin/usuario/tabla_usuario.php"); ?>
                    </tbody>
 
 
@@ -165,7 +165,7 @@
         <div class="modal-content">
             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nuevo usuario</h4></div> 
             <div class="modal-body">
-                    <form id="validarForm2" action="../../php/agregar_usuario.php" method="POST" >
+                    <form id="validarForm2" action="../../php/panel_admin/usuario/agregar_usuario.php" method="POST" >
                           <div class="form-group">
                             <label for="username">Ingrese Usuario</label>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Ingrese Usuario">

@@ -10,7 +10,7 @@ $(document).ready(function(){
            if(confirm("Estas seguro de borrar esto?"))  
            {  
                 $.ajax({  
-                     url:"../../php/borrar_usuario.php",  
+                     url:"../../php/panel_admin/usuario/borrar_usuario.php",  
                      method:"POST",  
                      data:{id_usuario:id_usuario},  
                      dataType:"text",  
