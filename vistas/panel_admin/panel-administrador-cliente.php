@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
+     <!-- DataTables -->
+  <link rel="stylesheet" href="../../js/datatables/dataTables.bootstrap.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -107,15 +110,57 @@
     <!-- Encabezado de la pagina -->
     <section class="content-header">
       <h1>
-        Pagina de Inicio
-        <small>Cantidad de productos vendidos y supricripciones</small>
+        Clientes
+        <small>ABM - Alta , Baja y Modificacion de Clientes</small>
       </h1>
     </section>
 
     <!-- Contenido Principal -->
     <section class="content">
 
-      <!-- Your Page Content Here -->
+<button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Cliente </button>
+
+ <a target="_blank" href="#" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
+<br/>
+<br/>
+
+
+       <div class="row" >
+        <div class="col-xs-12" >
+          <div class="box" >
+            <div class="box-body">
+            <div class="table-responsive">
+             <table id="tabla1" class="table table-bordered table-hover">
+             
+
+                 <thead>
+                    <tr>  
+                         <th width="2%">Id</th>  
+                         <th width="15%">Email</th>    
+                         <th width="10%">Username</th>
+                         <th width="10%">Nombre</th>
+                         <th width="10%">Apellido</th>
+                         <!--<th width="10%">Publicaciones</th>-->
+                         <th width="4%">Borrar</th>
+                         <th width="1%">Modificar</th>
+
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  <!-- Trae los datos de la tabla -->
+                  <?php include("../../php/panel_admin/cliente/tabla_cliente.php"); ?>
+                   </tbody>
+
+
+              </table>
+            </div>
+          </div>          
+        </div>
+    </div>
+  </div>  
+
+      
 
     </section>
     <!-- /.content -->
@@ -140,10 +185,45 @@
 <script src="../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../js/app.min.js"></script>
+<!-- DataTables -->
+<script src="../../js/datatables/jquery.dataTables.min.js"></script>
+<script src="../../js/datatables/dataTables.bootstrap.min.js"></script>
+<script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+  $(function () {
+    $("#tabla1").DataTable();
+  
+  });
+
+  $(document).ready(function(){
+        $(document).on('click', '.btn_delete', function(){  
+           var id_cliente=$(this).data("id1");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"../../php/panel_admin/cliente/borrar_cliente.php",  
+                     method:"POST",  
+                     data:{id_cliente:id_cliente},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }    
+          });
+      
+       });
+
+</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
