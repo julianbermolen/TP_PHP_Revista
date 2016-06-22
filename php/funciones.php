@@ -38,11 +38,11 @@ header("Content-Type: text/html;charset=utf-8");
           }
           */
           echo"<ul class='pagination pagination-sm'>";
-          if($contarPaginas==0)
+          if($indice>1)
             echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'><span aria-hidden='true'>&laquo;</span></a></li>";
 
           while($contarPaginas<=($cantidadDePaginas)){
-            if($contarPaginas==$indice){
+            if($contarPaginas==($indice-1)){
             echo"<li class='active'><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'>".($contarPaginas+1)."</a></li>";
             }
             else{
@@ -50,7 +50,7 @@ header("Content-Type: text/html;charset=utf-8");
             }
             $contarPaginas+=1; 
           }
-          if($contarPaginas>$cantidadDePaginas)
+          if($cantidadDePaginas<($indice-1))
             echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'><span aria-hidden='true'>&raquo;</span></a></li>";
 
           echo"</ul>";
