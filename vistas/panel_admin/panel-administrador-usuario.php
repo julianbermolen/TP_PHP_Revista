@@ -98,7 +98,13 @@
         <li><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         <li><a href="panel-administrador-revista.php"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
         <li class="active"><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
-        <li><a href="panel-administrador-cliente.php"><i class="fa fa-user"></i> <span>Cliente</span></a></li>
+        <li><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
+            <ul class="treeview-menu">
+            <li><a href="panel-administrador-cliente.php"><i class="fa fa-circle-o"></i> ABM</a></li>
+            <li><a href="panel-administrador-cliente-suscripciones.php"><i class="fa fa-circle-o"></i> Suscripciones</a></li>
+            <li><a href="panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
+          </ul>
+        </li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -186,7 +192,6 @@
                           <div class="form-group">
                            <label for="rol" class="label-largo">Rol</label>
                            <select type="rol" name="rol" id="rol" class="form-control input-largo">
-                           <option  value="1">Lector</option>
                            <option  value="2">Contenidista</option>
                            <option  value="3">Administrador</option>
                            </select>

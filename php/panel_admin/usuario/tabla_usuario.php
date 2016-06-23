@@ -45,18 +45,12 @@
                                                   <label for="rol" class="label-largo">Rol</label>
                                                   <select type="rol" name="rol" id="rol" class="form-control input-largo">';
                                                   
-                                                  if($fila["id_rol"]=="1"){
-                                                   echo' <option  value="1">'.$fila["descripcion"].'</option>"
-                                                    <option  value="2">Contenidista</option>"
-                                                    <option  value="3">Administrador</option>"';
-                                                    }else if($fila["id_rol"]=="2"){
-                                                    echo '<option  value="2">'.$fila["descripcion"].'</option>"
-                                                    <option  value="1">Lector</option>"
+                                                  if($fila["id_rol"]=="2"){
+                                                   echo' <option  value="2">'.$fila["descripcion"].'</option>"
                                                     <option  value="3">Administrador</option>"';
                                                     }else if($fila["id_rol"]=="3"){
                                                     echo '<option  value="3">'.$fila["descripcion"].'</option>"
-                                                    <option  value="1">Lector</option>"
-                                                    <option  value="2">Contenidista</option>"';
+                                                    <option  value="2">Contenedista</option>"';
                                                     }
                                                    echo '</select>
                                                 </div>
