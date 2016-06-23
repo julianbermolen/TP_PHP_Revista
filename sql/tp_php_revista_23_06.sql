@@ -210,7 +210,7 @@ INSERT INTO `seccion` (`id_seccion`, `id_publicacion`, `nombre_sec`) VALUES
 CREATE TABLE `suscripcion` (
   `id_suscripcion` int(11) NOT NULL,
   `cod_cliente` int(11) DEFAULT NULL,
-  `cod_susc` int(11) NOT NULL,
+  `cod_edicion` int(11) NOT NULL,
   `inicio` date NOT NULL,
   `fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
