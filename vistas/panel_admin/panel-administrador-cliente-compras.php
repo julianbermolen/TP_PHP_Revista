@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="../../js/datatables/dataTables.bootstrap.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -113,15 +115,48 @@
     <!-- Encabezado de la pagina -->
     <section class="content-header">
       <h1>
-        Pagina de Inicio
-        <small>Cantidad de productos vendidos y supricripciones</small>
+        Compras
+        <small>Compras realizadas por los clientes</small>
       </h1>
     </section>
 
     <!-- Contenido Principal -->
     <section class="content">
 
-      <!-- Your Page Content Here -->
+      <!-- Creacion de la tabla -->
+         <div class="container">
+          <div class="row" >
+              <div class="col-xs-12" >
+                <div class="box" >
+                  <div  class="box-body">
+                  <div  class="table-responsive">
+                   <table id="tabla1" class="table table-bordered table-hover">
+                   
+
+                       <thead>
+                          <tr>  
+                               <th width="2%">Compra</th>  
+                               <th width="15%">Cliente</th>    
+                               <th width="10%">Edicion</th>
+                               <th width="10%">Publicacion</th>
+   
+
+  
+
+                          </tr>
+                        </thead>
+
+                  <tbody>
+                  <!-- Trae los datos de la tabla -->
+                 <?php include("../../php/panel_admin/cliente/compra/tabla_compra.php"); ?>
+                 </tbody>
+                 </table>
+            </div>
+          </div>          
+        </div>
+    </div>
+  </div> 
+</div> 
 
     </section>
     <!-- /.content -->
@@ -146,10 +181,20 @@
 <script src="../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../js/app.min.js"></script>
+<!-- DataTables -->
+<script src="../../js/datatables/jquery.dataTables.min.js"></script>
+<script src="../../js/datatables/dataTables.bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<script>
+
+  $(function () {
+    $("#tabla1").DataTable();
+  
+  });
+
+
+
+</script>
+
 </body>
 </html>
