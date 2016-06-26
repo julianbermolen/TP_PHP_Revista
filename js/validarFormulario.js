@@ -27,6 +27,18 @@
 					minlength:2
 
 				},
+				nombre: {
+					
+					required:true,
+					minlength:2
+
+				},
+				apellido: {
+					
+					required:true,
+					minlength:2
+
+				},
 
 				confirm_password: {
 
@@ -52,6 +64,18 @@
 				password: {
 
 					required:"Por favor ingrese una contrase&ntildea",
+					minlength:"Tu contrase&ntildea debe tener 2 caracteres como minimo"
+
+				},
+				nombre: {
+
+					required:"Por favor ingrese su nombre",
+					minlength:"Tu contrase&ntildea debe tener 2 caracteres como minimo"
+
+				},
+				apellido: {
+
+					required:"Por favor ingrese su apellido",
 					minlength:"Tu contrase&ntildea debe tener 2 caracteres como minimo"
 
 				},

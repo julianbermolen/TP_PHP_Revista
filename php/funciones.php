@@ -117,7 +117,7 @@ header("Content-Type: text/html;charset=utf-8");
                                    <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
                                    <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
                                   <div class="derecha">';
-                               
+                               if(isset($_SESSION['nombre'])){
                                    if(isset($_COOKIE['cod_cliente'])){
                                     $codCliente = $_COOKIE['cod_cliente'];
                                     // SI No ESTA LOGUEADO, LE MUESTRA UN BOTON PARA EL LOGIN. SI ESTÁ LOGUEADO PERO NO COMPRÓ MUESTRA LOS BOTONES DE COMPRA
@@ -131,8 +131,9 @@ header("Content-Type: text/html;charset=utf-8");
                                               <a href="compra.php?precio='.$arrayRespuesta["precio_compra"].'&id_edicion='.$arrayRespuesta["id_edicion"].'" type="button" class="btn btn-success">Comprar</a>';
                                    
                                      }
+                                    }
                                    }else{
-                                     echo "<a href='#modalid1' class='dropdown-toggle' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a>";
+                                     echo "<a href='#modalid1' class='btn btn-default zindex' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a>";
                                    }
                                        echo ' 
                                   </div>

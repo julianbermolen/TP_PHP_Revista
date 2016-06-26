@@ -11,9 +11,24 @@
 			 if(isset($_POST['password']) == isset($_POST['confirm_password'])){
 			 	$pass = md5($_POST['password']);
 			 }
+			 if(isset($_POST['nombre'])){
+				$nombre = $_POST['nombre'];
+			}
+			if(isset($_POST['apellido'])){
+				$apellido = $_POST['apellido'];
+			}
+			if(isset($_POST['direccion'])){
+				$direccion = $_POST['direccion'];
+			}
+			if(isset($_POST['nro'])){
+				$nro = $_POST['nro'];
+			}
+			if(isset($_POST['prov'])){
+				$prov = $_POST['prov'];
+			}
 			$rol = 2;
 
-			$query = "INSERT INTO usuario VALUES('','$email','$pass','$user','$rol')";
+			$query = "INSERT INTO cliente VALUES('','$email','$pass','$user','$rol','$nombre','$apellido','$direccion','$nro','$prov')";
 			$resultado = mysqli_query($conexion,$query);
 
 			if($resultado){
@@ -28,7 +43,7 @@
 	<title>Registro de usuario - El Argentino</title>
 	<?php 
 	  include("php/incluiBootstrap.php");
-	  
+	  include("bd/conexion.php");
 	 ?>
 
 
@@ -63,6 +78,32 @@
 							<div class="form-group">
 								<label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
 								<input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo"/>
+							</div>
+							<div class="form-group">
+								<label for="username" class="label-largo">Ingrese nombre:</label>
+								<input type="text" id="nombre" name="nombre" class="form-control input-largo" />
+							</div>
+							<div class="form-group">
+								<label for="username" class="label-largo">Ingrese Apellido:</label>
+								<input type="text" id="apellido" name="apellido" class="form-control input-largo" />
+							</div>
+							<div class="form-group">
+								<label for="username" class="label-largo">Ingrese Dirección:</label>
+								<input type="text" id="direccion" name="direccion" class="form-control input-largo" />
+							</div>
+							<div class="form-group">
+								<label for="username" class="label-largo">Nro:</label>
+								<input type="text" id="nro" name="nro" class="form-control input-largo" />
+							</div>
+							<div class="form-group">
+								<label for="username" class="label-largo">Provincia:</label>
+								<Select name='prov' id='prov'>
+									<?php $query = 'SELECT id_provincia,provincia_nombre FROM provincia';
+										  $result= mysqli_query($conexion,$query);
+										  while($fila = mysqli_fetch_assoc($result)){
+									echo "<option value='".$fila['id_provincia']."'>".$fila['provincia_nombre']."</option>";
+								}?>
+								</select>
 							</div>
 							<input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
 						</form>
