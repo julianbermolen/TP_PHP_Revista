@@ -80,23 +80,23 @@
 								<input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo"/>
 							</div>
 							<div class="form-group">
-								<label for="username" class="label-largo">Ingrese nombre:</label>
+								<label for="nombre" class="label-largo">Ingrese nombre:</label>
 								<input type="text" id="nombre" name="nombre" class="form-control input-largo" />
 							</div>
 							<div class="form-group">
-								<label for="username" class="label-largo">Ingrese Apellido:</label>
+								<label for="apellido" class="label-largo">Ingrese Apellido:</label>
 								<input type="text" id="apellido" name="apellido" class="form-control input-largo" />
 							</div>
 							<div class="form-group">
-								<label for="username" class="label-largo">Ingrese Dirección:</label>
+								<label for="direccion" class="label-largo">Ingrese Dirección:</label>
 								<input type="text" id="direccion" name="direccion" class="form-control input-largo" />
 							</div>
 							<div class="form-group">
-								<label for="username" class="label-largo">Nro:</label>
+								<label for="nro" class="label-largo">Nro:</label>
 								<input type="text" id="nro" name="nro" class="form-control input-largo" />
 							</div>
 							<div class="form-group">
-								<label for="username" class="label-largo">Provincia:</label>
+								<label for="prov" class="label-largo">Provincia:</label>
 								<Select name='prov' id='prov'>
 									<?php $query = 'SELECT id_provincia,provincia_nombre FROM provincia';
 										  $result= mysqli_query($conexion,$query);

@@ -47,7 +47,7 @@ $preference = $mp->create_preference($preference_data);
       	<b>Nombre de la edicion: </b><input class="form-control" id="campoDeshabilitado" type="text" value="'.$fila['nombre_edicion'].'" disabled>
       	<b>Precio de la compra : </b><input class="form-control" id="campoDeshabilitado" type="text" value="'.$precio.'" disabled><br><br><br>';
         ?>
-        <a class="btn btn-default btn-lg btn-block" href="<?php echo $preference['response']['init_point']; ?>">Pagar</a>
+        <a class="btn btn-default btn-lg btn-block" href="<?php echo $preference['response']['sandbox_init_point']; ?>">Pagar</a>
         </div>
        </div>
       </section>
