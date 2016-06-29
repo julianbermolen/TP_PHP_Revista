@@ -8,15 +8,15 @@
   <!-- Le dice al navegador para ser responsive en el ancho de la pantalla -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="../../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Css principal -->
-  <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../../css/admin/AdminLTE.min.css">
 
-  <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
+  <link rel="stylesheet" href="../../../css/admin/skin-blue.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,21 +92,21 @@
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         
-        <li class="active"><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-        <li><a href=""><i class="fa fa-newspaper-o"></i> <span>Revista</span></a>
+        <li><a href="../panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+        <li class="active"><a href=""><i class="fa fa-newspaper-o"></i> <span>Revista</span></a>
           <ul class="treeview-menu">
-            <li><a href="revista/panel-administrador-revista-edicion.php"><i class="fa fa-circle-o"></i>Edicion</a></li>
-            <li><a href="revista/panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i> Publicacion</a></li>
-            <li><a href="revista/panel-administrador-revista-seccion.php"><i class="fa fa-circle-o"></i> Seccion</a></li>
-            <li><a href="revista/panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i> Articulo</a></li>            
+            <li class="active"><a href="panel-administrador-revista-edicion.php"><i class="fa fa-circle-o"></i>Edicion</a></li>
+            <li><a href="panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i> Publicacion</a></li>
+            <li><a href="panel-administrador-revista-seccion.php"><i class="fa fa-circle-o"></i> Seccion</a></li>
+            <li><a href="panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i> Articulo</a></li>            
           </ul>
         </li>
-        <li><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
+        <li><a href="../panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
         <li><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
           <ul class="treeview-menu">
-            <li><a href="panel-administrador-cliente.php"><i class="fa fa-circle-o"></i> ABM</a></li>
-            <li><a href="panel-administrador-cliente-suscripciones.php"><i class="fa fa-circle-o"></i> Suscripciones</a></li>
-            <li><a href="panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
+            <li><a href="../panel-administrador-cliente.php"><i class="fa fa-circle-o"></i> ABM</a></li>
+            <li><a href="../panel-administrador-cliente-suscripciones.php"><i class="fa fa-circle-o"></i> Suscripciones</a></li>
+            <li><a href="../panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
           </ul>
         </li>
       </ul>
@@ -120,8 +120,8 @@
     <!-- Encabezado de la pagina -->
     <section class="content-header">
       <h1>
-        Pagina de Inicio
-        <small>Cantidad de productos vendidos y supricripciones</small>
+        Revista - Edicion
+        <small>Creacion, modificacion y borrado de una edicion</small>
       </h1>
     </section>
 
@@ -148,11 +148,11 @@
 <!-- Sripts JS Requeridos -->
 
 <!-- jQuery 2.2.0 -->
-<script src="../../js/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="../../../js/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../js/app.min.js"></script>
+<script src="../../../js/app.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
