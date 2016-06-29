@@ -133,7 +133,7 @@ header("Content-Type: text/html;charset=utf-8");
                                      }
                                     }
                                    }else{
-                                     echo "<a href='#modalid1' class='btn btn-default zindex' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a>";
+                                     echo "<a href='#modalid1' data-dismiss='modal' class='btn btn-default zindex' data-target='#modalid1' data-toggle='modal' role='button'>Inicie sesión</a>";
                                    }
                                        echo ' 
                                   </div>
