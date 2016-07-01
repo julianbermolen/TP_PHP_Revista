@@ -197,14 +197,43 @@
             </select><br>
 
           </div>
+          <div class="col-lg-12">
+              <div class="col-lg-4">
+                  <div class="form-group">
+                      <label for="ejemplo_archivo_1">Añada una imagen</label>
+                      <input type="file" id="imagen1"/>
+                      <p class="help-block">La imagen tiene q ser jpg o png.</p>
+                  </div>
+                </div>
+                  <div class="col-lg-4">
+                     <div class="form-group">
+                          <label for="ejemplo_archivo_1">Añada una imagen</label>
+                          <input type="file" id="imagen2"/>
+                          <p class="help-block">La imagen tiene q ser jpg o png.</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4">
+                      <div class="form-group">
+                         <label for="ejemplo_archivo_1">Añada una imagen</label>
+                         <input type="file" id="imagen3"/>
+                         <p class="help-block">La imagen tiene q ser jpg o png.</p>
+                      </div>
+                  </div>
+          </div> 
 
-            <!--<textarea id="input" name="input"></textarea><br><br>-->
-
+          <div class="col-lg-12">
+              <textarea id="input" name="input"></textarea><br>
+          </div>
+             <div class="col-lg-12">
+               <div id="map"></div>
+           </div>
             <input type="submit" class="btn btn-success" style="float:right;" value="Enviar"/>
 
             
           </form>
           
+
+
 
     </section>
 
@@ -271,6 +300,20 @@
         });
     </script>
 
+    <script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVA1-YHqsPtNLL9KETarV6JRHzXK_ZryU&callback=initMap">
+    </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
