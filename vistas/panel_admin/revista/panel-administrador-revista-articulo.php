@@ -2,6 +2,19 @@
 
 <html>
 <head>
+      <script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+
+    </script>
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBVA1-YHqsPtNLL9KETarV6JRHzXK_ZryU"
+  type="text/javascript"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Panel de administracion | Inicio</title>
@@ -23,7 +36,12 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
   <![endif]-->
+
+  <style type="text/css">
+      #map { height: 100%; }
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -131,21 +149,10 @@
 
                
           
-              <form method="POST" action="../../php/panel_admin/revista/crearArticulo.php">
-          <!--
-          <div class="col-lg-12">  
+              <form method="POST" action="../../../php/panel_admin/revista/crearArticulo.php">
+         
+    
           
-            <input type="text" id="titulo" name="titulo" style="width:90%;" class="form-control input-articulo" placeholder="Agregue un titulo"/><br>
-          
-          </div>
-          -->
-          <!--
-          <div class="col-lg-12">
-          
-            <input type="text" id="subtitulo" name="subtitulo" style="width:90%;" class="form-control" placeholder="Agregue un subtitulo"/><br><br>
-          
-          </div>
-          -->
            
           <div class="col-lg-12">
             <label for="edicion">Edición</label>
@@ -197,6 +204,20 @@
             </select><br>
 
           </div>
+
+          <div class="col-lg-12">  
+          
+            <input type="text" id="titulo" name="titulo" style="width:90%;" class="form-control input-articulo" placeholder="Agregue un titulo"/><br>
+          
+          </div>
+         
+          
+          <div class="col-lg-12">
+          
+            <input type="text" id="subtitulo" name="subtitulo" style="width:90%;" class="form-control" placeholder="Agregue un subtitulo"/><br><br>
+          
+          </div>
+
           <div class="col-lg-12">
               <div class="col-lg-4">
                   <div class="form-group">
@@ -222,7 +243,7 @@
           </div> 
 
           <div class="col-lg-12">
-              <textarea id="input" name="input"></textarea><br>
+              <textarea id="input" name="texto"></textarea><br>
           </div>
              <div class="col-lg-12">
                <div id="map"></div>
@@ -300,20 +321,7 @@
         });
     </script>
 
-    <script type="text/javascript">
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });
-}
-
-    </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVA1-YHqsPtNLL9KETarV6JRHzXK_ZryU&callback=initMap">
-    </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
