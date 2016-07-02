@@ -29,7 +29,7 @@ $queryImagen = "INSERT INTO imagen VALUES('','','')";
 		if($result){
 			if(isset($path1)){
 				$fichero1 = $dir.basename($_POST['path1']['name']);
-				if (move_uploaded_file($_FILES['path1']['tmp_name'], $fichero_subido)) {
+				if (@move_uploaded_file($_FILES['path1']['tmp_name'], $fichero_subido)) {
 		    		echo "El fichero es válido y se subió con éxito.\n";
 					} 
 				}
