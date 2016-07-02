@@ -18,22 +18,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php
-          if(isset($tipo)){
-            if($tipo=='R')
+          if(isset($tipo)&&$tipo=='R')
               echo"<li class='active'>";
             else
               echo"<li>";
-          }
+          
             echo"<a href='index.php?indice=".isset($indice)."&tipo=R'>Revistas <span class='sr-only'>(current)</span>";
         ?>
         </a></li>
           <?php
-            if(isset($tipo)){
-              if($tipo=='D')
+            if(isset($tipo)&&$tipo=='D')
                 echo"<li class='active'>";
               else
                 echo"<li>";
-            }
+            
               echo"<a href='index.php?indice=".isset($indice)."&tipo=D'>Diarios";
           ?>
         </a></li>
