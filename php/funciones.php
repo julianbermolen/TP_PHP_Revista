@@ -37,7 +37,8 @@ header("Content-Type: text/html;charset=utf-8");
             $cantidadDePaginas+=1;
           }
           */
-          echo"<ul class='pagination pagination-sm'>";
+          echo"<div class='row'><div class='col-xs-12'><ul class='pagination pagination-sm'>";
+
           if($indice>1)
             echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'><span aria-hidden='true'>&laquo;</span></a></li>";
 
@@ -53,7 +54,7 @@ header("Content-Type: text/html;charset=utf-8");
           if($cantidadDePaginas<($indice-1))
             echo"<li><a href='index.php?indice=".($contarPaginas+1)."&tipo=$tipo'><span aria-hidden='true'>&raquo;</span></a></li>";
 
-          echo"</ul>";
+          echo"</ul></div></div>";
           mysqli_close($conexion);
           //finaliza el paginado
         }
