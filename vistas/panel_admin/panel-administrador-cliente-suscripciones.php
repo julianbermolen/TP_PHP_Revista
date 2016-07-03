@@ -163,6 +163,7 @@
         </div>
     </div>
   </div> 
+  <a target="_blank" href="../../php/panel_admin/cliente/suscripcion/PDFDatosClienteSusc.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
 </div> 
     </section>
     <!-- /.content -->

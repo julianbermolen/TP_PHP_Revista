@@ -130,6 +130,8 @@
     <!-- Contenido Principal -->
     <section class="content">
 
+
+
       <!-- Creacion de la tabla -->
          <div class="container">
           <div class="row" >
@@ -163,7 +165,13 @@
         </div>
     </div>
   </div> 
+<a target="_blank" href="../../php/panel_admin/cliente/compra/PDFDatosClienteCompra.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
+
 </div> 
+
+    
+    <br/>
+    <br/>
 
     </section>
     <!-- /.content -->

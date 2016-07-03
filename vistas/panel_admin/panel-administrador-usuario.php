@@ -246,6 +246,17 @@
 <!-- Funciones -->
 <script src="../../js/funciones_administrador_usuario.js"></script>
 
+<script>
+
+  $(function () {
+    $("#tabla1").DataTable();
+  
+  });
+
+
+
+</script>
+
 
 </body>
 </html>
