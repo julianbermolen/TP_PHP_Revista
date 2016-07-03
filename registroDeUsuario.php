@@ -97,7 +97,7 @@
 							</div>
 							<div class="form-group">
 								<label for="prov" class="label-largo">Provincia:</label>
-								<Select name='prov' id='prov'>
+								<Select name='prov' id='prov' class="form-control input-largo">
 									<?php $query = 'SELECT id_provincia,provincia_nombre FROM provincia';
 										  $result= mysqli_query($conexion,$query);
 										  while($fila = mysqli_fetch_assoc($result)){
