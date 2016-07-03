@@ -326,7 +326,7 @@ function initMap() {
           </div> 
 
           <div class="col-lg-12">
-              <textarea id="input" name="texto"></textarea><br>
+              <textarea id="text_edit" name="texto"></textarea><br>
           </div>
              <div class="col-lg-12">
                <div id="mapa"></div>
@@ -357,7 +357,7 @@ function initMap() {
   <script src="../../../js/CLEditor1_4_5/jquery.cleditor.min.js"></script>
   <script>
         $(document).ready(function() {
-            $("#input").cleditor({
+            $("#text_edit").cleditor({
                 width: 1000, // width not including margins, borders or padding
                 height: 250, // height not including margins, borders or padding
                 controls: // controls to add to the toolbar
