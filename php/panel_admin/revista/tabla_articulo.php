@@ -15,11 +15,11 @@
                             <td style="text-align:center"><a href="#'.$fila["id_articulo"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_articulo"].'" data-toggle="modal" role="button"></a></td>';
 
                       echo '<div id="'.$fila["id_articulo"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                          <div class="modal-dialog" style="width:80%">
                               <div class="modal-content">
                                   <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Modificar usuario</h4></div> 
                                   <div class="modal-body">
-                                          <form class="cmxform" action="../../php/panel_admin/usuario/editar_usuario.php" method="POST" class="form-horizontal">
+                                          <form class="cmxform" action="../../php/panel_admin/revista/editar_articulo.php" method="POST" class="form-horizontal">
                                                 <div class="form-group">
                                                   <label for="id_articulo"  class="label-largo">Numero de id:</label>
                                                   <input type="text" id="id_articulo" name="id_articulo" class="form-control input-largo" value="'.$fila["id_articulo"].'" readonly="readonly" />
@@ -79,6 +79,10 @@
                                                     </select><br>
 
                                                   </div>';
+
+                                                  echo '  <div class="col-lg-12">
+                                                              <textarea id="input" name="texto" value="'.$fila["texto"].'""></textarea><br>
+                                                          </div>';
 
                                                echo '
                                                 <input type="submit" name="boton" id="boton" value="Enviar" data-id2="'.$fila["id_articulo"].'" class="btn btn-primary btn-lg btn-block btn_mod"/>
