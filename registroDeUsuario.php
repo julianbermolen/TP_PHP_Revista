@@ -26,9 +26,12 @@
 			if(isset($_POST['prov'])){
 				$prov = $_POST['prov'];
 			}
+			if(isset($_POST['localidad'])){
+				$localidad = $_POST['localidad'];
+			}
 			$rol = 2;
 
-			$query = "INSERT INTO cliente VALUES('','$email','$pass','$user','$rol','$nombre','$apellido','$direccion','$nro','$prov')";
+			$query = "INSERT INTO cliente VALUES('','$email','$pass','$user','$rol','$nombre','$apellido','$direccion','$nro','$prov','$localidad')";
 			$resultado = mysqli_query($conexion,$query);
 
 			if($resultado){
@@ -38,6 +41,8 @@
 			  }
 			}
 	?>
+
+
 <html>
 <head>
 	<title>Registro de usuario - El Argentino</title>
@@ -45,7 +50,29 @@
 	  include("php/incluiBootstrap.php");
 	  include("bd/conexion.php");
 	 ?>
+	<script type="text/javascript">
 
+    $(function() {
+
+        $("#prov").change(function() {
+            var id = $(this).val();
+            var parametro = 'prov='+ id;
+
+            $.ajax ({
+                type: "GET",
+                url: "php/localidad1.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+                        $("#localidad").html(html);
+                    }
+            });
+        }).trigger("change");
+
+    });
+
+</script>
 
 </head>
 <body>
@@ -97,14 +124,22 @@
 							</div>
 							<div class="form-group">
 								<label for="prov" class="label-largo">Provincia:</label>
-								<Select name='prov' id='prov' class="form-control input-largo">
-									<?php $query = 'SELECT id_provincia,provincia_nombre FROM provincia';
-										  $result= mysqli_query($conexion,$query);
-										  while($fila = mysqli_fetch_assoc($result)){
-									echo "<option value='".$fila['id_provincia']."'>".$fila['provincia_nombre']."</option>";
-								}?>
-								</select>
+																
+								        <?php
+
+								        $conexion = mysqli_connect("127.0.0.1","root","","sistema");
+								        $sql = "SELECT * FROM provincia;";
+								        $resultado = mysqli_query($conexion, $sql);
+								        echo "<select id='prov' name='prov'>";
+								        while($fila = mysqli_fetch_assoc($resultado)){
+								            echo "<option value='"  . $fila["id_provincia"] . "'>" . $fila["provincia_nombre"] . "</option>";
+								        }
+								        echo "</select><br />";
+								        echo "<label for='localidad' class='label-largo'>Localidad:</label>";
+								        echo "<select id='localidad' name='localidad'></select>";
+								        ?>
 							</div>
+
 							<input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
 						</form>
 						<?php 
@@ -137,6 +172,9 @@
 	?>
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/validarFormulario.js"></script>
+
+
+	<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
 
 </body>
 </html>
