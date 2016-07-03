@@ -2,6 +2,9 @@
 
 <html>
 <head>
+
+
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Panel de administracion | Inicio</title>
@@ -19,6 +22,11 @@
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
      <!-- DataTables -->
   <link rel="stylesheet" href="../../js/datatables/dataTables.bootstrap.css">
+
+    <script type="text/javascript">
+
+  
+</script>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -104,8 +112,8 @@
             <li><a href="revista/panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i> Articulo</a></li>            
           </ul>
         </li>
-        <li class="active"><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
-        <li><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
+        <li><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
+        <li class="active"><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
           <ul class="treeview-menu">
             <li class="active"><a href="panel-administrador-cliente.php"><i class="fa fa-circle-o"></i> ABM</a></li>
             <li><a href="panel-administrador-cliente-suscripciones.php"><i class="fa fa-circle-o"></i> Suscripciones</a></li>
@@ -133,7 +141,7 @@
 
 <button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Cliente </button>
 
- <a target="_blank" href="#" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
+ <a target="_blank" href="../../php/panel_admin/cliente/PDFDatosClientes.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
 <br/>
 <br/>
 
@@ -171,6 +179,75 @@
         </div>
     </div>
   </div>  
+
+
+  <!-- Modal de crear nuevo usuario -->
+<div id="modalNuevo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nuevo usuario</h4></div> 
+            <div class="modal-body">
+                    <form id="validarForm2" action="../../php/panel_admin/cliente/agregar_cliente.php" method="POST" >
+                    
+                    <div class="form-group">
+                      <label for="username" class="label-largo">Ingrese nombre de usuario:</label>
+                      <input type="text" id="username" name="username" class="form-control input-largo" />
+                    </div>
+                    <div class="form-group">
+                      <label for="email" class="label-largo">Ingrese e-mail:</label>
+                      <input type="email" name="email" id="email" class="form-control input-largo"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="password_new" class="label-largo">Ingrese contrase&ntilde;a</label>
+                      <input type="password" name="password_new" id="password_new" class="form-control input-largo"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm_password" class="label-largo">Reingrese contrase&ntilde;a</label>
+                      <input type="password" name="confirm_password" id="confirm_password" class="form-control input-largo"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="nombre" class="label-largo">Ingrese nombre:</label>
+                      <input type="text" id="nombre" name="nombre" class="form-control input-largo" />
+                    </div>
+                    <div class="form-group">
+                      <label for="apellido" class="label-largo">Ingrese Apellido:</label>
+                      <input type="text" id="apellido" name="apellido" class="form-control input-largo" />
+                    </div>
+                    <div class="form-group">
+                      <label for="direccion" class="label-largo">Ingrese Dirección:</label>
+                      <input type="text" id="direccion" name="direccion" class="form-control input-largo" />
+                    </div>
+                    <div class="form-group">
+                      <label for="nro" class="label-largo">Nro:</label>
+                      <input type="text" id="nro" name="nro" class="form-control input-largo" />
+                    </div>
+                    <div class="form-group">
+                      <label for="prov" class="label-largo">Provincia:</label>
+                                      
+                              <?php
+
+                              $conexion = mysqli_connect("127.0.0.1","root","","sistema");
+                              $sql = "SELECT * FROM provincia;";
+                              $resultado = mysqli_query($conexion, $sql);
+                              echo "<select id='prov' name='prov'>";
+                              while($fila = mysqli_fetch_assoc($resultado)){
+                                  echo "<option value='"  . $fila["id_provincia"] . "'>" . $fila["provincia_nombre"] . "</option>";
+                              }
+                              echo "</select><br />";
+                              echo "<label for='localidad' class='label-largo'>Localidad:</label>";
+                              echo "<select id='localidad' name='localidad'></select>";
+                              ?>
+                    </div>
+
+                                  <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
+                          </form>
+                          <div id="ack"></div>
+                  </div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+ 
+      </div>
+      </div>
+  </div>
 
       
 
@@ -224,6 +301,22 @@
                 });  
            }    
           });
+
+          $("#prov").change(function() {
+            var id = $(this).val();
+            var parametro = 'prov='+ id;
+
+            $.ajax ({
+                type: "GET",
+                url: "../../php/localidad1.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+                        $("#localidad").html(html);
+                    }
+            });
+        }).trigger("change");
       
        });
 
