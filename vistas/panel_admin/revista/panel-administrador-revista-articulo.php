@@ -149,7 +149,83 @@ function initMap() {
 
                
           
-        <form method="POST" action="../../../php/panel_admin/revista/crearArticulo.php" enctype="multipart/form-data">
+  <!-- Contiene el contenido de la pagina -->
+  <div class="content-wrapper">
+    <!-- Encabezado de la pagina -->
+    <section class="content-header">
+      <h1>
+        Articulos
+        <small>ABM - Alta , Baja y Modificacion de Articulos</small>
+      </h1>
+    </section>
+
+    <!-- Contenido Principal -->
+    <section class="content">
+
+<button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Articulo </button>
+
+ <a target="_blank" href="../../../php/panel_admin/revista/PDFDatosRevista.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
+<br/>
+<br/>
+
+<!-- Creacion de la tabla -->
+    <div class="row" >
+        <div class="col-xs-12" >
+          <div class="box" >
+            <div class="box-body">
+            <div class="table-responsive">
+             <table id="tabla1" class="table table-bordered table-hover">
+             
+
+                 <thead>
+                    <tr>  
+                         <th width="2%">Id</th>  
+                         <th width="15%">Titulo</th>    
+                         <th width="10%">Subtitulo</th>
+                         <th width="10%">Seccion</th>
+                         <th width="4%">Borrar</th>
+                         <th width="1%">Modificar</th>
+
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  <!-- Trae los datos de la tabla -->
+                  <?php include("../../../php/panel_admin/revista/tabla_articulo.php"); ?>
+                   </tbody>
+
+
+              </table>
+            </div>
+          </div>          
+        </div>
+    </div>
+  </div>  
+       
+          
+
+
+
+    </section>
+
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    
+    <!-- Por defecto a la izquierda -->
+    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+  </footer>
+
+<!-- Modal de crear nuevo usuario -->
+<div id="modalNuevo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:80%">
+        <div class="modal-content" >
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nuevo articulo</h4></div> 
+            <div class="modal-body">
+                     <form method="POST" action="../../../php/panel_admin/revista/crearArticulo.php" enctype="multipart/form-data">
           <div class="col-lg-12">
             <label for="edicion">Edición</label>
             <select id='edicion' name='edicion'class="form-control">
@@ -246,24 +322,13 @@ function initMap() {
 
             
           </form>
-          
-
-
-
-    </section>
-
-    <!-- /.content -->
+                    <div id="ack"></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+ 
+      </div>
+      </div>
   </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    
-    <!-- Por defecto a la izquierda -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-  </footer>
-
-
 <!-- ./wrapper -->
 
 <!-- Sripts JS Requeridos -->
