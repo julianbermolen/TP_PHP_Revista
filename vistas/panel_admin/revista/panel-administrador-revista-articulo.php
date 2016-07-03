@@ -30,7 +30,20 @@ function initMap() {
   <link rel="stylesheet" href="../../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../../css/admin/skin-blue.min.css">
-<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?languaje=zn-Hans"></script>
+
+    <script>
+        function loadMap(){
+          var mapOptions ={
+          center:new google.maps.LatLng(-34.6686986,-58.5614947),
+          zoom:12,
+          mapTypeId:google.maps.MapTypeId.ROADMAP
+
+        };
+
+        var map = new google.maps.Map(document.getElementById("mapa"),mapOptions);
+      }
+    </script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -379,15 +392,7 @@ function initMap() {
             });
         });
     </script>
-    <script>
-        function loadMap(){
-          center:new google.maps.LatLng(-34.6686986,-58.5614947),
-          zoom:12,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
 
-        var map = new google.maps.Map(document.getElementById("mapa"),mapOptions);
-    </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
