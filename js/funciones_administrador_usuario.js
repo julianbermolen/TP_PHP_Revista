@@ -6,11 +6,31 @@
 
 $(document).ready(function(){
         $(document).on('click', '.btn_delete', function(){  
-           var id_usuario=$(this).data("id1");  
+           var id_usuario=$(this).data("id2");  
            if(confirm("Estas seguro de borrar esto?"))  
            {  
                 $.ajax({  
                      url:"../../php/panel_admin/usuario/borrar_usuario.php",  
+                     method:"POST",  
+                     data:{id_usuario:id_usuario},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }  
+
+      
+       });
+
+        $(document).ready(function(){
+        $(document).on('click', '.btn_delete', function(){  
+           var id_usuario=$(this).data("id1");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"../../php/panel_admin/revista/borrar_articulo.php",  
                      method:"POST",  
                      data:{id_usuario:id_usuario},  
                      dataType:"text",  

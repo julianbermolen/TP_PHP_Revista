@@ -11,7 +11,7 @@
                             <td>'.$fila["titulo"].'</td>
                             <td>'.$fila["subtitulo"].'</td>
                             <td>'.$fila["id_seccion"].'</td>
-                            <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_articulo"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                            <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id2="'.$fila["id_articulo"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
                             <td style="text-align:center"><a href="#'.$fila["id_articulo"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_articulo"].'" data-toggle="modal" role="button"></a></td>';
 
                       echo '<div id="'.$fila["id_articulo"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

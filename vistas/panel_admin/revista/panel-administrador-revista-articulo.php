@@ -30,7 +30,7 @@ function initMap() {
   <link rel="stylesheet" href="../../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../../css/admin/skin-blue.min.css">
-
+<script src="http://maps.googleapis.com/maps/api/js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -43,7 +43,7 @@ function initMap() {
       #map { height: 100%; }
   </style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="loadMap()">
 <div class="wrapper">
 
   <!-- Header Principal -->
@@ -316,7 +316,7 @@ function initMap() {
               <textarea id="input" name="texto"></textarea><br>
           </div>
              <div class="col-lg-12">
-               <div id="map"></div>
+               <div id="mapa"></div>
            </div>
             <input type="submit" class="btn btn-success" style="float:right;" value="Enviar"/>
 
@@ -379,8 +379,15 @@ function initMap() {
             });
         });
     </script>
+    <script>
+        function loadMap(){
+          center:new google.maps.LatLng(-34.6686986,-58.5614947),
+          zoom:12,
+          mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
 
-
+        var map = new google.maps.Map(document.getElementById("mapa"),mapOptions);
+    </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
