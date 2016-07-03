@@ -149,11 +149,7 @@ function initMap() {
 
                
           
-              <form method="POST" action="../../../php/panel_admin/revista/crearArticulo.php">
-         
-    
-          
-           
+        <form method="POST" action="../../../php/panel_admin/revista/crearArticulo.php" enctype="multipart/form-data">
           <div class="col-lg-12">
             <label for="edicion">Edición</label>
             <select id='edicion' name='edicion'class="form-control">
@@ -164,9 +160,7 @@ function initMap() {
               
                   while($fila = mysqli_fetch_assoc($result)){
                     echo "<option value='".$fila['id_edicion']."'>".$fila['nombre_edicion']."</option>";
-
-                  }
-
+                    }
                 ?>
             </select><br>
           </div>
@@ -222,21 +216,21 @@ function initMap() {
               <div class="col-lg-4">
                   <div class="form-group">
                       <label for="ejemplo_archivo_1">Añada una imagen</label>
-                      <input type="file" id="imagen1"/>
+                      <input type="file" id="imagen1" name="file"/>
                       <p class="help-block">La imagen tiene q ser jpg o png.</p>
                   </div>
                 </div>
                   <div class="col-lg-4">
                      <div class="form-group">
                           <label for="ejemplo_archivo_1">Añada una imagen</label>
-                          <input type="file" id="imagen2"/>
+                          <input type="file" id="imagen2"name="file2"/>
                           <p class="help-block">La imagen tiene q ser jpg o png.</p>
                      </div>
                   </div>
                   <div class="col-lg-4">
                       <div class="form-group">
                          <label for="ejemplo_archivo_1">Añada una imagen</label>
-                         <input type="file" id="imagen3"/>
+                         <input type="file" id="imagen3"name="file3"/>
                          <p class="help-block">La imagen tiene q ser jpg o png.</p>
                       </div>
                   </div>

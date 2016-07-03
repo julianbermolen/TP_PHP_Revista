@@ -1,4 +1,8 @@
 <?php
+
+include("../../../bd/conexion.php");
+
+
 $titulo = $_POST['titulo'];
 $subtitulo = $_POST['subtitulo'];
 $texto = $_POST['texto'];
@@ -6,56 +10,62 @@ $publicacion = $_POST['publicacion'];
 $edicion = $_POST['edicion'];
 $seccion = $_POST['seccion'];
 
-	if(isset($_POST['path1']['name'])){
-		$path1 = $_POST['path1']['name'];
+	if(isset($_FILES['file']['name'])){
+		$path1 = $_FILES['file']['name'];
+		echo "llego algo";
 		} 
-	if(isset($_POST['path2']['name'])){
-		$path1 = $_POST['path2']['name'];
+	if(isset($_FILES['file2']['name'])){
+		$path2 = $_FILES['file2']['name'];
 		} 
-	if(isset($_POST['path3']['name'])){
-		$path1 = $_POST['path3']['name'];
+	if(isset($_FILES['file3']['name'])){
+		$path3 = $_FILES['file3']['name'];
 		} 
-	if(isset($_POST['path4']['name'])){
-		$path1 = $_POST['path4']['name'];
+	if(isset($_FILES['imagen4']['name'])){
+		$path4 = $_FILES['imagen4']['name'];
 		} 
 		$dir = '../../../imagenes/';
 // $latitud = ;
 // $longitud = ;
-include("../../../bd/conexion.php");
+
 $query = "INSERT INTO articulo VALUES('','$titulo','$subtitulo','$texto','$seccion','','$publicacion','$edicion')";
 
 $result = mysqli_query($conexion,$query);
-$queryImagen = "INSERT INTO imagen VALUES('','','')";
+
+$queryConsultaArticulo = "SELECT id_articulo FROM articulo WHERE titulo = '$titulo' and subtitulo='$subtitulo'";
+$resultadoConsulta = mysqli_query($conexion,$queryConsultaArticulo);
+$tipo = mysqli_fetch_assoc($resultadoConsulta);
 		if($result){
 			if(isset($path1)){
-				$fichero1 = $dir.basename($_POST['path1']['name']);
-				if (@move_uploaded_file($_FILES['path1']['tmp_name'], $fichero_subido)) {
+				$queryImagen = "INSERT INTO imagen VALUES('','$tipo[id_articulo]','$path1')";
+				$resultadoPath = mysqli_query($conexion,$queryImagen);
+				$fichero1 = $dir.basename($_FILES['file']['name']);
+				if (@move_uploaded_file($_FILES['file']['tmp_name'], $fichero1)) {
 		    		echo "El fichero es válido y se subió con éxito.\n";
 					} 
 				}
 				
 				 if(isset($path2)){
-				$fichero1 = $dir.basename($_POST['path2']['name']);
-				if (move_uploaded_file($_FILES['path2']['tmp_name'], $fichero_subido)) {
+				$fichero2 = $dir.basename($_FILES['file2']['name']);
+				if (move_uploaded_file($_FILES['file2']['tmp_name'], $fichero2)) {
 		    		echo "El fichero es válido y se subió con éxito.\n";
 					} 
 				}
 				
 				if(isset($path3)){
-				$fichero1 = $dir.basename($_POST['path3']['name']);
-				if (move_uploaded_file($_FILES['path3']['tmp_name'], $fichero_subido)) {
+				$fichero3 = $dir.basename($_FILES['file2']['name']);
+				if (move_uploaded_file($_FILES['file2']['tmp_name'], $fichero3)) {
 		    		echo "El fichero es válido y se subió con éxito.\n";
 					} 
 				}
 				
 				if(isset($path4)){
-				$fichero1 = $dir.basename($_POST['path4']['name']);
-				if (move_uploaded_file($_FILES['path4']['tmp_name'], $fichero_subido)) {
+				$fichero4 = $dir.basename($_FILES['imagen4']['name']);
+				if (move_uploaded_file($_FILES['imagen4']['tmp_name'], $fichero4)) {
 		    		echo "El fichero es válido y se subió con éxito.\n";
 					} 
 				}
 
-
+				header("location:../../../vistas/panel_admin/revista/panel-administrador-revista-articulo.php");
 
 		}
 
