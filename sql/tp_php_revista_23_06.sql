@@ -63,7 +63,8 @@ CREATE TABLE `cliente` (
   `apellido_cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `calle` varchar(60) CHARACTER SET latin1 NOT NULL,
   `numero_calle` varchar(6) CHARACTER SET latin1 NOT NULL,
-  `cod_prov` int(11) DEFAULT NULL
+  `cod_prov` int(11) DEFAULT NULL,
+  `cod_ciud` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -75,7 +76,8 @@ CREATE TABLE `cliente` (
 CREATE TABLE `compra` (
   `id_compra` int(11) NOT NULL,
   `cod_edicion` int(11) DEFAULT NULL,
-  `cod_cliente` int(11) DEFAULT NULL
+  `cod_cliente` int(11) DEFAULT NULL,
+  `fecha_compra` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
