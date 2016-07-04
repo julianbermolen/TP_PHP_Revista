@@ -17,10 +17,6 @@
   <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
-  <!--API para los graficos-->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-  <script src="../../js/generadorDeGraficos.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,9 +24,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <?php
-    include("../../bd/conexion.php");
-    ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -99,18 +92,11 @@
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         
-        <li class="active"><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-        <li><a href=""><i class="fa fa-newspaper-o"></i> <span>Revista</span></a>
-          <ul class="treeview-menu">
-            <li><a href="revista/panel-administrador-revista-edicion.php"><i class="fa fa-circle-o"></i>Edicion</a></li>
-            <li><a href="revista/panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i> Publicacion</a></li>
-            <li><a href="revista/panel-administrador-revista-seccion.php"><i class="fa fa-circle-o"></i> Seccion</a></li>
-            <li><a href="revista/panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i> Articulo</a></li>            
-          </ul>
-        </li>
+        <li><a href="panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+        <li class="active"><a href="panel-administrador-revista.php"><i class="fa fa-newspaper-o"></i> <span>Revista</span></a></li>
         <li><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
         <li><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
-          <ul class="treeview-menu">
+            <ul class="treeview-menu">
             <li><a href="panel-administrador-cliente.php"><i class="fa fa-circle-o"></i> ABM</a></li>
             <li><a href="panel-administrador-cliente-suscripciones.php"><i class="fa fa-circle-o"></i> Suscripciones</a></li>
             <li><a href="panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
@@ -133,22 +119,10 @@
     </section>
 
     <!-- Contenido Principal -->
-    <section class="content" id="graficos">
+    <section class="content">
+
       <!-- Your Page Content Here -->
-      <div class="row">
-        <div class="col-xs-12">
-          <form>
-            <div class="col-xs-12 col-md-6">
-              <label for="periodo">Seleccione periodo de tiempo</label>
-              <select id="periodo" name="periodo" class="form-control">
-                <option selected="true">1 mes</option>
-                <option>6 meses</option>
-                <option>1 año</option>
-              </select>
-            </div>
-          </form>
-        </div>
-      </div>
+
     </section>
     <!-- /.content -->
   </div>
