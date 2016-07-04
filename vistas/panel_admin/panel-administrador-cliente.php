@@ -25,6 +25,11 @@
 
     <script type="text/javascript">
 
+    $(document).ready(function(){
+
+
+
+    });
   
 </script>
 
@@ -224,19 +229,19 @@
                     <div class="form-group">
                       <label for="prov" class="label-largo">Provincia:</label>
                                       
-                              <?php
+                            <?php
 
-                              $conexion = mysqli_connect("127.0.0.1","root","","sistema");
-                              $sql = "SELECT * FROM provincia;";
-                              $resultado = mysqli_query($conexion, $sql);
-                              echo "<select id='prov' name='prov'>";
-                              while($fila = mysqli_fetch_assoc($resultado)){
-                                  echo "<option value='"  . $fila["id_provincia"] . "'>" . $fila["provincia_nombre"] . "</option>";
-                              }
-                              echo "</select><br />";
-                              echo "<label for='localidad' class='label-largo'>Localidad:</label>";
-                              echo "<select id='localidad' name='localidad'></select>";
-                              ?>
+                            $conexion = mysqli_connect("127.0.0.1","root","","sistema");
+                            $sql = "SELECT * FROM provincia;";
+                            $resultado = mysqli_query($conexion, $sql);
+                            echo "<select id='prov' name='prov'>";
+                            while($fila = mysqli_fetch_assoc($resultado)){
+                                echo "<option value='"  . $fila["id_provincia"] . "'>" . $fila["provincia_nombre"] . "</option>";
+                            }
+                            echo "</select><br />";
+                            echo "<label for='localidad' class='label-largo'>Localidad:</label>";
+                            echo "<select id='localidad' name='localidad'></select>";
+                            ?>
                     </div>
 
                                   <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
@@ -285,6 +290,25 @@
   });
 
   $(document).ready(function(){
+
+       $("#prov").change(function() {
+            var id = $(this).val();
+            var parametro = 'prov='+ id;
+
+            $.ajax ({
+                type: "GET",
+                url: "../../php/localidad1.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+                        $("#localidad").html(html);
+                    }
+            });
+        }).trigger("change");
+
+
+
         $(document).on('click', '.btn_delete', function(){  
            var id_cliente=$(this).data("id1");  
            if(confirm("Estas seguro de borrar esto?"))  
@@ -301,22 +325,6 @@
                 });  
            }    
           });
-
-          $("#prov").change(function() {
-            var id = $(this).val();
-            var parametro = 'prov='+ id;
-
-            $.ajax ({
-                type: "GET",
-                url: "../../php/localidad1.php",
-                data: parametro,
-                cache: false,
-                success:
-                    function(html){
-                        $("#localidad").html(html);
-                    }
-            });
-        }).trigger("change");
       
        });
 

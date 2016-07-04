@@ -60,8 +60,8 @@
                                                       <input type="text" id="nro" name="nro" class="form-control input-largo" value="'.$fila["numero_calle"].'" />
                                                     </div>
                                                      <div class="form-group">
-                                                      <label for="prov" class="label-largo">Provincia:</label>
-                                                      <input type="text" id="prov" name="prov" class="form-control input-largo" value="'.$fila["provincia_nombre"].'"  readonly="readonly"/>
+                                                      <label for="provincia" class="label-largo">Provincia:</label>
+                                                      <input type="text" id="provincia" name="provincia" class="form-control input-largo" value="'.$fila["provincia_nombre"].'"  readonly="readonly"/>
                                                     </div>
 
                                                     <div class="form-group">
