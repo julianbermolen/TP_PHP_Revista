@@ -128,10 +128,10 @@ function initMap() {
         <li><a href="../panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         <li class="active"><a href=""><i class="fa fa-newspaper-o"></i> <span>Revista</span></a>
           <ul class="treeview-menu">
+            <li><a href="panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i>Publicacion</a></li>
             <li><a href="panel-administrador-revista-edicion.php"><i class="fa fa-circle-o"></i>Edicion</a></li>
-            <li><a href="panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i> Publicacion</a></li>
-            <li><a href="panel-administrador-revista-seccion.php"><i class="fa fa-circle-o"></i> Seccion</a></li>
-            <li class="active"><a href="panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i> Articulo</a></li>            
+            <li><a href="panel-administrador-revista-seccion.php"><i class="fa fa-circle-o"></i>Seccion</a></li>
+            <li class="active"><a href="panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i>Articulo</a></li>            
           </ul>
         </li> 
         <li><a href="../panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>

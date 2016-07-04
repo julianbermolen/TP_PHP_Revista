@@ -97,10 +97,10 @@
         <li><a href="../panel-administrador.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         <li class="active"><a href=""><i class="fa fa-newspaper-o"></i> <span>Revista</span></a>
           <ul class="treeview-menu">
+            <li><a href="panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i>Publicacion</a></li>
             <li><a href="panel-administrador-revista-edicion.php"><i class="fa fa-circle-o"></i>Edicion</a></li>
-            <li><a href="panel-administrador-revista-publicacion.php"><i class="fa fa-circle-o"></i> Publicacion</a></li>
             <li class="active"><a href="panel-administrador-revista-seccion.php"><i class="fa fa-circle-o"></i> Seccion</a></li>
-            <li><a href="panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i> Articulo</a></li>            
+            <li><a href="panel-administrador-revista-articulo.php"><i class="fa fa-circle-o"></i>Articulo</a></li>            
           </ul>
         </li>
         <li><a href="../panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
@@ -192,12 +192,14 @@
                               while($fila = mysqli_fetch_assoc($resultado)){
                                   echo "<option value='"  . $fila["id_publicacion"] . "'>" . $fila["nombre_publicacion"] . "</option>";
                               }
-                             
+                              echo '</select> <br>';
+                              echo "<label for='edicion' class='label-largo'>Edicion:</label>";
+                              echo "<select id='edicion' name='edicion' class='form-control input-largo'></select>";
                             
                               ?>
 
 
-                           </select>
+                           
                           </div>
 
                             <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
@@ -261,6 +263,22 @@
                 });  
            }    
           });
+
+        $("#publicacion").change(function() {
+            var id = $(this).val();
+            var parametro = 'publicacion='+ id;
+
+            $.ajax ({
+                type: "GET",
+                url: "../../../php/panel_admin/revista/seccion/edicion.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+                        $("#edicion").html(html);
+                    }
+            });
+        }).trigger("change");
       
        });
 
