@@ -2,7 +2,7 @@
                 include("../../../bd/conexion.php");
                       
                     $output = '';  
-                    $sql = "SELECT * FROM seccion INNER JOIN publicacion ON seccion.id_publicacion = publicacion.id_publicacion ORDER BY id_seccion DESC" ;  
+                    $sql = "SELECT * FROM seccion INNER JOIN publicacion ON seccion.id_publicacion = publicacion.id_publicacion INNER JOIN edicion ON publicacion.id_publicacion = edicion.id_publicacion ORDER BY id_seccion DESC" ;  
                     $resultado = mysqli_query($conexion, $sql);
 
                     while($fila = mysqli_fetch_array($resultado)) {
@@ -10,7 +10,7 @@
                       echo '<td>'.$fila["id_seccion"].'</td>
                             <td>'.$fila["nombre_sec"].'</td>
                             <td>'.$fila["nombre_publicacion"].'</td>
-                             <td style="text-align:center"><button type="button" style=" width:25%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_seccion"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                             <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_seccion"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
                             <td style="text-align:center"><a href="#'.$fila["id_seccion"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_seccion"].'" data-toggle="modal" role="button"></a></td>';
 
                       echo '<div id="'.$fila["id_seccion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -24,26 +24,19 @@
                                                   <input type="text" id="id_seccion" name="id_seccion" class="form-control input-largo" value="'.$fila["id_seccion"].'" readonly="readonly" />
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="seccion"  class="label-largo">Nombre seccion:</label>
-                                                  <input type="text" id="seccion" name="seccion" class="form-control input-largo" value="'.$fila["nombre_sec"].'" />
-                                                </div>';
-                                                 echo '
-                                                  <div class="col-lg-12">
-                                                    <label for="publicacion">Publicación</label>
-                                                    <select id="publicacion "name="publicacion" class="form-control">
-                                                    '; 
-                                                          $query = "SELECT * FROM publicacion";
-                                                          $result = mysqli_query($conexion,$query);
-                                                      
-                                                          while($fila = mysqli_fetch_assoc($result)){
-                                                      echo '<option value="'.$fila['id_publicacion'].'">'.$fila['nombre_publicacion'].'</option>';
+                                                  <label for="seccion2"  class="label-largo">Nombre seccion:</label>
+                                                  <input type="text" id="seccion2" name="seccion2" class="form-control input-largo" value="'.$fila["nombre_sec"].'" />
+                                                </div>
+                                                 
+                                                <div class="form-group">
+                                                      <label for="pub" class="label-largo">Provincia:</label>
+                                                      <input type="text" id="pub" name="pub" class="form-control input-largo" value="'.$fila["nombre_publicacion"].'"  readonly="readonly"/>
+                                                    </div>
 
-                                                         }
-
-                                                        echo '
-                                                    </select><br>
-
-                                                  </div>';
+                                                    <div class="form-group">
+                                                      <label for="edic" class="label-largo">Localidad:</label>
+                                                      <input type="text" id="edic" name="edic" class="form-control input-largo" value="'.$fila["nombre_edicion"].'" readonly="readonly" />
+                                                    </div>';
 
                             
 

@@ -4,7 +4,7 @@
 
 
  $sql = "UPDATE seccion
- SET id_publicacion = '".$_POST["publicacion"]."', nombre_sec = '".$_POST["seccion"]."' WHERE id_seccion ='".$_POST["id_seccion"]."'";  
+ SET nombre_sec = '".$_POST["seccion2"]."' WHERE id_seccion ='".$_POST["id_seccion"]."'";  
  
 
  if(mysqli_query($connect, $sql))  
