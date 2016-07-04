@@ -28,6 +28,8 @@ function initMap() {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Css principal -->
   <link rel="stylesheet" href="../../../css/admin/AdminLTE.min.css">
+       <!-- DataTables -->
+  <link rel="stylesheet" href="../../../js/datatables/dataTables.bootstrap.css">
 
   <link rel="stylesheet" href="../../../css/admin/skin-blue.min.css">
 <script src="http://maps.googleapis.com/maps/api/js?languaje=zn-Hans"></script>
@@ -156,22 +158,8 @@ function initMap() {
       </h1>
     </section>
 
-    <!-- Contenido Principal -->
-    
-    <section class="content">
-
                
-          
-  <!-- Contiene el contenido de la pagina -->
-  <div class="content-wrapper">
-    <!-- Encabezado de la pagina -->
-    <section class="content-header">
-      <h1>
-        Articulos
-        <small>ABM - Alta , Baja y Modificacion de Articulos</small>
-      </h1>
-    </section>
-
+    
     <!-- Contenido Principal -->
     <section class="content">
 
@@ -352,6 +340,9 @@ function initMap() {
 <script src="../../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../js/app.min.js"></script>
+<!-- DataTables -->
+<script src="../../../js/datatables/jquery.dataTables.min.js"></script>
+<script src="../../../js/datatables/dataTables.bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="../../../js/CLEditor1_4_5/jquery.cleditor.css" />
   <script src="../../../js/CLEditor1_4_5/jquery.cleditor.min.js"></script>
@@ -392,6 +383,17 @@ function initMap() {
             });
         });
     </script>
+
+    <script>
+
+  $(function () {
+    $("#tabla1").DataTable();
+  
+  });
+
+
+
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
