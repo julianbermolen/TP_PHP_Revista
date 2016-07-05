@@ -10,6 +10,4 @@
 	$query = "INSERT INTO compra VALUES('','$id_edicion','$cod_cliente','$fecha')";
 
 		$result = mysqli_query($conexion,$query);
-
-echo isset($_POST['id_edicion']);die;
 ?>
