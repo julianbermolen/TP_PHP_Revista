@@ -1,5 +1,6 @@
 <?php
-  session_start();
+ob_start();
+session_start();
 ?>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -17,14 +18,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <?php
+<?php
           if(isset($tipo)&&$tipo=='R')
               echo"<li class='active'>";
             else
               echo"<li>";
           
             echo"<a href='index.php?indice=".isset($indice)."&tipo=R'>Revistas <span class='sr-only'>(current)</span>";
-        ?>
+?>
         </a></li>
           <?php
             if(isset($tipo)&&$tipo=='D')
@@ -101,4 +102,3 @@
       </div>
       </div>
   </div>
-

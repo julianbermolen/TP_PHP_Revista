@@ -1,4 +1,5 @@
 <?php
+
 require_once ('php/mercadopago.php');
 $precio = floatval($_GET['precio']);
 $id_edicion = $_GET['id_edicion'];
@@ -27,6 +28,7 @@ $preference = $mp->create_preference($preference_data);
 	<?php
 		include("php/incluiBootstrap.php");
 		include("bd/conexion.php");
+
 	?>
   <script src="js/script-index.js"></script>
 </head>
@@ -47,10 +49,16 @@ $preference = $mp->create_preference($preference_data);
       	<b>Nombre de la edicion: </b><input class="form-control" id="campoDeshabilitado" type="text" value="'.$fila['nombre_edicion'].'" disabled>
       	<b>Precio de la compra : </b><input class="form-control" id="campoDeshabilitado" type="text" value="'.$precio.'" disabled><br><br><br>';
         ?>
+        <?php
+        $variable = $preference['response']['sandbox_init_point'];
+        echo '<img src="php/ejemploQr.php?qr='.$variable.'"/>';
+        ?>
         <a class="btn btn-default btn-lg btn-block" href="<?php echo $preference['response']['sandbox_init_point']; ?>">Pagar</a>
         </div>
        </div>
       </section>
-  <?php include("php/footer.php"); ?>
+  <?php include("php/footer.php");
+  	ob_end_flush();
+   ?>
 </body>
 </html>
