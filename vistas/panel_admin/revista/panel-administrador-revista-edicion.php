@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="../../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../../css/admin/skin-blue.min.css">
+           <!-- DataTables -->
+  <link rel="stylesheet" href="../../../js/datatables/dataTables.bootstrap.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -128,7 +130,96 @@
     <!-- Contenido Principal -->
     <section class="content">
 
-      <!-- Your Page Content Here -->
+      <button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nueva Edicion </button>
+
+
+<br/>
+<br/>
+
+<!-- Creacion de la tabla -->
+    <div class="row" >
+        <div class="col-xs-12" >
+          <div class="box" >
+            <div class="box-body">
+            <div class="table-responsive">
+             <table id="tabla1" class="table table-bordered table-hover">
+             
+
+                 <thead>
+                    <tr>  
+                         <th width="2%">Id</th>  
+                         <th width="15%">Nombre Edicion</th>    
+                         <th width="10%">Nombre Publi</th>
+                         <th width="10%">Prec Comp</th>
+                         <th width="10%">Prec Susc</th>
+                         <th width="4%">Borrar</th>
+                         <th width="1%">Modificar</th>
+
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  <!-- Trae los datos de la tabla -->
+                  <?php include("../../../php/panel_admin/revista/edicion/tabla_edicion.php"); ?>
+                   </tbody>
+
+
+              </table>
+            </div>
+          </div>          
+        </div>
+    </div>
+  </div> 
+
+  <!-- Modal de crear nueva seccion  -->
+<div id="modalNuevo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nueva Edicion</h4></div> 
+            <div class="modal-body">
+                    <form id="validarForm2" action="../../../php/panel_admin/revista/edicion/agregar_edicion.php" method="POST" >
+                          <div class="form-group">
+                            <label for="seccion">Ingrese Edicion: </label>
+                            <input type="text" class="form-control" name="edicion" id="edicion" placeholder="Ingrese edicion">
+                          </div>
+                          <div class="form-group">
+                           <label for="publicacion" class="label-largo">Seleccione Publicacion: </label>
+                           <select  name="publicacion" id="publicacion" class="form-control input-largo">
+                            
+                            <?php
+
+                              $conexion = mysqli_connect("127.0.0.1","root","","sistema");
+                              $sql = "SELECT * FROM publicacion";
+                              $resultado = mysqli_query($conexion, $sql);
+                              while($fila = mysqli_fetch_assoc($resultado)){
+                                  echo "<option value='"  . $fila["id_publicacion"] . "'>" . $fila["nombre_publicacion"] . "</option>";
+                              }
+                              echo '</select> <br>';
+                            
+                              ?>
+
+                          <div class="form-group">
+                            <label for="precio_compra">Ingrese Precio de Compra: </label>
+                            <input type="text" class="form-control" name="precio_compra" id="precio_compra" placeholder="Ingrese Precio de Compra">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="precio_suscripcion">Ingrese Precio de Suscripcion: </label>
+                            <input type="text" class="form-control" name="precio_suscripcion" id="precio_suscripcion" placeholder="Ingrese Precio de Suscripcion">
+                          </div>
+
+                           
+                          </div>
+
+                            <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
+                    </form>
+                    <div id="ack"></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div>
+ 
+      </div>
+      </div>
+  </div> 
 
     </section>
     <!-- /.content -->
@@ -153,10 +244,39 @@
 <script src="../../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../js/app.min.js"></script>
+<!-- DataTables -->
+<script src="../../../js/datatables/jquery.dataTables.min.js"></script>
+<script src="../../../js/datatables/dataTables.bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<script>
+
+  $(function () {
+    $("#tabla1").DataTable();
+  
+  });
+
+
+
+  $(document).ready(function(){
+        $(document).on('click', '.btn_delete', function(){  
+           var id_edicion=$(this).data("id1");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"../../../php/panel_admin/revista/edicion/borrar_edicion.php",  
+                     method:"POST",  
+                     data:{id_edicion:id_edicion},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }    
+          });
+
+});
+
+</script>
 </body>
 </html>
