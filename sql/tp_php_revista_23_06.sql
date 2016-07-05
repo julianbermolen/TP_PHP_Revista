@@ -37,7 +37,10 @@ CREATE TABLE `articulo` (
   `subtitulo` varchar(50) CHARACTER SET latin1 NOT NULL,
   `texto` text CHARACTER SET latin1,
   `id_seccion` int(11) DEFAULT NULL,
-  `coordenadas` varchar(1024) CHARACTER SET latin1 DEFAULT NULL
+  `coordenadas` varchar(1024) CHARACTER SET latin1 DEFAULT NULL,
+  `cod_publicacion` int(11) ,
+  `cod_edicion` int(11) 
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -193,7 +196,9 @@ CREATE TABLE `rol` (
 CREATE TABLE `seccion` (
   `id_seccion` int(11) NOT NULL,
   `id_publicacion` int(11) NOT NULL,
-  `nombre_sec` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `nombre_sec` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cod_edicion` int(11) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --

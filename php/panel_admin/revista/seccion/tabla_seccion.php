@@ -2,7 +2,7 @@
                 include("../../../bd/conexion.php");
                       
                     $output = '';  
-                    $sql = "SELECT * FROM seccion INNER JOIN publicacion ON seccion.id_publicacion = publicacion.id_publicacion INNER JOIN edicion ON publicacion.id_publicacion = edicion.id_publicacion ORDER BY id_seccion DESC" ;  
+                    $sql = "SELECT * FROM seccion INNER JOIN edicion ON seccion.cod_edicion = edicion.id_edicion INNER JOIN publicacion ON publicacion.id_publicacion = edicion.id_publicacion ORDER BY id_seccion DESC" ;  
                     $resultado = mysqli_query($conexion, $sql);
 
                     while($fila = mysqli_fetch_array($resultado)) {
@@ -10,6 +10,7 @@
                       echo '<td>'.$fila["id_seccion"].'</td>
                             <td>'.$fila["nombre_sec"].'</td>
                             <td>'.$fila["nombre_publicacion"].'</td>
+                            <td>'.$fila["nombre_edicion"].'</td>
                              <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_seccion"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
                             <td style="text-align:center"><a href="#'.$fila["id_seccion"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_seccion"].'" data-toggle="modal" role="button"></a></td>';
 
@@ -29,12 +30,12 @@
                                                 </div>
                                                  
                                                 <div class="form-group">
-                                                      <label for="pub" class="label-largo">Provincia:</label>
+                                                      <label for="pub" class="label-largo">Publicacion</label>
                                                       <input type="text" id="pub" name="pub" class="form-control input-largo" value="'.$fila["nombre_publicacion"].'"  readonly="readonly"/>
                                                     </div>
 
                                                     <div class="form-group">
-                                                      <label for="edic" class="label-largo">Localidad:</label>
+                                                      <label for="edic" class="label-largo">Edicion: </label>
                                                       <input type="text" id="edic" name="edic" class="form-control input-largo" value="'.$fila["nombre_edicion"].'" readonly="readonly" />
                                                     </div>';
 

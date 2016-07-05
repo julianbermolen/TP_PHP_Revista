@@ -150,6 +150,7 @@
                          <th width="2%">Id</th>  
                          <th width="15%">Seccion</th>    
                          <th width="10%">Publicacion</th>
+                         <th width="10%">Edicion</th>
                          <th width="4%">Borrar</th>
                          <th width="1%">Modificar</th>
 
