@@ -181,9 +181,11 @@ function initMap() {
                  <thead>
                     <tr>  
                          <th width="2%">Id</th>  
-                         <th width="15%">Titulo</th>    
+                         <th width="10%">Titulo</th>    
                          <th width="10%">Subtitulo</th>
                          <th width="10%">Seccion</th>
+                         <th width="10%">Edicion</th>
+                         <th width="10%">Publicacion</th>
                          <th width="4%">Borrar</th>
                          <th width="1%">Modificar</th>
 
@@ -227,54 +229,30 @@ function initMap() {
             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nuevo articulo</h4></div> 
             <div class="modal-body">
                      <form method="POST" action="../../../php/panel_admin/revista/crearArticulo.php" enctype="multipart/form-data">
-          <div class="col-lg-12">
-            <label for="edicion">Edición</label>
-            <select id='edicion' name='edicion'class="form-control">
-            <?php 
-              include('../../../bd/conexion.php');
-                  $query = "SELECT * FROM edicion";
-                  $result = mysqli_query($conexion,$query);
-              
-                  while($fila = mysqli_fetch_assoc($result)){
-                    echo "<option value='".$fila['id_edicion']."'>".$fila['nombre_edicion']."</option>";
-                    }
-                ?>
-            </select><br>
-          </div>
+        
 
-          <div class="col-lg-12">
-            <label for="edicion">Sección</label>
-            <select id='seccion' name='seccion'class="form-control">
-            <?php 
-              
-                  $query = "SELECT * FROM seccion";
-                  $result = mysqli_query($conexion,$query);
-              
-                  while($fila = mysqli_fetch_assoc($result)){
-                    echo "<option value='".$fila['id_seccion']."'>".$fila['nombre_sec']."</option>";
+                  <div class="form-group">
+                    <label for="publicacion1" class="label-largo">Seleccione Publicacion: </label>
+                     <select  name="publicacion1" id="publicacion1" class="form-control input-largo">
+                            
+                       <?php
 
-                  }
+                         $conexion = mysqli_connect("127.0.0.1","root","","sistema");
+                         $sql = "SELECT * FROM publicacion";
+                         $resultado = mysqli_query($conexion, $sql);
+                           while($fila = mysqli_fetch_assoc($resultado)){
+                               echo "<option value='"  . $fila["id_publicacion"] . "'>" . $fila["nombre_publicacion"] . "</option>";
+                              }
+                              echo '</select> <br>';
+                              echo "<label for='edicion1' class='label-largo'>Edicion:</label>";
+                              echo "<select id='edicion1' name='edicion1' class='form-control input-largo'></select>";
+                              echo "<label for='seccion1' class='label-largo'>Seccion:</label>";
+                              echo "<select id='seccion1' name='seccion1' class='form-control input-largo'></select>";                           
+                              ?>
 
-                ?>
-            </select><br>
-          </div>
 
-          <div class="col-lg-12">
-            <label for="publicacion">Publicación</label>
-            <select id='publicacion' name='publicacion' class="form-control">
-            <?php 
-                  $query = "SELECT * FROM publicacion";
-                  $result = mysqli_query($conexion,$query);
-              
-                  while($fila = mysqli_fetch_assoc($result)){
-                    echo "<option value='".$fila['id_publicacion']."'>".$fila['nombre_publicacion']."</option>";
-
-                  }
-
-                ?>
-            </select><br>
-
-          </div>
+                           
+                   </div>          
 
           <div class="col-lg-12">  
           
@@ -294,21 +272,21 @@ function initMap() {
                   <div class="form-group">
                       <label for="ejemplo_archivo_1">Añada una imagen</label>
                       <input type="file" id="imagen1" name="file"/>
-                      <p class="help-block">La imagen tiene q ser jpg o png.</p>
+                      <p class="help-block">La imagen tiene que ser jpg o png.</p>
                   </div>
                 </div>
                   <div class="col-lg-4">
                      <div class="form-group">
                           <label for="ejemplo_archivo_1">Añada una imagen</label>
-                          <input type="file" id="imagen2"name="file2"/>
-                          <p class="help-block">La imagen tiene q ser jpg o png.</p>
+                          <input type="file" id="imagen2" name="file2"/>
+                          <p class="help-block">La imagen tiene que ser jpg o png.</p>
                      </div>
                   </div>
                   <div class="col-lg-4">
                       <div class="form-group">
                          <label for="ejemplo_archivo_1">Añada una imagen</label>
-                         <input type="file" id="imagen3"name="file3"/>
-                         <p class="help-block">La imagen tiene q ser jpg o png.</p>
+                         <input type="file" id="imagen3" name="file3"/>
+                         <p class="help-block">La imagen tiene que ser jpg o png.</p>
                       </div>
                   </div>
           </div> 
@@ -389,15 +367,70 @@ function initMap() {
   $(function () {
     $("#tabla1").DataTable();
   
+
+
+
+
   });
+
+  $(document).ready(function(){
+        $(document).on('click', '.btn_delete', function(){  
+           var id_articulo=$(this).data("id1");  
+           if(confirm("Estas seguro de borrar esto?"))  
+           {  
+                $.ajax({  
+                     url:"../../../php/panel_admin/revista/borrar_articulo.php",  
+                     method:"POST",  
+                     data:{id_articulo:id_articulo},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }    
+          });
+
+        $("#publicacion1").change(function() {
+            var id = $(this).val();
+            var parametro = 'publicacion1='+ id;
+
+            $.ajax ({
+                type: "GET",
+                url: "../../../php/panel_admin/revista/articulo_ajax.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+                        $("#edicion1").html(html);
+                    }
+            });
+
+        }).trigger("change");
+
+       $("#edicion1").on("focus , change", function() {
+            var id = $(this).val();
+            var parametro = 'edicion1='+ id;
+
+            $.ajax ({
+                type: "GET",
+                url: "../../../php/panel_admin/revista/articulo_ajax2.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+
+                        $("#seccion1").html(html);
+                    }
+            });
+        }).trigger("change");
+      
+       });
 
 
 
 </script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
 </body>
 </html>
