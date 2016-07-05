@@ -6,9 +6,9 @@ include("../../../bd/conexion.php");
 $titulo = $_POST['titulo'];
 $subtitulo = $_POST['subtitulo'];
 $texto = $_POST['texto'];
-$publicacion = $_POST['publicacion'];
-$edicion = $_POST['edicion'];
-$seccion = $_POST['seccion'];
+$publicacion = $_POST['publicacion1'];
+$edicion = $_POST['edicion1'];
+$seccion = $_POST['seccion1'];
 
 	if(isset($_FILES['file']['name'])){
 		$path1 = $_FILES['file']['name'];

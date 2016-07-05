@@ -3,6 +3,6 @@
  $sql = "DELETE FROM articulo WHERE id_articulo = '".$_POST["id_articulo"]."'";  
  if(mysqli_query($connect, $sql))  
  {  
-      echo 'Cliente borrado';  
+      echo 'Articulo borrado';  
  }  
  ?>  
