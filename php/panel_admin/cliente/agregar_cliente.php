@@ -9,8 +9,8 @@
 				$email = $_POST['email'];
 			}
 
-			 if(isset($_POST['password']) == isset($_POST['confirm_password'])){
-			 	$pass = md5($_POST['password']);
+			 if(isset($_POST['password_new']) == isset($_POST['confirm_password'])){
+			 	$pass = md5($_POST['password_new']);
 			 }
 			 if(isset($_POST['nombre'])){
 				$nombre = $_POST['nombre'];

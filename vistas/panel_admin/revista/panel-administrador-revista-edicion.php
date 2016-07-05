@@ -177,7 +177,7 @@
         <div class="modal-content">
             <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button><h4>Nueva Edicion</h4></div> 
             <div class="modal-body">
-                    <form id="validarForm2" action="../../../php/panel_admin/revista/edicion/agregar_edicion.php" method="POST" >
+                    <form id="validarForm2" action="../../../php/panel_admin/revista/edicion/agregar_edicion.php" method="POST" enctype="multipart/form-data" >
                           <div class="form-group">
                             <label for="seccion">Ingrese Edicion: </label>
                             <input type="text" class="form-control" name="edicion" id="edicion" placeholder="Ingrese edicion">
@@ -208,8 +208,14 @@
                             <input type="text" class="form-control" name="precio_suscripcion" id="precio_suscripcion" placeholder="Ingrese Precio de Suscripcion">
                           </div>
 
+                          <div class="form-group">
+                              <label for="file">Añada una imagen</label>
+                              <input type="file" id="file" name="file"/>
+                              <p class="help-block">La imagen tiene que ser jpg o png.</p>
+                          </div>                          
+
                            
-                          </div>
+                          
 
                             <button id="submitLog" name="login" class="btn btn-primary" style="width:100%;text-align:center;">Enviar</button>
                     </form>
