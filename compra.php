@@ -31,6 +31,8 @@ $preference = $mp->create_preference($preference_data);
 
 	?>
   <script src="js/script-index.js"></script>
+
+
 </head>
 <body>
    <div class="container"><!--contenedor de menu-->
@@ -53,12 +55,35 @@ $preference = $mp->create_preference($preference_data);
         $variable = $preference['response']['sandbox_init_point'];
         echo '<img src="php/ejemploQr.php?qr='.$variable.'"/>';
         ?>
-        <a class="btn btn-default btn-lg btn-block" href="<?php echo $preference['response']['sandbox_init_point']; ?>">Pagar</a>
+        <a class="btn btn-default btn-lg btn-block" data-id2="<?php echo $id_edicion?>"id="compra" href="<?php echo $preference['response']['sandbox_init_point']; ?>">Pagar</a>
         </div>
        </div>
       </section>
   <?php include("php/footer.php");
   	ob_end_flush();
    ?>
+
+     <script>
+  		$(document).ready(function(){
+        $(document).on('click', '#compra', function(){  
+           var id_edicion=$(this).data("id2");             
+           if(confirm("Estas seguro de comprar esto?"))  
+           {  
+                $.ajax({  
+                     url:"php/comprar_edicion.php",  
+                     method:"POST",  
+                     data:{id_edicion:id_edicion},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }  
+
+      
+       });
+        });
+  </script>
 </body>
 </html>
