@@ -282,7 +282,7 @@ header("Content-Type: text/html;charset=utf-8");
          
           echo "<br><br><div class='textoArt'>".$art['texto']."</div><br><br><br>";;
 
-
+          //echo "</div>";
         }
 
         echo "</div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
