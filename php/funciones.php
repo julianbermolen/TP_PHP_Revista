@@ -128,7 +128,7 @@ header("Content-Type: text/html;charset=utf-8");
                                               echo '<a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>';
                                        }else{
                                      
-                                        echo '<button type="button" href="" class="btn btn-danger">Suscribirse</button>
+                                        echo '<a href="suscripcion.php?precio='.$arrayRespuesta["precio_suscripcion"].'&id_edicion='.$arrayRespuesta["id_edicion"].'" type="button" class="btn btn-danger">Suscribite</a>
                                               <a href="compra.php?precio='.$arrayRespuesta["precio_compra"].'&id_edicion='.$arrayRespuesta["id_edicion"].'" type="button" class="btn btn-success">Comprar</a>';
                                    
                                      }
