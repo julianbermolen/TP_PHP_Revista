@@ -7,9 +7,9 @@
 	$cod_cliente = $_COOKIE['cod_cliente'];
 	$fecha = date('y-m-d');
 	$nuevafecha = strtotime ( '+30 day' , strtotime ( $fecha ) ) ;
-	$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+	$nuevafecha = date ( 'y-m-d' , $nuevafecha );
 	
-	$query = "INSERT INTO suscripcion VALUES('','$id_edicion','$cod_cliente','$fecha',$nuevafecha)";
+	$query = "INSERT INTO suscripcion VALUES('','$id_edicion','$cod_cliente','$fecha','$nuevafecha')";
 
 		$result = mysqli_query($conexion,$query);
 		
