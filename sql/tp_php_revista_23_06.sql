@@ -39,7 +39,9 @@ CREATE TABLE `articulo` (
   `id_seccion` int(11) DEFAULT NULL,
   `coordenadas` varchar(1024) CHARACTER SET latin1 DEFAULT NULL,
   `cod_publicacion` int(11) ,
-  `cod_edicion` int(11) 
+  `cod_edicion` int(11),
+  `cod_estado` int(11)
+
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -107,7 +109,7 @@ CREATE TABLE `edicion` (
 
 CREATE TABLE `estado` (
   `id_estado` int(11) NOT NULL,
-  `descripcion` varchar(10) CHARACTER SET latin1 DEFAULT NULL
+  `estado` varchar(10) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
