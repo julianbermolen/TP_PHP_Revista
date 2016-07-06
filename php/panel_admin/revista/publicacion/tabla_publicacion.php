@@ -2,7 +2,7 @@
                 include("../../../bd/conexion.php");
                       
                     $output = '';  
-                    $sql = "SELECT * FROM publicacion  ORDER BY id_publicacion DESC" ;  
+                    $sql = "SELECT * FROM publicacion INNER JOIN estado ON publicacion.cod_estado = estado.id_estado WHERE cod_estado = 1 ORDER BY id_publicacion DESC" ;  
                     $resultado = mysqli_query($conexion, $sql);
 
                     while($fila = mysqli_fetch_array($resultado)) {
@@ -11,7 +11,10 @@
                             <td>'.$fila["nombre_publicacion"].'</td>
                             <td>'.$fila["tipo_publicacion"].'</td>
                              <td style="text-align:center"><button type="button" style=" width:20%"  name="delete_btn" id="delete_btn" data-id1="'.$fila["id_publicacion"].'" class="btn btn-xs btn-danger btn_delete">x</button></td>
-                            <td style="text-align:center"><a href="#'.$fila["id_publicacion"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_publicacion"].'" data-toggle="modal" role="button"></a></td>';
+
+                            <td style="text-align:center"><a href="#'.$fila["id_publicacion"].'" id="mod_btn" class="dropdown-toggle btn btn-xs btn-warning glyphicon glyphicon-edit" data-target="#'.$fila["id_publicacion"].'" data-toggle="modal" role="button"></a></td>
+
+                              <td style="text-align:center"><button type="button" style=" width:20%"  name="btn_success" id="btn_success" data-id1="'.$fila["id_publicacion"].'" class="btn btn-xs btn-success glyphicon glyphicon-ok btn_success"></button></td>';
 
                       echo '<div id="'.$fila["id_publicacion"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                           <div class="modal-dialog" style="width:80%">
@@ -32,6 +35,10 @@
                                                   <input type="text" class="form-control" name="descripcion" id="descripcion" value="'.$fila["descripcion"].'" placeholder="Ingrese descripcion">
                                                 </div>                                              
 
+                                                <div class="form-group">
+                                                  <label for="estado"  class="label-largo">Estado:</label>
+                                                  <input type="text" id="estado" name="estado" class="form-control input-largo" value="'.$fila["estado"].'" readonly="readonly" />
+                                                </div>
                                                 ';
                                                  
                                                 echo '<div class="form-group">

@@ -2,7 +2,7 @@
                 include("../../../bd/conexion.php");
                       
                     $output = '';  
-                    $sql = "SELECT * FROM edicion INNER JOIN publicacion ON publicacion.id_publicacion = edicion.id_publicacion ORDER BY id_edicion DESC" ;  
+                    $sql = "SELECT * FROM edicion INNER JOIN publicacion ON publicacion.id_publicacion = edicion.id_publicacion WHERE publicacion.cod_estado = 1 ORDER BY id_edicion DESC" ;  
                     $resultado = mysqli_query($conexion, $sql);
 
                     while($fila = mysqli_fetch_array($resultado)) {

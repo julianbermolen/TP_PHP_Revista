@@ -3,7 +3,7 @@
  $connect = mysqli_connect("localhost", "root", "", "sistema");
 
  
- $sql = "INSERT INTO publicacion VALUES('','".$_POST["publicacion"]."','".$_POST["tipo"]."','','".$_POST["descripcion"]."')";
+ $sql = "INSERT INTO publicacion VALUES('','".$_POST["publicacion"]."','".$_POST["tipo"]."','','".$_POST["descripcion"]."', '1')";
 
  
 

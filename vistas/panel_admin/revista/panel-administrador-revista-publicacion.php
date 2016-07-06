@@ -153,6 +153,7 @@
                          <th width="10%">Tipo</th>
                          <th width="4%">Borrar</th>
                          <th width="1%">Modificar</th>
+                         <th width="3%">Finalizar</th>
 
                     </tr>
                   </thead>
@@ -248,6 +249,26 @@
            {  
                 $.ajax({  
                      url:"../../../php/panel_admin/revista/publicacion/borrar_publicacion.php",  
+                     method:"POST",  
+                     data:{id_publicacion:id_publicacion},  
+                     dataType:"text",  
+                     success:function(data){  
+                          alert(data);  
+                          window.location.reload();  
+                     }  
+                });  
+           }    
+          });
+
+});
+
+  $(document).ready(function(){
+        $(document).on('click', '.btn_success', function(){  
+           var id_publicacion=$(this).data("id1");  
+           if(confirm("Estas seguro de finalizar esto?"))  
+           {  
+                $.ajax({  
+                     url:"../../../php/panel_admin/revista/publicacion/finalizar_publicacion.php",  
                      method:"POST",  
                      data:{id_publicacion:id_publicacion},  
                      dataType:"text",  
