@@ -215,7 +215,7 @@ header("Content-Type: text/html;charset=utf-8");
     include("bd/conexion.php");
     $idPubli = $_GET['id_publicacion'];
 
-    $query = "SELECT * FROM seccion WHERE id_publicacion = '$idPubli'";
+    $query = "SELECT * FROM seccion WHERE cod_edicion = '$idPubli'";
 
     $result = mysqli_query($conexion,$query);
 
