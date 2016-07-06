@@ -17,89 +17,13 @@
   <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
+
+  
+
   <!--API para los graficos-->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
 
-<script>
-  $(document).ready(function(){
-
-  //https://developers.google.com/chart/interactive/docs/quick_start
-  // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-
-      function drawChart(periodo) {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          <?php
-            date_default_timezone_set ("America/Argentina/Buenos_Aires");
-            $ahora=getdate(time());
-            $periodo ="<script>document.write(periodo)</script>"
-            $mes=$ahora["mon"];
-            $anio=$ahora["year"];
-            $dia=$ahora["mday"];
-
-            include("../../bd/conexion.php");
-
-            if(($mes-$periodo)>=0){
-              $query="SELECT publicacion.nombre_publicacion,COUNT(*)
-              FROM compra INNER JOIN edicion ON compra.cod_edicion=edicion.id_edicion
-              INNER JOIN publicacion ON edicion.id_publicacion=publicacion.id_publicacion
-              where fecha_compra BETWEEN '".$anio."-".$mes."-".$dia."' AND '".$anio."-".($mes-$periodo)."-".$dia."'
-              GROUP BY publicacion.id_publicacion,publicacion.nombre_publicacion";
-            }
-            else{
-              //corregir esta linea            $mesAnterior=(12-$periodo);
-              $query="SELECT publicacion.nombre_publicacion,COUNT(*)
-              FROM compra INNER JOIN edicion ON compra.cod_edicion=edicion.id_edicion
-              INNER JOIN publicacion ON edicion.id_publicacion=publicacion.id_publicacion
-              where fecha_compra BETWEEN '".$anio."-".$mes."-".$dia."' AND '".($anio-1)."-".($mes-$periodo)."-".$dia."'
-              GROUP BY publicacion.id_publicacion,publicacion.nombre_publicacion";  
-            }
-
-            $resultado=mysqli_query($query);
-            $item=mysqli_fetch_array($resultado);
-
-            while($item){
-              echo"['".$item[0]."','".$item[1]."']";
-            }
-
-          ?>
-          /*
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-          */
-        ]);
-
-        // Set chart options
-        var options = {'title':'Compras de Artículos',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-
-      $("#periodo").change(function(){
-        var periodo = $(this).val();
-        drawChart(periodo);
-      });
-  });
-</script>
+  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -225,7 +149,9 @@
           </form>
         </div>
       </div>
-      <div id="contenedorDeGraficos">
+      <div id="chart-div">
+      </div>
+      <div id="chart-table-div">
       </div>
     </section>
     <!-- /.content -->
@@ -255,6 +181,8 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="../../js/generadorDeGraficos.js"></script>
 </body>
 
 </html>
