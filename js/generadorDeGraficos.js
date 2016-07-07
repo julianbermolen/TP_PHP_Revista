@@ -1,14 +1,13 @@
 
   google.load("visualization", "1", { packages: ["corechart"] });
   google.setOnLoadCallback(drawChart);
-
+  var valor;//almacena el valor del select cuando este cambie de opcion
 
 function drawChart() {
 
                 var jsonData = $.ajax({
                     type: "GET",
-                    url: "../../vistas/panel_admin/datosDeTabla.php",
-                    data: "valor",
+                    url: "../../vistas/panel_admin/datosDeTabla.php?valor="+valor,
                     dataType: "json",
                     async: false
                 }).responseText;
@@ -18,30 +17,30 @@ function drawChart() {
 
                 var options = {
 
-        pointSize: 2,
+                pointSize: 2,
 
-                legend: {position: 'right', textStyle: {fontSize: 9, fontName: 'verdana', color: '595959'}},
+                legend: {position: 'right', textStyle: {fontSize: 12, fontName: 'verdana', color: '595959'}},
 
                 title: ('Venta de productos'),
       
-        titleTextStyle: { color: '595959',   fontName: 'verdana', fontSize: 11  },
-<!-- Eje y  si no quieres % quita la opcion format: '#\'%\''-->           
+        titleTextStyle: { color: '595959',   fontName: 'verdana', fontSize: 12  },
+    
                 vAxis: {minValue: 0, maxValue: 100, format: '#\'%\'',minorGridlines: {count: 0}, textStyle: {fontName: 'verdana', color: '595959'}},
-<!-- Eje X  si no quieres las etiquetas con angulo 90° pon  slantedText:false -->           
+
         hAxis: {direction:1, slantedText:true, slantedTextAngle: 90, textStyle: {fontName: 'verdana', color: '595959'}} 
                 };
-<!-- Especificamos el tipo de grafico puedes probar los tipos de graficos comentados abajo (ya que el formato de array es el mismo) Pie, Column  y muchos mas en https://developers.google.com/chart/interactive/docs/gallery?hl=es  -->   
-                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    <!--    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));-->  
-    
-    <!--    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));-->
+var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
 
+var table = new google.visualization.Table(document.getElementById('chart-table-div'));
+                
                 chart.draw(data, options);
-            }
 
-  $("#periodo").change(function(){
-    var valor = $(this).val();
+                table.draw(data, options);
+  }          
 
-    drawChart(data, options,valor);//invoco la funcion
-    });
-
+$(function(){
+    $("#periodo").change(function(){
+      valor=$(this).val();//obtengo el valor del select
+      drawChart();//invoco la funcion
+  });
+});

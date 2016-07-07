@@ -1,30 +1,21 @@
 <?php
             $valor = $_GET["valor"];
 
-            date_default_timezone_set ("America/Argentina/Buenos_Aires");
-            $ahora=getdate(time());
-            
-            $mes=$ahora["mon"];
-            $anio=$ahora["year"];
-            $dia=$ahora["mday"];
-
+            date_default_timezone_set ("America/Argentina/Buenos_Aires");//seteo la hora local
+            //defino el intervalo de tiempo en el que voy a graficar
+            $hoy=date("Y-m-d",time());
+            $antes=date("Y-m-d",time()-((3600*24*30)*$valor));
 
             include("../../bd/conexion.php");
+            echo"$hoy<br>$antes";
 
-            $query="SELECT publicacion.nombre_publicacion,COUNT(publicacion.id_publicacion)
+            $query="SELECT publicacion.nombre_publicacion,COUNT(compra.id_compra)
             FROM compra INNER JOIN edicion ON compra.cod_edicion=edicion.id_edicion
-            INNER JOIN publicacion ON edicion.id_publicacion=publicacion.id_publicacion";
+            INNER JOIN publicacion ON edicion.id_publicacion=publicacion.id_publicacion
+            WHERE compra.fecha_compra BETWEEN $antes AND $hoy
+            GROUP BY publicacion.id_publicacion,publicacion.nombre_publicacion";
             
-            if(($mes-$valor)>0){
-              $query.="WHERE compra.fecha_compra BETWEEN '".$anio."-".($mes-$valor)."-".$dia."' AND '".$anio."-".$mes."-".$dia."'";
-            }
-            else{
 
-              $query.="WHERE compra.fecha_compra BETWEEN '".($anio-1)."-".($mes+(12-$valor))."-".$dia."' AND '".$anio."-".$mes."-".$dia."'";
-                
-            }
-            
-            $query.="GROUP BY publicacion.id_publicacion,publicacion.nombre_publicacion";
 
             $resultado=mysqli_query($conexion,$query);
             

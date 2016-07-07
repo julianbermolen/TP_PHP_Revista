@@ -18,8 +18,7 @@
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script src="../../js/generadorDeGraficos.js"></script>
+
 
   <!--API para los graficos-->
   
@@ -139,7 +138,7 @@
       <div class="row">
         <div class="col-xs-12">
           <form>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-4">
               <label for="periodo">Seleccione periodo de tiempo</label>
               <select id="periodo" name="periodo" class="form-control">
                 <option selected="true" value="1">1 mes</option>
@@ -150,8 +149,8 @@
           </form>
         </div>
       </div>
-      <div id="chart-div">
-      </div>
+        <div id="chart-div">
+        </div>
       <div id="chart-table-div">
       </div>
     </section>
@@ -173,6 +172,8 @@
 
 <!-- jQuery 2.2.0 -->
 <script src="../../js/jQuery/jQuery-2.2.0.min.js"></script>
+
+
 <!-- Bootstrap 3.3.6 -->
 <script src="../../js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
@@ -182,7 +183,8 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="../../js/generadorDeGraficos.js"></script>
 </body>
 
 </html>
