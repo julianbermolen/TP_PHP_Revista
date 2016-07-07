@@ -1,44 +1,47 @@
-$(document).ready(function(){
-      google.charts.load('current',{'packages':['corechart','table']});
-      google.charts.setOnLoadCallback(loadData);
+
+  google.load("visualization", "1", { packages: ["corechart"] });
+  google.setOnLoadCallback(drawChart);
 
 
-      $("#periodo").change(function(){
-        var valor = $(this).val();
-        
-        function loadData(valor){
-          $.ajax({
-            type: 'GET',
-            url: '../vistas/panel_admin/datosDeTabla.php',
-            data: valor,
-            dataType: 'json',
-            succes: drawChart
-          });
+function drawChart() {
 
-        }
+                var jsonData = $.ajax({
+                    type: "GET",
+                    url: "../../vistas/panel_admin/datosDeTabla.php",
+                    data: "valor",
+                    dataType: "json",
+                    async: false
+                }).responseText;
+  
+                var obj = jQuery.parseJSON(jsonData);
+                var data = google.visualization.arrayToDataTable(obj);
 
-      });
+                var options = {
 
-      function drawChart(jsonData) {
+        pointSize: 2,
 
-        // Create the data table.
-        var pieData = new google.visualization.arrayToDataTable(jsonData);
-        // Set chart options
+                legend: {position: 'right', textStyle: {fontSize: 9, fontName: 'verdana', color: '595959'}},
 
-        var pieChartOptions = {'title':'Venta de productos',
-                       'width':400,
-                       'height':300};
+                title: ('Venta de productos'),
+      
+        titleTextStyle: { color: '595959',   fontName: 'verdana', fontSize: 11  },
+<!-- Eje y  si no quieres % quita la opcion format: '#\'%\''-->           
+                vAxis: {minValue: 0, maxValue: 100, format: '#\'%\'',minorGridlines: {count: 0}, textStyle: {fontName: 'verdana', color: '595959'}},
+<!-- Eje X  si no quieres las etiquetas con angulo 90° pon  slantedText:false -->           
+        hAxis: {direction:1, slantedText:true, slantedTextAngle: 90, textStyle: {fontName: 'verdana', color: '595959'}} 
+                };
+<!-- Especificamos el tipo de grafico puedes probar los tipos de graficos comentados abajo (ya que el formato de array es el mismo) Pie, Column  y muchos mas en https://developers.google.com/chart/interactive/docs/gallery?hl=es  -->   
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    <!--    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));-->  
+    
+    <!--    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));-->
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart-div'));
-        chart.draw(pieData, pieChartOptions);
+                chart.draw(data, options);
+            }
 
-        var tableOptions = {'showRowNumber':'true',
-                       'width':'60%'};
+  $("#periodo").change(function(){
+    var valor = $(this).val();
 
-        // Instantiate and draw our chart, passing in some options.
-        var table = new google.visualization.Table(document.getElementById('chart-table-div'));
-        table.draw(pieData, tableOptions);
-      }
+    drawChart(data, options,valor);//invoco la funcion
+    });
 
-});

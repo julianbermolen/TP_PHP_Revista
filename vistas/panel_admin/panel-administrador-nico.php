@@ -18,7 +18,8 @@
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
 
-  
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="../../js/generadorDeGraficos.js"></script>
 
   <!--API para los graficos-->
   
@@ -181,8 +182,7 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="../../js/generadorDeGraficos.js"></script>
+
 </body>
 
 </html>
