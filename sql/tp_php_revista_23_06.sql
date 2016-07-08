@@ -39,10 +39,7 @@ CREATE TABLE `articulo` (
   `id_seccion` int(11) DEFAULT NULL,
   `coordenadas` varchar(1024) CHARACTER SET latin1 DEFAULT NULL,
   `cod_publicacion` int(11) ,
-  `cod_edicion` int(11),
-  `cod_estado` int(11)
-
-
+  `cod_edicion` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -98,7 +95,8 @@ CREATE TABLE `edicion` (
   `cod_suscripcion` int(11) NOT NULL,
   `precio_compra` decimal(4,2) DEFAULT NULL,
   `precio_suscripcion` decimal(4,2) DEFAULT NULL,
-  `tapa` varchar(100) CHARACTER SET latin1 DEFAULT NULL
+  `tapa` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `cod_estado` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -108,7 +106,7 @@ CREATE TABLE `edicion` (
 --
 
 CREATE TABLE `estado` (
-  `id_estado` int(11) NOT NULL,
+  `id_estado` int(11) AUTO_INCREMENT,
   `estado` varchar(10) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -222,7 +220,7 @@ CREATE TABLE `suscripcion` (
   `cod_edicion` int(11) NOT NULL,
   `inicio` date NOT NULL,
   `fin` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 

@@ -23020,25 +23020,25 @@ INSERT INTO `provincia` (`id_provincia`, `provincia_nombre`) VALUES
 (3, 'Catamarca'),
 (4, 'Chaco'),
 (5, 'Chubut'),
-(6, 'CÃ³rdoba'),
+(6, 'Córdoba'),
 (7, 'Corrientes'),
-(8, 'Entre RÃ­os'),
+(8, 'Entre Ríos'),
 (9, 'Formosa'),
 (10, 'Jujuy'),
 (11, 'La Pampa'),
 (12, 'La Rioja'),
 (13, 'Mendoza'),
 (14, 'Misiones'),
-(15, 'NeuquÃ©n'),
-(16, 'RÃ­o Negro'),
+(15, 'Neuquén'),
+(16, 'Río Negro'),
 (17, 'Salta'),
 (18, 'San Juan'),
 (19, 'San Luis'),
 (20, 'Santa Cruz'),
-(21, 'Santa FÃ©'),
+(21, 'Santa Fé'),
 (22, 'Santiago del Estero'),
 (23, 'Tierra del Fuego'),
-(24, 'TucumÃ¡n');
+(24, 'Tucumán');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
