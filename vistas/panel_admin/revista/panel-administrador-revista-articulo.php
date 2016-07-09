@@ -92,7 +92,7 @@ function initMap() {
             <!-- Menu Boton Biestado -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- Nombre del usuario -->
-              <span>Carlos Saul</span>
+              <span><?php echo $_SESSION['nombre'] ?></span>
             </a>
             <ul class="dropdown-menu">
               
@@ -100,7 +100,7 @@ function initMap() {
               <li class="user-header">
               
                 <p>
-                  Carlos Saul - Web Developer
+                  <?php echo $_SESSION['nombre'] ?> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -110,7 +110,7 @@ function initMap() {
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../../php/panel_admin/login/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
