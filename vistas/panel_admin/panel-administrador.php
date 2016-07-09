@@ -17,10 +17,7 @@
   <link rel="stylesheet" href="../../css/admin/AdminLTE.min.css">
 
   <link rel="stylesheet" href="../../css/admin/skin-blue.min.css">
-  <!--API para los graficos-->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <script src="../../js/generadorDeGraficos.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -141,22 +138,45 @@
     </section>
 
     <!-- Contenido Principal -->
-    <section class="content" id="graficos">
+        <section class="content" id="graficos">
       <!-- Your Page Content Here -->
       <div class="row">
         <div class="col-xs-12">
+          <h4>Productos vendidos</h4>
           <form>
-            <div class="col-xs-12 col-md-6">
-              <label for="periodo">Seleccione periodo de tiempo</label>
-              <select id="periodo" name="periodo" class="form-control">
-                <option selected="true">1 mes</option>
-                <option>6 meses</option>
-                <option>1 año</option>
+            <div class="col-xs-4">
+              <label for="periodo-ventas">Seleccione periodo de tiempo</label>
+              <select id="periodo-ventas" name="periodo-ventas" class="form-control">
+                <option selected="true">Seleccione</option>
+                <option value="1">1 mes</option>
+                <option value="6">6 meses</option>
+                <option value="12">12 meses</option>
               </select>
             </div>
           </form>
         </div>
       </div>
+      
+        <div id="pie-chart-div">
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4>Suscripciones realizadas</h4>
+            <form>
+                <div class="col-xs-4">
+                  <label for="periodo-suscripciones">Seleccione periodo de tiempo</label>
+                  <select id="periodo-suscripciones" name="periodo-suscripciones" class="form-control">
+                    <option selected="true">Seleccione</option>
+                    <option value="1">1 mes</option>
+                    <option value="6">6 meses</option>
+                    <option value="12">12 meses</option>
+                  </select>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div id="bar-chart-div">
+        </div>
     </section>
     <!-- /.content -->
   </div>
@@ -181,9 +201,9 @@
 <!-- AdminLTE App -->
 <script src="../../js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="../../js/generadorDeGraficos.js"></script>
+
 </body>
 </html>
