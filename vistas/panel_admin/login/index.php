@@ -44,7 +44,7 @@
             if ($tipo['nombre'] == $nombre && $tipo['clave'] == $clave){
 
               session_start();
-              $_SESSION['nombre'] = $nombre;
+              $_SESSION['nombre_usuario'] = $nombre;
               $_SESSION['rol'] = $tipo['cod_rol'];
               $_SESSION["log"]=true;
 
