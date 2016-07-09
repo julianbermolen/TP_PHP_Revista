@@ -75,7 +75,7 @@
             <!-- Menu Boton Biestado -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- Nombre del usuario -->
-              <span><?php echo $_SESSION['nombre'] ?></span>
+              <span><?php echo $_SESSION['nombre_usuario'] ?></span>
             </a>
             <ul class="dropdown-menu">
               
@@ -83,7 +83,7 @@
               <li class="user-header">
               
                 <p>
-                  <?php echo $_SESSION['nombre'] ?> - Web Developer
+                  <?php echo $_SESSION['nombre_usuario'] ?> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
