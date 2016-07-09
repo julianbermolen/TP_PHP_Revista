@@ -28,6 +28,11 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+  <?php
+  require_once("../../php/seguro.php");
+ 
+
+  ?>
 <div class="wrapper">
 
   <!-- Header Principal -->
@@ -104,6 +109,7 @@
             <li><a href="revista/panel-administrador-revista-finalizados.php"><i class="fa fa-circle-o"></i>Finalizados</a></li>              
           </ul>
         </li>
+        <?php if($_SESSION['rol'] == 3){ ?>
         <li><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
         <li class="active"><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
           <ul class="treeview-menu">
@@ -112,6 +118,7 @@
             <li><a href="panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
           </ul>
         </li>
+        <?php } ?>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

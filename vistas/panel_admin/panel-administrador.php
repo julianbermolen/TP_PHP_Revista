@@ -33,13 +33,18 @@
     ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+  <?php
+  require_once("../../php/seguro.php");
+ 
+
+  ?>
 <div class="wrapper">
 
   <!-- Header Principal -->
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a class="logo">
       <!-- mini logo para barra lateral mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo para estado regular y dispositivos moviles -->
@@ -61,7 +66,7 @@
             <!-- Menu Boton Biestado -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- Nombre del usuario -->
-              <span>Carlos Saul</span>
+              <span><?php echo $_SESSION['nombre'] ?></span>
             </a>
             <ul class="dropdown-menu">
               
@@ -69,7 +74,7 @@
               <li class="user-header">
               
                 <p>
-                  Carlos Saul - Web Developer
+                  <?php echo $_SESSION['nombre'] ?> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -79,7 +84,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../php/panel_admin/login/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -109,6 +114,7 @@
             <li><a href="revista/panel-administrador-revista-finalizados.php"><i class="fa fa-circle-o"></i>Finalizados</a></li>              
           </ul>
         </li>
+        <?php if($_SESSION['rol'] == 3){ ?>
         <li><a href="panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
         <li><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
           <ul class="treeview-menu">
@@ -117,6 +123,7 @@
             <li><a href="panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
           </ul>
         </li>
+        <?php } ?>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

@@ -59,13 +59,18 @@ function initMap() {
   </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini" onload="loadMap()">
+  <?php
+  require_once("../../../php/seguro.php");
+ 
+
+  ?>
 <div class="wrapper">
 
   <!-- Header Principal -->
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a  class="logo">
       <!-- mini logo para barra lateral mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo para estado regular y dispositivos moviles -->
@@ -135,6 +140,7 @@ function initMap() {
             <li><a href="panel-administrador-revista-finalizados.php"><i class="fa fa-circle-o"></i>Finalizados</a></li>           
           </ul>
         </li> 
+        <?php if($_SESSION['rol'] == 3){ ?>
         <li><a href="../panel-administrador-usuario.php"><i class="fa fa-user-secret"></i> <span>Usuario</span></a></li>
         <li><a href=""><i class="fa fa-user"></i> <span>Cliente</span></a>
           <ul class="treeview-menu">
@@ -143,6 +149,7 @@ function initMap() {
             <li><a href="../panel-administrador-cliente-compras.php"><i class="fa fa-circle-o"></i> Compras</a></li>
           </ul>
         </li>
+        <?php }?>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
