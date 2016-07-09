@@ -105,7 +105,7 @@ CREATE TABLE `edicion` (
 --
 
 CREATE TABLE `estado` (
-  `id_estado` int(11) AUTO_INCREMENT,
+  `id_estado` int(11)  NOT NULL,
   `estado` varchar(10) CHARACTER SET latin1 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
