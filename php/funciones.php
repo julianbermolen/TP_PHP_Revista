@@ -63,6 +63,7 @@ header("Content-Type: text/html;charset=utf-8");
 
   //funcion prara traer productos por su tipo
         function traerProductos($tipo,$qForPage,$indice){
+
           $limiteDeConsulta=$qForPage;
           $inicioDeConsulta=($indice-1)*$qForPage;
           $contarLineas=0;
@@ -70,15 +71,14 @@ header("Content-Type: text/html;charset=utf-8");
           paginar($tipo,$qForPage,$indice);
           //inicia insercion de portadas
           include("bd/conexion.php");//inicia conexion
-          /*$tuplasHalladas=mysqli_fetch_array(mysqli_query($conexion,"select count(*) from publicacion where tipo_publicacion='$tipo' limit $inicioDeConsulta,$limiteDeConsulta;"));
-          $cantidadDeLineas=($tuplasHalladas[0])/2;
-         
-          if(($tuplasHalladas[0]%2)!=0)
-            $cantidadDeLineas++;
-    
-          
-          */
-          $respuesta=mysqli_query($conexion,"select * from edicion E limit $inicioDeConsulta,$qForPage;");
+          mysqli_set_charset($conexion,'utf8');
+
+          $query = "select * 
+          from edicion e INNER JOIN publicacion p ON e.id_publicacion=p.id_publicacion
+          where e.cod_estado=2 and p.tipo_publicacion='$tipo'
+          limit $inicioDeConsulta,$qForPage";
+
+          $respuesta=mysqli_query($conexion,$query);
           $tuplasHalladas=mysqli_num_rows($respuesta);
           $cantidadDeLineas=$tuplasHalladas/2;
           if($tuplasHalladas%2!=0)
@@ -92,9 +92,9 @@ header("Content-Type: text/html;charset=utf-8");
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
                        <a href='#$arrayRespuesta[id_edicion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_edicion]' data-toggle='modal' role='button'' >
+                       <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
                         <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']."/>
                         <div class='descripcion'>
-                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
                              <p>Precio de compra: ".$arrayRespuesta['precio_compra']."</p>
                              <p>Precio de suscripcion: ".$arrayRespuesta['precio_suscripcion']."</p>
                         </div>
