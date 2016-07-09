@@ -75,6 +75,7 @@ $preference = $mp->create_preference($preference_data);
                      data:{id_edicion:id_edicion},  
                      dataType:"text",  
                      success:function(data){  
+                          alert("gracias por la compra");
                           window.location.reload();  
                      }  
                 });  
