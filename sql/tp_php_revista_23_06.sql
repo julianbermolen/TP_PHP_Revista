@@ -95,8 +95,7 @@ CREATE TABLE `edicion` (
   `cod_suscripcion` int(11) NOT NULL,
   `precio_compra` decimal(4,2) DEFAULT NULL,
   `precio_suscripcion` decimal(4,2) DEFAULT NULL,
-  `tapa` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
-  `cod_estado` int(11)
+  `tapa` varchar(100) CHARACTER SET latin1 DEFAULT NULL  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -166,7 +165,8 @@ CREATE TABLE `publicacion` (
   `nombre_publicacion` varchar(25) CHARACTER SET latin1 DEFAULT NULL,
   `tipo_publicacion` char(1) CHARACTER SET latin1 DEFAULT NULL,
   `path` varchar(300) CHARACTER SET latin1 DEFAULT NULL,
-  `descripcion` varchar(200) CHARACTER SET latin1 DEFAULT NULL
+  `descripcion` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
+  `cod_estado` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --

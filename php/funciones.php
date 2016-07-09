@@ -75,7 +75,7 @@ header("Content-Type: text/html;charset=utf-8");
 
           $query = "select * 
           from edicion e INNER JOIN publicacion p ON e.id_publicacion=p.id_publicacion
-          where e.cod_estado=2 and p.tipo_publicacion='$tipo'
+          where p.cod_estado=2 and p.tipo_publicacion='$tipo'
           limit $inicioDeConsulta,$qForPage";
 
           $respuesta=mysqli_query($conexion,$query);
