@@ -4,29 +4,21 @@
 
 				<div class="col-lg-12">
 					<div class="col-lg-4">
-						<h2>Consultas</h2>
-						<a class="a-Footer" href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
+						<h2>Alumno</h2>
+						<span class="footerDato">Lautaro Aragones</span><br>
+						<span class="footerDato">(dni)</span>
+
 					</div>
 
 					<div class="col-lg-4">
-						<h2>Preguntas frecuentes</h2>
-						<a class="a-Footer"href="#"> ¿Como suscribirme a una revista? </a><br>
-						<a class="a-Footer"href="#"> ¿Como me registro? </a><br>
-						<a class="a-Footer"href="#"> ¿Como se si ya estoy suscripto a alguna revista? </a><br>
-						<a class="a-Footer"href="#"> ¿Como puedo mirar una revista ya comprada? </a><br>
-						<a class="a-Footer"href="#"> Más </a><br>
+						<h2>Alumno</h2>
+						<span class="footerDato">Julian Bermolen</span><br>
+						<span class="footerDato">37864792</span>
 					</div>
 					<div class="col-lg-4">
-						<h2>Contacto</h2>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
-						<a class="a-Footer"href="#"> Ayuda </a><br>
+						<h2>Alumno</h2>
+						<span class="footerDato">Nicolas Cardozo</span><br>
+						<span class="footerDato">(dni)</span>
 					</div>
 				
 				</div>

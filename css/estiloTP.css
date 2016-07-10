@@ -14,7 +14,11 @@
 			
 			clear:both; 
 }
-
+.footerDato{
+	font-weight: bold;
+	font-size: 18px;
+	color:#337ab7;
+}
 #footer>.container{
 	background-color: #e7e7e7;
 }
