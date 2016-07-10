@@ -57,7 +57,7 @@
             <form class="cmxform" id="validarForm" action="php/update-cliente.php" method="POST" class="form-horizontal">
               <div class="form-group">
                 <label for="username" class="label-largo">Nombre de usuario:</label>
-                <input type="text" id="username" name="username" class="form-control input-largo" value=<?php echo"$datos[username_cliente]"; ?> />
+                <input type="text" id="username" name="username" class="form-control input-largo" value=<?php echo"$datos[username_cliente]"; ?> readonly="readonly" />
               </div>
               <div class="form-group">
                 <label for="email" class="label-largo">Ingrese e-mail:</label>
@@ -97,7 +97,7 @@
                         ?>
               </div>
 
-              <input type="submit" name="boton" value="Cambiar datoss" class="btn btn-primary btn-lg btn-block"/>
+              <input type="submit" name="boton" value="Cambiar datos" class="btn btn-primary btn-lg btn-block"/>
             </form>
             
           </div>

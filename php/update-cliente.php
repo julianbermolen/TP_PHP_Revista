@@ -33,6 +33,8 @@
 				$localidad = $_POST['localidad'];
 			}
 
+
+
 			$query = "UPDATE cliente 
 						SET username_cliente='$user',
 						email_cliente='$email',
@@ -41,7 +43,7 @@
 						calle='$direccion',
 						numero_calle='$nro',
 						cod_prov='$prov',
-						cod_ciud='$localidad',
+						cod_ciud='$localidad'
 						WHERE id_cliente=$datos_viejos[0]";
 			$resultado = mysqli_query($conexion,$query);
 
