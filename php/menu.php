@@ -37,25 +37,12 @@ session_start();
               echo"<a href='index.php?indice=".isset($indice)."&tipo=D'>Diarios";
           ?>
         </a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoría <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Mas leídas</a></li>
-            <li><a href="#">Moda</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Policial</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"></a></li>
-          </ul>
-        </li>
+        
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" value="" placeholder="Buscar articulos" onkeypress="busca(this.value);">
-          <ul class='dropdown'><a class='drowdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'></a>
-            <li id="valores"></li>
-          </ul>
+          
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>
