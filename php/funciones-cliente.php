@@ -15,7 +15,7 @@
 		while($fila = mysqli_fetch_array($tabla)){
 			echo"<tr>
 					<td>$fila[0]</td>
-					<td><a href='articulo.php?id_edicion=$fila[3]'>$fila[1]</a></td>
+					<td><a href='articulo.php?id_publicacion=$fila[3]'>$fila[1]</a></td>
 					<td>$fila[2]</td>
 				</tr>";
 
@@ -38,7 +38,7 @@
 		while($fila = mysqli_fetch_array($tabla)){
 			echo"<tr>
 					<td>$fila[0]</td>
-					<td><a href='articulo.php?id_edicion=$fila[4]'>$fila[1]</a></td>
+					<td><a href='articulo.php?id_publicacion=$fila[4]'>$fila[1]</a></td>
 					<td>$fila[2]</td>
 					<td>$fila[3]</td>
 				</tr>";
