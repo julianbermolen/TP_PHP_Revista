@@ -292,13 +292,15 @@ header("Content-Type: text/html;charset=utf-8");
          
           echo "<br><br><div class='textoArt'>".$art['texto']."</div><br><br><br>";;
 
-          //echo "</div>";
+          echo "</div>";
         }
-
+        echo "<div id='map' style='width:95%; height:300px;'></div>";
         echo "</div></div></div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
     }
-
-
-  }
+?>
+   
+  <?php
+}
 
 ?>
+
