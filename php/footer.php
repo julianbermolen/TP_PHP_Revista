@@ -6,7 +6,7 @@
 					<div class="col-lg-4">
 						<h2>Alumno</h2>
 						<span class="footerDato">Lautaro Aragones</span><br>
-						<span class="footerDato">(dni)</span>
+						<span class="footerDato">38890417</span>
 
 					</div>
 
@@ -18,7 +18,7 @@
 					<div class="col-lg-4">
 						<h2>Alumno</h2>
 						<span class="footerDato">Nicolas Cardozo</span><br>
-						<span class="footerDato">(dni)</span>
+						<span class="footerDato">36492030</span>
 					</div>
 				
 				</div>

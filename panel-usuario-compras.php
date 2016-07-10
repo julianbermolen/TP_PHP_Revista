@@ -25,7 +25,7 @@
                       <th>Código de compra</th>
                       <th>Nombre de la edición</th>
                       <th>Precio de compra</th>
-                      <th>Fecha de inicio</th>
+                      <th>Fecha de la compra</th>
                     </tr>';
               
                     traerCompras($_SESSION["nombre"]);

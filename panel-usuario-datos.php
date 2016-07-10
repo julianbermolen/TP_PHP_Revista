@@ -11,26 +11,13 @@
   <script src="js/validarFormulario.js"></script>
 
   <script type="text/javascript">
-
+/*
     $(function() {
 
-        $("#prov").change(function() {
-            var id = $(this).val();
-            var parametro = 'prov='+ id;
 
-            $.ajax ({
-                type: "GET",
-                url: "php/localidad1.php",
-                data: parametro,
-                cache: false,
-                success:
-                    function(html){
-                        $("#localidad").html(html);
-                    }
-            });
-        }).trigger("change");
 
     });
+*/
 </script>
 
 </head>
@@ -42,7 +29,7 @@
       <?php
           include("bd/conexion.php");
 
-          $query="SELECT * FROM cliente WHERE username_cliente='".$_SESSION['nombre']."'";
+          $query="SELECT * FROM cliente WHERE username_cliente='$_SESSION[nombre]'";
 
           $tabla = mysqli_query($conexion,$query);
 
@@ -73,7 +60,7 @@
               </div>
               <div class="form-group">
                 <label for="direccion" class="label-largo">Ingrese Dirección:</label>
-                <input type="text" id="direccion" name="direccion" class="form-control input-largo" value=<?php echo"$datos[calle]"; ?> />
+                <input type="text" id="direccion" name="direccion" class="form-control input-largo" value= <?php echo"$datos[calle]"; ?> />
               </div>
               <div class="form-group">
                 <label for="nro" class="label-largo">Nro:</label>
@@ -89,7 +76,13 @@
                         $resultado = mysqli_query($conexion, $sql);
                         echo "<select id='prov' name='prov' class='form-control' value=$datos[cod_prov]>";
                         while($fila = mysqli_fetch_assoc($resultado)){
-                            echo "<option value='"  . $fila["id_provincia"] . "'>" . $fila["provincia_nombre"] . "</option>";
+                          
+                            if($fila['id_provincia'] == $datos['cod_prov']){
+                              echo "<option value='"  . $fila["id_provincia"] . "' selected='selected'>" . $fila["provincia_nombre"] . "</option>";
+                            }
+                            else{
+                              echo "<option value='"  . $fila["id_provincia"] . "'>" . $fila["provincia_nombre"] . "</option>";
+                            }
                         }
                         echo "</select><br>";
                         echo "<label for='localidad' class='label-largo'>Localidad:</label>";
@@ -109,9 +102,34 @@
   <?php 
     include("php/footer.php");
   ?>
+  <script>
+    $(function(){
 
+            $("#prov").change(function() {
+            var id = $(this).val();
+            var parametro = 'prov='+ id;
 
+            $.ajax ({
+                type: "GET",
+                url: "php/localidad1.php",
+                data: parametro,
+                cache: false,
+                success:
+                    function(html){
+                        $("#localidad").html(html);
+                    }
+            });
+        }).trigger("change");
 
+    <?php echo"var localidadActual = $datos[cod_ciud];"; ?>
+
+    var localidades = $("#localidad option").each(function(){
+      if($(this).val() == localidadActual){
+          $(this).attr("selected","true");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
