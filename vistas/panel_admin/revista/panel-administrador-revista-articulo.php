@@ -2,17 +2,7 @@
 
 <html>
 <head>
-      <script type="text/javascript">
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });
-}
-
-    </script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBVA1-YHqsPtNLL9KETarV6JRHzXK_ZryU"
   type="text/javascript"></script>
   <meta charset="utf-8">
@@ -303,7 +293,7 @@ function initMap() {
               <textarea id="text_edit" name="texto"></textarea><br>
           </div>
              <div class="col-lg-12">
-               <div id="map"></div>
+               <div id="map" style="width:95%; height:300px;"></div>
            </div>
             <input type="submit" class="btn btn-success" style="float:right;" value="Enviar"/>
 
@@ -438,6 +428,27 @@ function initMap() {
 
 
 </script>
+
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3vR1uAGauAv3wBu-cReTOnGMBLVxDKNI&callback=initMap"
+        async defer></script>
+
+     <script>
+
+            var map;
+            function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center:new google.maps.LatLng(-34.6686986,-58.5614947),
+                zoom:12,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+              });
+            }
+
+          //para que se cargue el mapa dentro del modal
+          $("#modalNuevo").on("shown.bs.modal", function () {
+            google.maps.event.trigger(map, "resize");
+              });
+
+    </script>
 
 
 </body>
