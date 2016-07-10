@@ -28,7 +28,12 @@ header("Content-Type: text/html;charset=utf-8");
           
           mysqli_set_charset($conexion,'utf8');
           $contarPaginas=0;
-          $respuesta=mysqli_query($conexion,"select * from edicion;");
+
+          $query = "select * 
+          from edicion e INNER JOIN publicacion p ON e.id_publicacion=p.id_publicacion
+          where p.cod_estado=2 and p.tipo_publicacion='$tipo'";
+
+          $respuesta=mysqli_query($conexion,$query);
           $tuplasHalladas=mysqli_num_rows($respuesta);
           //inicio paginado
           $cantidadDePaginas = $tuplasHalladas/$qForPage;
@@ -149,9 +154,9 @@ header("Content-Type: text/html;charset=utf-8");
                         echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
                     <div class='col-lg-12 borderText contenedorDeArticulo'>
                        <a href='#$arrayRespuesta[id_edicion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_edicion]' data-toggle='modal' role='button'' >
+                       <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
                         <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']."/>
                         <div class='descripcion'>
-                            <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
                              <p>Precio de compra: ".$arrayRespuesta['precio_compra']."</p>
                              <p>Precio de suscripcion: ".$arrayRespuesta['precio_suscripcion']."</p>
                         </div>

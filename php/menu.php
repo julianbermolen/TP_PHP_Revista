@@ -62,10 +62,10 @@ session_start();
           }else{
             echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>".$_SESSION['nombre']." <span class='caret'></span></a>";
             echo "<ul class='dropdown-menu'>
-                      <li><a href='#'>Mis suscripciones</a></li>
-                      <li><a href='#'>Mis facturas</a></li>
+                      <li><a href='panel-usuario-suscripciones.php'>Mis suscripciones</a></li>
+                      <li><a href='panel-usuario-compras.php'>Mis facturas</a></li>
                       <li role='separator' class='divider'></li>
-                      <li><a href='#'>Mi cuenta</a></li>
+                      <li><a href='panel-usuario-datos.php'>Mi cuenta</a></li>
                       <li><a href='php/logout.php'>Cerrar sesión</a></li>
                     </ul>
                   </li>";
