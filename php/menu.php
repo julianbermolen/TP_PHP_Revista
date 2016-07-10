@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 ?>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,7 +52,10 @@ session_start();
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Buscar articulos">
+          <input type="text" class="form-control" value="" placeholder="Buscar articulos" onkeypress="busca(this.value);">
+          <ul class='dropdown'><a class='drowdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'></a>
+            <li id="valores"></li>
+          </ul>
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>
