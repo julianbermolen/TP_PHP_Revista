@@ -41,8 +41,11 @@ session_start();
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" value="" placeholder="Buscar articulos" onkeypress="busca(this.value);">
-          
+          <li class='dropdown' style="list-style:none;"><input type="text" class="form-control" id="busqueda" placeholder="Buscar articulos" >
+            <ul class='dropdown-menu' id="resultado" style="display:none;">
+
+            </ul>
+          </li>
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>

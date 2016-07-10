@@ -1,39 +1,39 @@
-function getXMLHTTP() { 
-		var xmlhttp=false;	
-		try{
-			xmlhttp=new XMLHttpRequest();
-		}
-		catch(e)	{		
-			try{			
-				xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			catch(e){
-				try{
-				xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-				}
-				catch(e1){
-					xmlhttp=false;
-				}
-			}
-		}
-		return xmlhttp;
-}
-
-function busca(letra) {	
-		var strURL="busca.php?letras="+letra;
-		var req = getXMLHTTP();
-		if (req) {
-			req.onreadystatechange = function() {
-				if (req.readyState == 4) {
-					// only if "OK"
-					if (req.status == 200) {		
-						document.getElementById('valores').innerHTML=req.responseText; 					
-					} else {
-						alert("There was a problem while using XMLHTTP:\n" + req.statusText);
-					}
-				}				
-			}			
-			req.open("GET", strURL, true);
-			req.send(null);
-		}
-}
+$(document).ready(function(){
+                                
+        var consulta;
+                                                                          
+         //hacemos focus al campo de búsqueda
+        $("#busqueda").focus();
+                                                                                                    
+        //comprobamos si se pulsa una tecla
+        $("#busqueda").keyup(function(e){
+                                     
+              //obtenemos el texto introducido en el campo de búsqueda
+              consulta = $("#busqueda").val();
+                                                                           
+              //hace la búsqueda
+                                                                                  
+              $.ajax({
+                    type: "POST",
+                    url: "php/buscar.php",
+                    data: "b="+consulta,
+                    dataType: "html",
+                    beforeSend: function(){
+                          //imagen de carga
+                          $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+                    },
+                    error: function(){
+                          alert("error petición ajax");
+                    },
+                    success: function(data){                                                    
+                          $("#resultado").empty();
+                          $("#resultado").css("display","block");
+                          $("#resultado").append(data);
+                                                             
+                    }
+              });
+                                                                                  
+                                                                           
+        });
+                                                                   
+});

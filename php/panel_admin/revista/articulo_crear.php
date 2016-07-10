@@ -32,6 +32,7 @@
       #map { height: 100%; }
     </style>
 
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <?php
