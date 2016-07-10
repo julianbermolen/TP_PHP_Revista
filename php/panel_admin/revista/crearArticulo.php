@@ -9,7 +9,9 @@ $texto = $_POST['texto'];
 $publicacion = $_POST['publicacion1'];
 $edicion = $_POST['edicion1'];
 $seccion = $_POST['seccion1'];
-
+if(isset($_POST['coordenada'])){
+	$coordenada = $_POST['coordenada'];
+}
 	if(isset($_FILES['file']['name'])){
 		$path1 = $_FILES['file']['name'];
 		
@@ -27,7 +29,7 @@ $seccion = $_POST['seccion1'];
 // $latitud = ;
 // $longitud = ;
 
-$query = "INSERT INTO articulo VALUES('','$titulo','$subtitulo','$texto','$seccion','','$publicacion','$edicion')";
+$query = "INSERT INTO articulo VALUES('','$titulo','$subtitulo','$texto','$seccion','$coordenada','$publicacion','$edicion')";
 
 $result = mysqli_query($conexion,$query);
 

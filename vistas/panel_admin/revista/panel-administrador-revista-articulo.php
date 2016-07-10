@@ -292,6 +292,9 @@
           <div class="col-lg-12">
               <textarea id="text_edit" name="texto"></textarea><br>
           </div>
+          <div class="col-lg-12">
+            <input type="text" class="form-control" name="coordenada" id="coordenada"/>
+          </div>  
              <div class="col-lg-12">
                <div id="map" style="width:95%; height:300px;"></div>
            </div>
@@ -441,6 +444,12 @@
                 zoom:12,
                 mapTypeId:google.maps.MapTypeId.ROADMAP
               });
+
+          map.addListener('click', function(e) {
+           placeMarkerAndPanTo(e.latLng, map);
+            });
+
+
             }
 
           //para que se cargue el mapa dentro del modal
@@ -448,6 +457,16 @@
             google.maps.event.trigger(map, "resize");
               });
 
+            function placeMarkerAndPanTo(latLng, map) {
+              var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+
+
+              });
+              map.panTo(latLng);
+              $("#coordenada").val(latLng);
+          }
     </script>
 
 
