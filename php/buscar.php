@@ -9,7 +9,7 @@
       function buscar($b) {
         include("../bd/conexion.php");
            
-       $query = "SELECT * FROM edicion WHERE nombre_edicion LIKE '%$b%'";
+       $query = "SELECT * FROM edicion INNER JOIN publicacion ON publicacion.id_publicacion = edicion.id_publicacion WHERE publicacion.cod_estado = 2 AND edicion.nombre_edicion LIKE '%$b%'";
             $sql = mysqli_query($conexion,$query);
              
             $contar = mysqli_num_rows($sql);
