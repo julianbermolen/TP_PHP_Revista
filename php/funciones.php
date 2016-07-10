@@ -247,6 +247,7 @@ header("Content-Type: text/html;charset=utf-8");
             $query_imagenes = "SELECT * FROM imagen WHERE id_articulo = '$idArticulo'";
              
             $resultIma = mysqli_query($conexion,$query_imagenes);
+
                 for($i=0;$i<mysqli_num_rows($resultIma);$i++){
                   if($i ==0)
                   echo '<li data-target="#myCarousel" data-slide-to="'.$i.'" class="active"></li>';
@@ -257,9 +258,12 @@ header("Content-Type: text/html;charset=utf-8");
 
             echo '<div class="carousel-inner" role="listbox">';
               $i = 0;// para decir q es la primer pasada
+              
+      
             while($filaIm = mysqli_fetch_assoc($resultIma)){
                 $path=$filaIm['path'];
                 if($i == 0){
+
                   echo '<div class="item active">
                     <img src="imagenes/'.$path.'" alt="Chania">
                        </div>';
@@ -270,6 +274,7 @@ header("Content-Type: text/html;charset=utf-8");
                        </div>';
                      }
                 }
+              
               echo '</div>';
 
               if(mysqli_num_rows($resultIma) > 1){
@@ -290,7 +295,7 @@ header("Content-Type: text/html;charset=utf-8");
           //echo "</div>";
         }
 
-        echo "</div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
+        echo "</div></div></div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
     }
 
 

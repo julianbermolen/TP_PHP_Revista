@@ -220,7 +220,7 @@ CREATE TABLE `suscripcion` (
   `cod_edicion` int(11) NOT NULL,
   `inicio` date NOT NULL,
   `fin` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 

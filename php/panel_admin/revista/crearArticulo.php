@@ -12,7 +12,7 @@ $seccion = $_POST['seccion1'];
 
 	if(isset($_FILES['file']['name'])){
 		$path1 = $_FILES['file']['name'];
-		echo "llego algo";
+		
 		} 
 	if(isset($_FILES['file2']['name'])){
 		$path2 = $_FILES['file2']['name'];
@@ -42,6 +42,9 @@ $tipo = mysqli_fetch_assoc($resultadoConsulta);
 				if (@move_uploaded_file($_FILES['file']['tmp_name'], $fichero1)) {
 		    		echo "El fichero es válido y se subió con éxito.\n";
 					} 
+					}else{
+					$queryImagenNula = "INSERT INTO imagen VALUES('','$tipo[id_articulo]','sinimagen.jpg')";
+					$resultadoPath = mysqli_query($conexion,$queryImagen);
 				}
 				
 				 if(isset($path2)){

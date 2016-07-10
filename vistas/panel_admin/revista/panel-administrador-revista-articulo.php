@@ -246,7 +246,7 @@ function initMap() {
                        <?php
 
                          $conexion = mysqli_connect("127.0.0.1","root","","sistema");
-                         $sql = "SELECT * FROM publicacion WHERE cod_estado = 1";
+                         $sql = "SELECT * FROM publicacion";
                          $resultado = mysqli_query($conexion, $sql);
                            while($fila = mysqli_fetch_assoc($resultado)){
                                echo "<option value='"  . $fila["id_publicacion"] . "'>" . $fila["nombre_publicacion"] . "</option>";
@@ -303,7 +303,7 @@ function initMap() {
               <textarea id="text_edit" name="texto"></textarea><br>
           </div>
              <div class="col-lg-12">
-               <div id="mapa"></div>
+               <div id="map"></div>
            </div>
             <input type="submit" class="btn btn-success" style="float:right;" value="Enviar"/>
 
