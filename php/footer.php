@@ -1,7 +1,7 @@
 	<footer id="footer">
-		<div class="container">
+		<div class="container" >
 			<div class="row">
-
+				<div style="text-align:center;">
 				<div class="col-lg-12">
 					<div class="col-lg-4">
 						<h2>Alumno</h2>
@@ -22,7 +22,7 @@
 					</div>
 				
 				</div>
-
+				</div>
 			</div>
 		</div>
 	</footer>
