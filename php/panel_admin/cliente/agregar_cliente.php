@@ -2,6 +2,22 @@
 
  $connect = mysqli_connect("localhost", "root", "", "sistema");
 
+ $consulta="SELECT * FROM cliente";
+
+ $query=mysqli_query($connect, $consulta);
+
+ while($fila=mysqli_fetch_array($query)){
+
+ 		if($_POST['username'] == $fila["username_cliente"]){
+
+ 			$username=$fila["username_cliente"];
+ 			echo "Cliente repetido";
+ 			header('refresh:2; url=/TP_PHP_Revista/vistas/panel_admin/panel-administrador-cliente.php');
+ 		}
+
+ }
+
+ 		if($username != $_POST['username']){
 			if(isset($_POST['username'])){
 				$user = $_POST['username'];
 			}
@@ -38,8 +54,9 @@
 
  if(mysqli_query($connect, $sql))  
  {  
-      echo 'Data Updated';  
+      echo 'Data Updated';
+      
  } 
-
-	header('location:/TP_PHP_Revista/vistas/panel_admin/panel-administrador-cliente.php'); 
+}
+	
  ?>  

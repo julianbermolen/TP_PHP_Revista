@@ -26,7 +26,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="username"  class="label-largo">Ingrese nombre de usuario:</label>
-                                                  <input type="text" id="username" name="username" class="form-control input-largo" value="'.$fila["nombre"].'" />
+                                                  <input type="text" id="username" name="username" class="form-control input-largo" value="'.$fila["nombre"].'"  readonly="readonly" />
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="email" class="label-largo">Ingrese e-mail:</label>
