@@ -331,7 +331,7 @@ header("Content-Type: text/html;charset=utf-8");
 
          
           echo "<br><br><div class='textoArt'>".$art['texto']."</div><br><br><br>";;
-          echo "<div id='".$art['id_articulo']."' style='width:100%; height:300px;'></div>";
+          echo "<div id='".$art['id_articulo']."' style='width:100%; height:300px; border:1px solid black'></div>";
           echo "</div>";
           
           echo "<div class='col-lg-2'></div>";
