@@ -55,6 +55,7 @@
  if(mysqli_query($connect, $sql))  
  {  
       echo 'Data Updated';
+      header('location:/TP_PHP_Revista/vistas/panel_admin/panel-administrador-cliente.php');
       
  } 
 }
