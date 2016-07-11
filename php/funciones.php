@@ -217,7 +217,35 @@ header("Content-Type: text/html;charset=utf-8");
 
   function traerArticulo(){
 
+
+
     include("bd/conexion.php");
+
+      $query_maps = "SELECT * FROM articulo";
+      $resultMaps = mysqli_query($conexion,$query_maps);
+        echo "     <script>
+            
+            function initMap() {";
+              while($maps = mysqli_fetch_assoc($resultMaps)){
+           echo" 
+           var map".$maps["id_articulo"].";
+           map".$maps["id_articulo"]." = new google.maps.Map(document.getElementById('".$maps["id_articulo"]."'), {
+                center:new google.maps.LatLng".$maps["coordenadas"].",
+                zoom:14,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+              });
+
+              var marker = new google.maps.Marker({
+                position: new google.maps.LatLng".$maps["coordenadas"].",
+                map: map".$maps["id_articulo"].",
+                animation:google.maps.Animation.BOUNCE
+            });
+
+              ";
+             }
+         echo"   }
+          </script>";
+
     $idPubli = $_GET['id_publicacion'];
 
     $query = "SELECT * FROM seccion WHERE cod_edicion = '$idPubli'";
@@ -237,6 +265,9 @@ header("Content-Type: text/html;charset=utf-8");
         $query_articulos = "SELECT * FROM articulo WHERE id_seccion = '$idSeccion'";
 
         $resultArt = mysqli_query($conexion,$query_articulos);
+
+                echo "<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD3vR1uAGauAv3wBu-cReTOnGMBLVxDKNI&callback=initMap'
+        async defer></script>'";
 
         while($art = mysqli_fetch_assoc($resultArt)){
           $idArticulo = $art['id_articulo'];
@@ -293,15 +324,25 @@ header("Content-Type: text/html;charset=utf-8");
 
          
           echo "<br><br><div class='textoArt'>".$art['texto']."</div><br><br><br>";;
-          echo "<div id='map' style='width:100%; height:300px;'></div>";
+          echo "<div id='".$art['id_articulo']."' style='width:100%; height:300px;'></div>";
           echo "</div>";
           
           echo "<div class='col-lg-2'></div>";
+
+          
         }
+
         
         echo "</div></div></div></div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
 
+
+          $resultMaps = mysqli_query($conexion,$query_articulos);
+
+
+
     }
+
+
 ?>
    
   <?php
