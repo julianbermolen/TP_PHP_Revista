@@ -71,9 +71,10 @@
               <li class="user-header">
               
                 <p>
-                  <?php echo $_SESSION['nombre_usuario'] ?> - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $_SESSION['nombre_usuario'] ?> - <?php if($_SESSION['rol'] == 2){ echo "Contenedista"; }else{echo "Administrador"; } ?>
+                  
                 </p>
+                
               </li>
               
                 <!-- /.row -->
