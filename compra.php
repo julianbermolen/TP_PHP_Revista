@@ -76,7 +76,7 @@ $preference = $mp->create_preference($preference_data);
                      dataType:"text",  
                      success:function(data){  
                           alert("gracias por la compra");
-                          window.location.reload();  
+                            
                      }  
                 });  
            }  
