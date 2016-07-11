@@ -128,8 +128,10 @@ header("Content-Type: text/html;charset=utf-8");
                                     $codCliente = $_COOKIE['cod_cliente'];
                                     // SI No ESTA LOGUEADO, LE MUESTRA UN BOTON PARA EL LOGIN. SI ESTÁ LOGUEADO PERO NO COMPRÓ MUESTRA LOS BOTONES DE COMPRA
                                       $queryCompra = "SELECT * FROM compra WHERE cod_cliente ='$codCliente' and cod_edicion = '$arrayRespuesta[id_edicion]'";
+                                      $querySusc = "SELECT * FROM suscripcion WHERE cod_cliente ='$codCliente' and cod_edicion = '$arrayRespuesta[id_edicion]'";
                                      $resultCompra = mysqli_query($conexion,$queryCompra);
-                                        if(mysqli_num_rows($resultCompra)== 1){
+                                     $resultSusc = mysqli_query($conexion,$querySusc);
+                                        if(mysqli_num_rows($resultCompra) > 0 OR mysqli_num_rows($resultSusc) > 0){
                                               echo '<a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>';
                                        }else{
                                      
@@ -188,8 +190,10 @@ header("Content-Type: text/html;charset=utf-8");
                                     $codCliente = $_COOKIE['cod_cliente'];
                                     // SI No ESTA LOGUEADO, LE MUESTRA UN BOTON PARA EL LOGIN. SI ESTÁ LOGUEADO PERO NO COMPRÓ MUESTRA LOS BOTONES DE COMPRA
                                       $queryCompra = "SELECT * FROM compra WHERE cod_cliente ='$codCliente' and cod_edicion = '$arrayRespuesta[id_edicion]'";
-                                     $resultCompra = mysqli_query($conexion,$queryCompra);
-                                        if(mysqli_num_rows($resultCompra)== 1){
+                                      $querySusc = "SELECT * FROM suscripcion WHERE cod_cliente ='$codCliente' and cod_edicion = '$arrayRespuesta[id_edicion]'";
+                                      $resultCompra = mysqli_query($conexion,$queryCompra);
+                                      $resultSusc = mysqli_query($conexion,$querySusc);
+                                        if(mysqli_num_rows($resultCompra) > 0 OR mysqli_num_rows($resultSusc) > 0 ){
                                               echo '<a type="button" class="btn btn-primary" href="articulo.php?id_publicacion='.$arrayRespuesta["id_edicion"].'">Leer</a>';
                                        }else{
                                      
