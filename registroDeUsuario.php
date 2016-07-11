@@ -1,6 +1,32 @@
 	<?php
 		if(isset($_POST['boton'])){
+
+
+
 		include("bd/conexion.php");
+
+		$connect = mysqli_connect("localhost", "root", "", "sistema");
+
+		$consulta="SELECT * FROM cliente";
+
+ 		$query=mysqli_query($connect, $consulta);
+
+ 		$username=null;
+ 		$userRepetido=null;
+
+		while($fila=mysqli_fetch_array($query)){
+
+	 		if($_POST['username'] == $fila["username_cliente"]){
+
+	 			$username=$fila["username_cliente"];
+	 			$userRepetido = "Usuario repetido";
+	 			
+	 		}
+
+ 		}
+
+ 		if($username != $_POST['username']){
+
 			if(isset($_POST['username'])){
 				$user = $_POST['username'];
 			}
@@ -40,6 +66,7 @@
 				$exito = 0;
 			  }
 			}
+		}
 	?>
 
 
@@ -87,6 +114,25 @@
 			<h1> Formulario de registro </h1>
 			<div class="col-xs-12 col-sm-6">
 				<!--aca comienza el panel que contiene el form-->
+				<?php 
+							if(isset($exito)){
+								if($exito == 1){
+									echo "<div class='alert alert-success'><strong>¡Bien hecho!</strong> Usuario registrado con exito!</div>";
+								}else{
+									echo "<div class='alert alert-danger'><strong>¡Ups!</strong> Usuario no registrado, intente en otro momento</div>";
+								}
+
+							}
+				?>
+
+				<?php
+
+					if(isset($userRepetido))
+					{
+						echo "<div class='alert alert-danger'><strong>".$userRepetido."</strong></div>";
+					}
+
+				?>
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<form class="cmxform" id="validarForm" action="registroDeUsuario.php" method="POST" class="form-horizontal">
@@ -142,16 +188,7 @@
 
 							<input type="submit" name="boton" value="Enviar" class="btn btn-primary btn-lg btn-block"/>
 						</form>
-						<?php 
-							if(isset($exito)){
-								if($exito == 1){
-									echo "<div class='alert alert-success'><strong>¡Bien hecho!</strong> Usuario registrado con exito!</div>";
-								}else{
-									echo "<div class='alert alert-danger'><strong>¡Ups!</strong> Usuario no registrado, intente en otro momento</div>";
-								}
 
-							}
-						?>
 						
 					</div>
 				</div>
