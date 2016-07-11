@@ -95,10 +95,10 @@ header("Content-Type: text/html;charset=utf-8");
             $arrayRespuesta=mysqli_fetch_assoc($respuesta);
             echo "<div class='row'>";
             echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
-                    <div class='col-lg-12 borderText contenedorDeArticulo'>
+                    <div class='col-lg-12 borderText contenedorDeArticulo' style='max-width:340px; min-width:340px; max-height:440px; min-height:440px;'>
                        <a href='#$arrayRespuesta[id_edicion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_edicion]' data-toggle='modal' role='button'' >
-                       <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
-                        <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']."/>
+                       <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']." - ".$arrayRespuesta['nombre_edicion']."</h4>
+                        <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']." />
                         <div class='descripcion'>
                              <p>Precio de compra: ".$arrayRespuesta['precio_compra']."</p>
                              <p>Precio de suscripcion: ".$arrayRespuesta['precio_suscripcion']."</p>
@@ -119,7 +119,7 @@ header("Content-Type: text/html;charset=utf-8");
                                 </div>
                                 <div class="mitadModal">';
 
-                                 echo ' <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+                                 echo ' <span class="tituloModalPubli">'.$arrayRespuesta['nombre_publicacion']." - ".$arrayRespuesta['nombre_edicion'].'<span><br><br>
                                    <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
                                    <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
                                   <div class="derecha">';
@@ -152,9 +152,9 @@ header("Content-Type: text/html;charset=utf-8");
 
             if($arrayRespuesta=mysqli_fetch_assoc($respuesta)){
                         echo "<div class='col-xs-8 col-xs-push-2 col-md-4 col-md-push-2'>
-                    <div class='col-lg-12 borderText contenedorDeArticulo'>
+                    <div class='col-lg-12 borderText contenedorDeArticulo' style='max-width:340px; min-width:340px; max-height:440px; min-height:440px;'>
                        <a href='#$arrayRespuesta[id_edicion]' class='dropdown-toggle' data-target='#$arrayRespuesta[id_edicion]' data-toggle='modal' role='button'' >
-                       <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_edicion']."</h4>
+                       <h4 class='nombreDePublicacion'>".$arrayRespuesta['nombre_publicacion']." - ".$arrayRespuesta['nombre_edicion']."</h4>
                         <img src=imagenes/".$arrayRespuesta['tapa']." class='portada' .alt=".$arrayRespuesta['nombre_edicion']."/>
                         <div class='descripcion'>
                              <p>Precio de compra: ".$arrayRespuesta['precio_compra']."</p>
@@ -176,7 +176,10 @@ header("Content-Type: text/html;charset=utf-8");
                                 </div>
                                 <div class="mitadModal">';
 
-                                 echo ' <span class="tituloModalPubli">'.$arrayRespuesta["nombre_edicion"].'<span><br><br>
+
+                                 echo ' 
+                                 
+                                 <span class="tituloModalPubli">'.$arrayRespuesta['nombre_publicacion']." - ".$arrayRespuesta['nombre_edicion'].'<span><br><br>
                                    <span class="descripcionModalPubli">Precio de compra: '.$arrayRespuesta['precio_compra'].'<span><br>
                                    <span class="descripcionModalPubli">Precio de suscripcion: '.$arrayRespuesta['precio_suscripcion'].'<span><br><br><br>
                                   <div class="derecha">';
