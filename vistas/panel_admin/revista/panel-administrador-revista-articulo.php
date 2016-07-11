@@ -163,7 +163,7 @@
 
 <button type="button" class="btn btn-success" href="#modalNuevo" data-target="#modalNuevo" data-toggle="modal" role="button">Agregar Nuevo Articulo </button>
 
- <a target="_blank" href="../../../php/panel_admin/revista/PDFDatosRevista.php" style="float:right;" class="btn btn-danger">Exportar a PDF</a>
+
 <br/>
 <br/>
 
@@ -236,7 +236,7 @@
                        <?php
 
                          $conexion = mysqli_connect("127.0.0.1","root","","sistema");
-                         $sql = "SELECT * FROM publicacion";
+                         $sql = "SELECT * FROM publicacion WHERE cod_estado = 1";
                          $resultado = mysqli_query($conexion, $sql);
                            while($fila = mysqli_fetch_assoc($resultado)){
                                echo "<option value='"  . $fila["id_publicacion"] . "'>" . $fila["nombre_publicacion"] . "</option>";
