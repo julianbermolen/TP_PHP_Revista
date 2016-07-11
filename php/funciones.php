@@ -226,7 +226,9 @@ header("Content-Type: text/html;charset=utf-8");
 
     while($tipo = mysqli_fetch_assoc($result)){
         $idSeccion = $tipo['id_seccion'];
-          echo "<div class='col-lg-6'>";
+          echo "<div class='col-lg-2'></div>";
+          echo "<div class='col-lg-8'>";
+          echo "<div id='centrado' style='text-align:center;'>";
           echo '<div class="panel panel-info">
           <div class="panel-heading"><h3 class="nombreSeccion">'.$tipo["nombre_sec"].'</h1></div>
             <div class="panel-body">            
@@ -291,11 +293,14 @@ header("Content-Type: text/html;charset=utf-8");
 
          
           echo "<br><br><div class='textoArt'>".$art['texto']."</div><br><br><br>";;
-
+          echo "<div id='map' style='width:100%; height:300px;'></div>";
           echo "</div>";
+          
+          echo "<div class='col-lg-2'></div>";
         }
-        echo "<div id='map' style='width:95%; height:300px;'></div>";
-        echo "</div></div></div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
+        
+        echo "</div></div></div></div></div></div>";//Cierro panel heading y body Cierro contenedor de seccion
+
     }
 ?>
    
