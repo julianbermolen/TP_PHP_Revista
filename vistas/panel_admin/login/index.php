@@ -93,15 +93,9 @@
     <div class="login-page">
   <div class="form" >
    
-   <form class="register-form" action="index.php" method="post">
-      <input type="text" placeholder="nombre" name="usuario" class="text"/>
-      <input type="password" placeholder="password" name="pass" class="text"/>
-      <input type="submit" name="enviar" value="registrar" class="enviar"/>      
-      <p class="message">Ya estas registrado? <a href="#">Sign In</a></p>
-    </form>
-
 
     <form class="login-form" action="index.php" method="post">
+    <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 20px; text-align: center;">AdminINFO</p>
       <?php 
         if(isset($_POST["enviar"]) && $caract_validos !== null) {
           echo $caract_validos."<br>";
